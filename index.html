@@ -4,3767 +4,288 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechZone - Premium Texnika Do'koni</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+  <title>TechZone PRO — Premium Electronics</title>
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
     rel="stylesheet">
-  <style>
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
-
-    :root {
-      --p: #6c5ce7;
-      --pd: #5a4bd1;
-      --pl: #a29bfe;
-      --a: #00cec9;
-      --a2: #fd79a8;
-      --bg: #0a0a1a;
-      --card: #12122a;
-      --card2: #1a1a3e;
-      --inp: #1e1e42;
-      --tx: #fff;
-      --tx2: #a0a0c0;
-      --txm: #6c6c8a;
-      --brd: #2a2a4a;
-      --ok: #00b894;
-      --err: #ff6b6b;
-      --warn: #fdcb6e;
-      --g1: linear-gradient(135deg, #6c5ce7, #a29bfe);
-      --g2: linear-gradient(135deg, #00cec9, #0984e3);
-      --g3: linear-gradient(135deg, #fd79a8, #e84393);
-      --g4: linear-gradient(135deg, #6c5ce7, #00cec9);
-      --sh: 0 10px 40px rgba(0, 0, 0, .3);
-      --shl: 0 20px 60px rgba(0, 0, 0, .5);
-      --r: 16px;
-      --rs: 10px;
-      --rl: 24px;
-      --tr: all .3s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--tx);
-      overflow-x: hidden;
-      line-height: 1.6
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 24px
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit
-    }
-
-    button {
-      cursor: pointer;
-      border: none;
-      font-family: inherit
-    }
-
-    img {
-      max-width: 100%
-    }
-
-    /* ===== AUTH ===== */
-    .auth-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 5, 20, .97);
-      backdrop-filter: blur(20px);
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
-
-    .auth-bg {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none
-    }
-
-    .auth-shape {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: .25
-    }
-
-    .as1 {
-      width: 500px;
-      height: 500px;
-      background: #6c5ce7;
-      top: -150px;
-      left: -100px;
-      animation: af1 8s infinite ease-in-out
-    }
-
-    .as2 {
-      width: 400px;
-      height: 400px;
-      background: #00cec9;
-      bottom: -100px;
-      right: -100px;
-      animation: af2 10s infinite ease-in-out
-    }
-
-    .as3 {
-      width: 300px;
-      height: 300px;
-      background: #fd79a8;
-      top: 50%;
-      left: 50%;
-      animation: af3 12s infinite ease-in-out
-    }
-
-    .as4 {
-      width: 200px;
-      height: 200px;
-      background: #fdcb6e;
-      top: 20%;
-      right: 20%;
-      animation: af1 9s infinite ease-in-out reverse
-    }
-
-    .as5 {
-      width: 250px;
-      height: 250px;
-      background: #0984e3;
-      bottom: 20%;
-      left: 20%;
-      animation: af2 11s infinite ease-in-out
-    }
-
-    @keyframes af1 {
-
-      0%,
-      100% {
-        transform: translate(0, 0)
-      }
-
-      50% {
-        transform: translate(30px, -30px)
-      }
-    }
-
-    @keyframes af2 {
-
-      0%,
-      100% {
-        transform: translate(0, 0)
-      }
-
-      50% {
-        transform: translate(-20px, 20px)
-      }
-    }
-
-    @keyframes af3 {
-
-      0%,
-      100% {
-        transform: translate(0, 0)
-      }
-
-      33% {
-        transform: translate(20px, -20px)
-      }
-
-      66% {
-        transform: translate(-20px, 20px)
-      }
-    }
-
-    .auth-box {
-      position: relative;
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--rl);
-      padding: 36px;
-      max-width: 460px;
-      width: 100%;
-      box-shadow: var(--shl);
-      animation: slideUp .6s cubic-bezier(.16, 1, .3, 1);
-      overflow: hidden
-    }
-
-    .auth-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--g4)
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px) scale(.95)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1)
-      }
-    }
-
-    .auth-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 10px
-    }
-
-    .auth-logo-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--g1);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      color: #fff;
-      animation: lp 2s infinite
-    }
-
-    @keyframes lp {
-
-      0%,
-      100% {
-        transform: scale(1)
-      }
-
-      50% {
-        transform: scale(1.1)
-      }
-    }
-
-    .auth-logo-text {
-      font-size: 28px;
-      font-weight: 800
-    }
-
-    .auth-logo-text span {
-      background: var(--g4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent
-    }
-
-    .auth-subtitle {
-      color: var(--tx2);
-      font-size: 14px;
-      text-align: center;
-      margin-bottom: 24px
-    }
-
-    .auth-tabs {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 24px;
-      background: var(--inp);
-      border-radius: var(--r);
-      padding: 4px
-    }
-
-    .auth-tab {
-      flex: 1;
-      padding: 12px;
-      border-radius: 12px;
-      background: 0 0;
-      color: var(--tx2);
-      font-weight: 600;
-      font-size: 14px;
-      transition: var(--tr);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px
-    }
-
-    .auth-tab.active {
-      background: var(--g1);
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(108, 92, 231, .4)
-    }
-
-    .auth-form {
-      display: none;
-      animation: fadeIn .4s
-    }
-
-    .auth-form.active {
-      display: block
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0
-      }
-
-      to {
-        opacity: 1
-      }
-    }
-
-    .input-group {
-      position: relative;
-      margin-bottom: 16px
-    }
-
-    .input-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--txm);
-      transition: var(--tr);
-      z-index: 2
-    }
-
-    .input-group input {
-      width: 100%;
-      padding: 15px 16px 15px 46px;
-      background: var(--inp);
-      border: 2px solid var(--brd);
-      border-radius: var(--rs);
-      color: var(--tx);
-      font-size: 15px;
-      font-family: inherit;
-      transition: var(--tr);
-      outline: 0
-    }
-
-    .input-group input:focus {
-      border-color: var(--p);
-      box-shadow: 0 0 0 4px rgba(108, 92, 231, .15)
-    }
-
-    .toggle-pass {
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: 0 0;
-      color: var(--txm);
-      padding: 4px;
-      z-index: 2
-    }
-
-    .toggle-pass:hover {
-      color: var(--p)
-    }
-
-    .auth-options {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      font-size: 13px
-    }
-
-    .remember {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--tx2);
-      cursor: pointer
-    }
-
-    .remember input {
-      accent-color: var(--p)
-    }
-
-    .forgot {
-      color: var(--pl);
-      transition: var(--tr)
-    }
-
-    .forgot:hover {
-      color: var(--p)
-    }
-
-    .auth-btn {
-      width: 100%;
-      padding: 15px;
-      border-radius: var(--rs);
-      font-size: 16px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: var(--tr);
-      position: relative;
-      overflow: hidden;
-      color: #fff
-    }
-
-    .auth-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
-      transition: .5s
-    }
-
-    .auth-btn:hover::before {
-      left: 100%
-    }
-
-    .auth-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(108, 92, 231, .5)
-    }
-
-    .primary-btn {
-      background: var(--g1)
-    }
-
-    .signup-btn {
-      background: var(--g2)
-    }
-
-    .auth-divider {
-      text-align: center;
-      margin: 20px 0;
-      position: relative
-    }
-
-    .auth-divider::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--brd)
-    }
-
-    .auth-divider span {
-      background: var(--card);
-      padding: 0 14px;
-      color: var(--txm);
-      font-size: 13px;
-      position: relative
-    }
-
-    .social-btns {
-      display: flex;
-      gap: 10px;
-      justify-content: center
-    }
-
-    .s-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: var(--rs);
-      background: var(--inp);
-      border: 1px solid var(--brd);
-      color: var(--tx);
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--tr)
-    }
-
-    .s-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--sh)
-    }
-
-    .s-btn.google:hover {
-      background: #ea4335;
-      border-color: #ea4335
-    }
-
-    .s-btn.apple:hover {
-      background: #000;
-      border-color: #333
-    }
-
-    .s-btn.telegram:hover {
-      background: #0088cc;
-      border-color: #0088cc
-    }
-
-    .strength-wrap {
-      margin-bottom: 14px
-    }
-
-    .strength-bar {
-      height: 4px;
-      background: var(--brd);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 5px
-    }
-
-    .strength-fill {
-      height: 100%;
-      width: 0%;
-      transition: var(--tr);
-      border-radius: 4px
-    }
-
-    .strength-label {
-      font-size: 12px;
-      color: var(--txm)
-    }
-
-    .terms {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 18px;
-      font-size: 13px;
-      color: var(--tx2);
-      cursor: pointer
-    }
-
-    .terms input {
-      accent-color: var(--p);
-      margin-top: 2px
-    }
-
-    .terms a {
-      color: var(--pl)
-    }
-
-    /* ===== HEADER ===== */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      transition: var(--tr)
-    }
-
-    .header.scrolled {
-      background: rgba(10, 10, 26, .95);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, .3)
-    }
-
-    .header-top {
-      background: var(--card);
-      border-bottom: 1px solid var(--brd);
-      padding: 8px 0
-    }
-
-    .ht-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center
-    }
-
-    .ht-info {
-      display: flex;
-      gap: 20px;
-      font-size: 13px;
-      color: var(--tx2)
-    }
-
-    .ht-info i {
-      color: var(--p);
-      margin-right: 6px
-    }
-
-    .ht-actions {
-      display: flex;
-      gap: 6px
-    }
-
-    .ht-btn {
-      padding: 6px 14px;
-      border-radius: 20px;
-      background: var(--inp);
-      color: var(--tx2);
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: var(--tr);
-      border: 1px solid var(--brd)
-    }
-
-    .ht-btn:hover {
-      color: var(--p);
-      border-color: var(--p)
-    }
-
-    .header-main {
-      padding: 14px 0;
-      background: rgba(10, 10, 26, .9);
-      backdrop-filter: blur(10px)
-    }
-
-    .hm-content {
-      display: flex;
-      align-items: center;
-      gap: 24px
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      flex-shrink: 0
-    }
-
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--g1);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      color: #fff;
-      transition: var(--tr)
-    }
-
-    .logo:hover .logo-icon {
-      transform: rotate(10deg) scale(1.1)
-    }
-
-    .logo-name {
-      font-size: 20px;
-      font-weight: 800;
-      display: block
-    }
-
-    .logo-accent {
-      color: var(--p)
-    }
-
-    .logo-sub {
-      font-size: 10px;
-      color: var(--txm);
-      display: block
-    }
-
-    .search-bar {
-      flex: 1;
-      max-width: 480px;
-      display: flex;
-      background: var(--inp);
-      border: 2px solid var(--brd);
-      border-radius: var(--r);
-      overflow: hidden;
-      transition: var(--tr)
-    }
-
-    .search-bar:focus-within {
-      border-color: var(--p);
-      box-shadow: 0 0 0 4px rgba(108, 92, 231, .15)
-    }
-
-    .search-bar input {
-      flex: 1;
-      padding: 13px 18px;
-      background: 0 0;
-      border: 0;
-      color: var(--tx);
-      font-size: 14px;
-      outline: 0;
-      font-family: inherit
-    }
-
-    .search-bar button {
-      padding: 13px 18px;
-      background: var(--g1);
-      color: #fff;
-      font-size: 15px;
-      transition: var(--tr)
-    }
-
-    .header-btns {
-      display: flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    .h-btn {
-      position: relative;
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--inp);
-      border: 1px solid var(--brd);
-      color: var(--tx2);
-      font-size: 17px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--tr)
-    }
-
-    .h-btn:hover {
-      color: var(--p);
-      border-color: var(--p);
-      transform: translateY(-2px)
-    }
-
-    .h-btn .badge {
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      width: 19px;
-      height: 19px;
-      background: var(--err);
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
-
-    .user-btn {
-      width: auto;
-      padding: 0 14px;
-      gap: 7px;
-      font-size: 13px
-    }
-
-    .user-btn span {
-      font-weight: 600
-    }
-
-    .user-menu {
-      position: relative
-    }
-
-    .user-dd {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      margin-top: 8px;
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--rs);
-      padding: 8px;
-      min-width: 190px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: var(--tr);
-      box-shadow: var(--shl);
-      z-index: 100
-    }
-
-    .user-dd.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0)
-    }
-
-    .user-dd a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 14px;
-      border-radius: 8px;
-      color: var(--tx2);
-      font-size: 14px;
-      transition: var(--tr)
-    }
-
-    .user-dd a:hover {
-      background: var(--inp);
-      color: var(--p)
-    }
-
-    .nav {
-      background: var(--card);
-      border-top: 1px solid var(--brd);
-      border-bottom: 1px solid var(--brd);
-      overflow-x: auto
-    }
-
-    .nav::-webkit-scrollbar {
-      display: none
-    }
-
-    .nav-cats {
-      display: flex;
-      gap: 4px;
-      padding: 8px 0;
-      white-space: nowrap
-    }
-
-    .nav-cat {
-      padding: 9px 18px;
-      border-radius: 25px;
-      background: 0 0;
-      color: var(--tx2);
-      font-size: 13px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      transition: var(--tr);
-      white-space: nowrap;
-      border: 1px solid transparent
-    }
-
-    .nav-cat:hover {
-      color: var(--tx);
-      background: var(--inp)
-    }
-
-    .nav-cat.active {
-      background: var(--g1);
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(108, 92, 231, .3)
-    }
-
-    .game-btn {
-      color: var(--a) !important;
-      border: 1px solid var(--a)
-    }
-
-    .game-btn:hover {
-      background: var(--a) !important;
-      color: #fff !important
-    }
-
-    /* ===== PAGES ===== */
-    .page {
-      display: none;
-      min-height: 100vh
-    }
-
-    .page.active {
-      display: block
-    }
-
-    /* ===== HOME PAGE ===== */
-    .hero {
-      margin-top: 165px;
-      padding: 70px 0;
-      position: relative;
-      overflow: hidden;
-      min-height: 560px;
-      display: flex;
-      align-items: center
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0
-    }
-
-    .hero-glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: .2
-    }
-
-    .hg1 {
-      width: 500px;
-      height: 500px;
-      background: var(--p);
-      top: -100px;
-      right: -100px;
-      animation: af1 8s infinite ease-in-out
-    }
-
-    .hg2 {
-      width: 400px;
-      height: 400px;
-      background: var(--a);
-      bottom: -80px;
-      left: -80px;
-      animation: af2 10s infinite ease-in-out
-    }
-
-    .hg3 {
-      width: 250px;
-      height: 250px;
-      background: var(--a2);
-      top: 40%;
-      left: 40%;
-      animation: af3 12s infinite ease-in-out
-    }
-
-    .hero .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 50px;
-      position: relative;
-      z-index: 2
-    }
-
-    .hero-content {
-      flex: 1
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      background: rgba(108, 92, 231, .15);
-      border: 1px solid rgba(108, 92, 231, .3);
-      border-radius: 30px;
-      color: var(--pl);
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 22px;
-      animation: fiu .6s ease
-    }
-
-    .hero-badge i {
-      animation: pulse 2s infinite
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1
-      }
-
-      50% {
-        opacity: .5
-      }
-    }
-
-    @keyframes fiu {
-      from {
-        opacity: 0;
-        transform: translateY(30px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
-    }
-
-    .hero-title {
-      font-size: 62px;
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 22px
-    }
-
-    .h-line {
-      display: block;
-      animation: fiu .6s ease backwards
-    }
-
-    .h-line:nth-child(1) {
-      animation-delay: .1s
-    }
-
-    .h-line:nth-child(2) {
-      animation-delay: .2s
-    }
-
-    .h-line:nth-child(3) {
-      animation-delay: .3s
-    }
-
-    .h-highlight {
-      background: var(--g4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-      display: inline-block
-    }
-
-    .hero-desc {
-      font-size: 17px;
-      color: var(--tx2);
-      margin-bottom: 32px;
-      max-width: 480px;
-      animation: fiu .6s ease .4s backwards
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 44px;
-      animation: fiu .6s ease .5s backwards
-    }
-
-    .btn-p {
-      padding: 15px 30px;
-      background: var(--g1);
-      color: #fff;
-      border-radius: var(--rs);
-      font-size: 15px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      transition: var(--tr);
-      position: relative;
-      overflow: hidden
-    }
-
-    .btn-p::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
-      transition: .6s
-    }
-
-    .btn-p:hover::before {
-      left: 100%
-    }
-
-    .btn-p:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(108, 92, 231, .4)
-    }
-
-    .btn-s {
-      padding: 15px 30px;
-      background: 0 0;
-      color: var(--tx);
-      border: 2px solid var(--brd);
-      border-radius: var(--rs);
-      font-size: 15px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      transition: var(--tr)
-    }
-
-    .btn-s:hover {
-      border-color: var(--a);
-      color: var(--a);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 206, 201, .2)
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 36px;
-      animation: fiu .6s ease .6s backwards
-    }
-
-    .stat {
-      text-align: center
-    }
-
-    .stat-num {
-      font-size: 30px;
-      font-weight: 800;
-      background: var(--g4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-      display: inline-block;
-      min-width: 70px
-    }
-
-    .stat-lbl {
-      display: block;
-      font-size: 12px;
-      color: var(--txm);
-      margin-top: 3px
-    }
-
-    .hero-visual {
-      flex-shrink: 0;
-      animation: fir .8s ease .3s backwards
-    }
-
-    @keyframes fir {
-      from {
-        opacity: 0;
-        transform: translateX(50px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0)
-      }
-    }
-
-    .hero-card {
-      position: relative;
-      width: 300px;
-      height: 380px;
-      border-radius: var(--rl);
-      overflow: hidden;
-      background: var(--card);
-      border: 1px solid var(--brd);
-      box-shadow: var(--shl);
-      transition: var(--tr);
-      animation: fc 4s infinite ease-in-out
-    }
-
-    @keyframes fc {
-
-      0%,
-      100% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(-12px)
-      }
-    }
-
-    .hero-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 30px 80px rgba(108, 92, 231, .3)
-    }
-
-    .hero-card img {
-      width: 100%;
-      height: 70%;
-      object-fit: cover
-    }
-
-    .hero-card-info {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px
-    }
-
-    .hero-card-info span:first-child {
-      font-weight: 700;
-      font-size: 15px
-    }
-
-    .h-price {
-      color: var(--a);
-      font-weight: 800;
-      font-size: 18px
-    }
-
-    /* Categories */
-    .categories-sec {
-      padding: 60px 0
-    }
-
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px
-    }
-
-    .cat-card {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--r);
-      padding: 28px;
-      text-align: center;
-      cursor: pointer;
-      transition: var(--tr)
-    }
-
-    .cat-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--p);
-      box-shadow: 0 20px 40px rgba(108, 92, 231, .15)
-    }
-
-    .cat-icon {
-      width: 64px;
-      height: 64px;
-      background: var(--g1);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      color: #fff;
-      margin: 0 auto 14px;
-      transition: var(--tr)
-    }
-
-    .cat-card:hover .cat-icon {
-      transform: scale(1.1) rotate(5deg)
-    }
-
-    .cat-card h3 {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 4px
-    }
-
-    .cat-card p {
-      color: var(--tx2);
-      font-size: 12px
-    }
-
-    /* Features */
-    .features {
-      padding: 50px 0
-    }
-
-    .feat-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px
-    }
-
-    .feat-card {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--r);
-      padding: 28px;
-      text-align: center;
-      transition: var(--tr)
-    }
-
-    .feat-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--p);
-      box-shadow: 0 20px 40px rgba(108, 92, 231, .15)
-    }
-
-    .feat-ic {
-      width: 60px;
-      height: 60px;
-      background: var(--g1);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      color: #fff;
-      margin: 0 auto 16px;
-      transition: var(--tr)
-    }
-
-    .feat-card:hover .feat-ic {
-      transform: scale(1.1) rotate(5deg)
-    }
-
-    .feat-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 6px
-    }
-
-    .feat-card p {
-      color: var(--tx2);
-      font-size: 13px
-    }
-
-    /* Products Grid */
-    .products-sec {
-      padding: 70px 0
-    }
-
-    .sec-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-      gap: 16px
-    }
-
-    .sec-badge {
-      display: inline-block;
-      padding: 6px 14px;
-      background: var(--g1);
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 10px
-    }
-
-    .offer-badge {
-      background: linear-gradient(135deg, #ff6b6b, #ee5a24)
-    }
-
-    .game-badge {
-      background: linear-gradient(135deg, #00b894, #00cec9)
-    }
-
-    .sec-title {
-      font-size: 34px;
-      font-weight: 800
-    }
-
-    .sec-desc {
-      color: var(--tx2);
-      font-size: 15px;
-      margin-top: 6px
-    }
-
-    .sec-filters {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap
-    }
-
-    .f-btn {
-      padding: 9px 18px;
-      border-radius: 25px;
-      background: var(--card);
-      border: 1px solid var(--brd);
-      color: var(--tx2);
-      font-size: 13px;
-      font-weight: 500;
-      transition: var(--tr)
-    }
-
-    .f-btn:hover,
-    .f-btn.active {
-      background: var(--g1);
-      color: #fff;
-      border-color: transparent
-    }
-
-    .prod-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 20px
-    }
-
-    .prod-card {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--r);
-      overflow: hidden;
-      transition: var(--tr);
-      position: relative;
-      animation: fiu .5s ease backwards;
-      cursor: pointer
-    }
-
-    .prod-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--p);
-      box-shadow: 0 20px 50px rgba(108, 92, 231, .2)
-    }
-
-    .prod-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      padding: 4px 11px;
-      border-radius: 20px;
-      font-size: 10px;
-      font-weight: 700;
-      z-index: 2;
-      color: #fff
-    }
-
-    .badge-new {
-      background: var(--g2)
-    }
-
-    .badge-sale {
-      background: var(--g3)
-    }
-
-    .badge-hot {
-      background: linear-gradient(135deg, #ff6b6b, #ee5a24)
-    }
-
-    .prod-wish {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(10, 10, 26, .7);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--brd);
-      color: var(--tx2);
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--tr);
-      z-index: 2;
-      cursor: pointer
-    }
-
-    .prod-wish:hover,
-    .prod-wish.active {
-      color: var(--err);
-      border-color: var(--err);
-      background: rgba(255, 107, 107, .1)
-    }
-
-    .prod-img {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      position: relative;
-      background: var(--card2)
-    }
-
-    .prod-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .5s
-    }
-
-    .prod-card:hover .prod-img img {
-      transform: scale(1.1)
-    }
-
-    .quick-acts {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 10px;
-      display: flex;
-      gap: 6px;
-      transform: translateY(100%);
-      transition: var(--tr)
-    }
-
-    .prod-card:hover .quick-acts {
-      transform: translateY(0)
-    }
-
-    .qa-btn {
-      flex: 1;
-      padding: 9px;
-      border-radius: 8px;
-      background: rgba(10, 10, 26, .9);
-      backdrop-filter: blur(10px);
-      color: #fff;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      transition: var(--tr);
-      border: 1px solid var(--brd)
-    }
-
-    .qa-btn:hover {
-      background: var(--p);
-      border-color: var(--p)
-    }
-
-    .qa-btn.add:hover {
-      background: var(--a);
-      border-color: var(--a)
-    }
-
-    .prod-info {
-      padding: 16px
-    }
-
-    .prod-cat {
-      font-size: 11px;
-      color: var(--pl);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px
-    }
-
-    .prod-name {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden
-    }
-
-    .prod-rating {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-bottom: 10px
-    }
-
-    .stars {
-      color: var(--warn);
-      font-size: 12px
-    }
-
-    .rating-cnt {
-      font-size: 11px;
-      color: var(--txm)
-    }
-
-    .prod-price {
-      display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    .price-cur {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--a)
-    }
-
-    .price-old {
-      font-size: 13px;
-      color: var(--txm);
-      text-decoration: line-through
-    }
-
-    .load-more {
-      text-align: center;
-      margin-top: 40px
-    }
-
-    /* Offers */
-    .offers-sec {
-      padding: 70px 0;
-      background: var(--card)
-    }
-
-    .offers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px
-    }
-
-    .offer-card {
-      position: relative;
-      border-radius: var(--rl);
-      overflow: hidden;
-      height: 190px;
-      cursor: pointer;
-      transition: var(--tr)
-    }
-
-    .offer-card:hover {
-      transform: scale(1.02)
-    }
-
-    .offer-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover
-    }
-
-    .offer-ov {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(108, 92, 231, .85), rgba(0, 206, 201, .65));
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 26px
-    }
-
-    .offer-ov h3 {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 6px
-    }
-
-    .offer-ov p {
-      font-size: 13px;
-      opacity: .9;
-      margin-bottom: 14px
-    }
-
-    .o-btn {
-      align-self: flex-start;
-      padding: 9px 22px;
-      background: #fff;
-      color: var(--p);
-      border-radius: 25px;
-      font-weight: 700;
-      font-size: 13px;
-      transition: var(--tr)
-    }
-
-    .o-btn:hover {
-      transform: scale(1.05)
-    }
-
-    /* Newsletter */
-    .newsletter-sec {
-      padding: 60px 0
-    }
-
-    .newsletter-box {
-      background: var(--g1);
-      border-radius: var(--rl);
-      padding: 50px;
-      text-align: center;
-      position: relative;
-      overflow: hidden
-    }
-
-    .newsletter-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 255, 255, .1);
-      border-radius: 50%
-    }
-
-    .newsletter-box h2 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 12px;
-      position: relative
-    }
-
-    .newsletter-box p {
-      font-size: 16px;
-      opacity: .9;
-      margin-bottom: 28px;
-      position: relative
-    }
-
-    .newsletter-form {
-      display: flex;
-      max-width: 500px;
-      margin: 0 auto;
-      gap: 10px;
-      position: relative
-    }
-
-    .newsletter-form input {
-      flex: 1;
-      padding: 16px 20px;
-      border-radius: var(--rs);
-      border: 0;
-      font-size: 15px;
-      outline: 0;
-      font-family: inherit
-    }
-
-    .newsletter-form button {
-      padding: 16px 28px;
-      background: var(--bg);
-      color: #fff;
-      border-radius: var(--rs);
-      font-weight: 700;
-      transition: var(--tr)
-    }
-
-    .newsletter-form button:hover {
-      transform: scale(1.05)
-    }
-
-    /* ===== PRODUCT DETAILS PAGE ===== */
-    .product-detail {
-      margin-top: 165px;
-      padding: 40px 0
-    }
-
-    .pd-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: start
-    }
-
-    .pd-gallery {
-      position: sticky;
-      top: 180px
-    }
-
-    .pd-main-img {
-      width: 100%;
-      border-radius: var(--rl);
-      overflow: hidden;
-      background: var(--card);
-      border: 1px solid var(--brd);
-      margin-bottom: 16px
-    }
-
-    .pd-main-img img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      transition: var(--tr)
-    }
-
-    .pd-thumbs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px
-    }
-
-    .pd-thumb {
-      border-radius: var(--rs);
-      overflow: hidden;
-      border: 2px solid var(--brd);
-      cursor: pointer;
-      transition: var(--tr);
-      aspect-ratio: 1
-    }
-
-    .pd-thumb:hover,
-    .pd-thumb.active {
-      border-color: var(--p)
-    }
-
-    .pd-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover
-    }
-
-    .pd-info h1 {
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 12px
-    }
-
-    .pd-rating {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px
-    }
-
-    .pd-rating .stars {
-      font-size: 16px
-    }
-
-    .pd-rating span {
-      color: var(--tx2);
-      font-size: 14px
-    }
-
-    .pd-price-box {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--r);
-      padding: 24px;
-      margin-bottom: 24px
-    }
-
-    .pd-price {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 8px
-    }
-
-    .pd-price .price-cur {
-      font-size: 36px
-    }
-
-    .pd-price .price-old {
-      font-size: 18px
-    }
-
-    .pd-discount {
-      display: inline-block;
-      padding: 4px 12px;
-      background: var(--err);
-      color: #fff;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 700
-    }
-
-    .pd-desc {
-      color: var(--tx2);
-      line-height: 1.8;
-      margin-bottom: 24px;
-      font-size: 15px
-    }
-
-    .pd-features {
-      margin-bottom: 24px
-    }
-
-    .pd-features h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 14px
-    }
-
-    .pd-feat-list {
-      list-style: none
-    }
-
-    .pd-feat-list li {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--brd);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--tx2);
-      font-size: 14px
-    }
-
-    .pd-feat-list li i {
-      color: var(--ok)
-    }
-
-    .pd-qty {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px
-    }
-
-    .pd-qty label {
-      font-weight: 600
-    }
-
-    .qty-ctrl {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      border: 1px solid var(--brd);
-      border-radius: var(--rs);
-      overflow: hidden
-    }
-
-    .qty-ctrl button {
-      width: 40px;
-      height: 40px;
-      background: var(--inp);
-      color: var(--tx);
-      font-size: 18px;
-      transition: var(--tr)
-    }
-
-    .qty-ctrl button:hover {
-      background: var(--p)
-    }
-
-    .qty-ctrl span {
-      width: 50px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 16px
-    }
-
-    .pd-actions {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px
-    }
-
-    .pd-actions .btn-p {
-      flex: 1;
-      justify-content: center;
-      font-size: 16px;
-      padding: 18px
-    }
-
-    .pd-actions .btn-s {
-      flex: 0 0 auto;
-      padding: 18px 24px
-    }
-
-    .pd-guarantee {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px
-    }
-
-    .pd-guarantee div {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--rs);
-      padding: 16px;
-      text-align: center;
-      transition: var(--tr)
-    }
-
-    .pd-guarantee div:hover {
-      border-color: var(--p)
-    }
-
-    .pd-guarantee i {
-      font-size: 24px;
-      color: var(--a);
-      margin-bottom: 8px;
-      display: block
-    }
-
-    .pd-guarantee span {
-      font-size: 12px;
-      color: var(--tx2)
-    }
-
-    /* Reviews */
-    .reviews-sec {
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid var(--brd)
-    }
-
-    .reviews-sec h2 {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 24px
-    }
-
-    .review-card {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--r);
-      padding: 24px;
-      margin-bottom: 16px
-    }
-
-    .review-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px
-    }
-
-    .review-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--g1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 18px
-    }
-
-    .review-name {
-      font-weight: 700;
-      font-size: 15px
-    }
-
-    .review-date {
-      font-size: 12px;
-      color: var(--txm)
-    }
-
-    .review-text {
-      color: var(--tx2);
-      line-height: 1.7;
-      font-size: 14px
-    }
-
-    /* Similar Products */
-    .similar-sec {
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 1px solid var(--brd)
-    }
-
-    .similar-sec h2 {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 24px
-    }
-
-    /* ===== CART PAGE ===== */
-    .cart-page {
-      margin-top: 165px;
-      padding: 40px 0;
-      min-height: 80vh
-    }
-
-    .cart-page h1 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 30px
-    }
-
-    .cart-layout {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 30px
-    }
-
-    .cart-items-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px
-    }
-
-    .cart-item-card {
-      display: flex;
-      gap: 20px;
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--r);
-      padding: 20px;
-      transition: var(--tr)
-    }
-
-    .cart-item-card:hover {
-      border-color: var(--p)
-    }
-
-    .cart-item-img {
-      width: 120px;
-      height: 120px;
-      border-radius: var(--rs);
-      overflow: hidden;
-      flex-shrink: 0
-    }
-
-    .cart-item-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover
-    }
-
-    .cart-item-details {
-      flex: 1
-    }
-
-    .cart-item-details h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 6px
-    }
-
-    .cart-item-details .cat {
-      font-size: 12px;
-      color: var(--pl);
-      margin-bottom: 10px
-    }
-
-    .cart-item-details .price {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--a);
-      margin-bottom: 12px
-    }
-
-    .cart-item-actions {
-      display: flex;
-      align-items: center;
-      justify-content: space-between
-    }
-
-    .cart-item-remove {
-      background: 0 0;
-      color: var(--txm);
-      font-size: 14px;
-      transition: var(--tr)
-    }
-
-    .cart-item-remove:hover {
-      color: var(--err)
-    }
-
-    .cart-summary {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--r);
-      padding: 28px;
-      position: sticky;
-      top: 180px;
-      height: fit-content
-    }
-
-    .cart-summary h3 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--brd)
-    }
-
-    .promo-code {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 20px
-    }
-
-    .promo-code input {
-      flex: 1;
-      padding: 12px 16px;
-      background: var(--inp);
-      border: 1px solid var(--brd);
-      border-radius: var(--rs);
-      color: var(--tx);
-      outline: 0;
-      font-family: inherit
-    }
-
-    .promo-code input:focus {
-      border-color: var(--p)
-    }
-
-    .promo-code button {
-      padding: 12px 20px;
-      background: var(--g2);
-      color: #fff;
-      border-radius: var(--rs);
-      font-weight: 600;
-      transition: var(--tr)
-    }
-
-    .promo-code button:hover {
-      transform: scale(1.05)
-    }
-
-    .cart-totals {
-      margin-bottom: 20px
-    }
-
-    .cart-total-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      font-size: 14px;
-      color: var(--tx2)
-    }
-
-    .cart-total-row.total {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--tx);
-      border-top: 1px solid var(--brd);
-      padding-top: 16px;
-      margin-top: 8px
-    }
-
-    .cart-total-row.total span:last-child {
-      color: var(--a)
-    }
-
-    .cart-empty-state {
-      text-align: center;
-      padding: 80px 20px;
-      color: var(--txm)
-    }
-
-    .cart-empty-state i {
-      font-size: 80px;
-      margin-bottom: 20px;
-      display: block;
-      opacity: .3
-    }
-
-    .cart-empty-state h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-      color: var(--tx)
-    }
-
-    .cart-empty-state p {
-      margin-bottom: 24px
-    }
-
-    /* ===== CHECKOUT PAGE ===== */
-    .checkout-page {
-      margin-top: 165px;
-      padding: 40px 0;
-      min-height: 80vh
-    }
-
-    .checkout-page h1 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 30px
-    }
-
-    .checkout-layout {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 30px
-    }
-
-    .checkout-form {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--r);
-      padding: 32px
-    }
-
-    .checkout-form h3 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--brd)
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px
-    }
-
-    .form-group {
-      margin-bottom: 16px
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--tx2)
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 14px 16px;
-      background: var(--inp);
-      border: 1px solid var(--brd);
-      border-radius: var(--rs);
-      color: var(--tx);
-      font-size: 14px;
-      outline: 0;
-      font-family: inherit;
-      transition: var(--tr)
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--p);
-      box-shadow: 0 0 0 4px rgba(108, 92, 231, .15)
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 80px
-    }
-
-    .payment-methods {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 20px
-    }
-
-    .pay-method {
-      padding: 16px;
-      background: var(--inp);
-      border: 2px solid var(--brd);
-      border-radius: var(--rs);
-      text-align: center;
-      cursor: pointer;
-      transition: var(--tr)
-    }
-
-    .pay-method:hover,
-    .pay-method.active {
-      border-color: var(--p);
-      background: var(--card2)
-    }
-
-    .pay-method i {
-      font-size: 28px;
-      margin-bottom: 8px;
-      display: block
-    }
-
-    .pay-method span {
-      font-size: 12px;
-      font-weight: 600
-    }
-
-    .order-summary {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--r);
-      padding: 28px;
-      position: sticky;
-      top: 180px;
-      height: fit-content
-    }
-
-    .order-summary h3 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--brd)
-    }
-
-    .order-items {
-      max-height: 300px;
-      overflow-y: auto;
-      margin-bottom: 20px
-    }
-
-    .order-item {
-      display: flex;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--brd)
-    }
-
-    .order-item-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0
-    }
-
-    .order-item-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover
-    }
-
-    .order-item-info {
-      flex: 1
-    }
-
-    .order-item-info h4 {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 4px
-    }
-
-    .order-item-info .qty {
-      font-size: 12px;
-      color: var(--txm)
-    }
-
-    .order-item-price {
-      font-weight: 700;
-      color: var(--a);
-      font-size: 14px
-    }
-
-    .order-totals .cart-total-row {
-      padding: 8px 0
-    }
-
-    .order-totals .cart-total-row.total {
-      font-size: 22px
-    }
-
-    .checkout-success {
-      text-align: center;
-      padding: 60px 20px
-    }
-
-    .checkout-success i {
-      font-size: 80px;
-      color: var(--ok);
-      margin-bottom: 20px
-    }
-
-    .checkout-success h2 {
-      font-size: 28px;
-      margin-bottom: 12px
-    }
-
-    .checkout-success p {
-      color: var(--tx2);
-      margin-bottom: 24px
-    }
-
-    /* ===== GAMES PAGE ===== */
-    .games-page {
-      margin-top: 165px;
-      padding: 40px 0;
-      min-height: 80vh
-    }
-
-    .games-page h1 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 10px
-    }
-
-    .games-page .sec-desc {
-      margin-bottom: 30px
-    }
-
-    .game-selector {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 28px;
-      flex-wrap: wrap
-    }
-
-    .game-tab {
-      padding: 14px 28px;
-      border-radius: var(--rs);
-      background: var(--card);
-      border: 2px solid var(--brd);
-      color: var(--tx2);
-      font-size: 15px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: var(--tr);
-      cursor: pointer
-    }
-
-    .game-tab:hover {
-      border-color: var(--p);
-      color: var(--tx)
-    }
-
-    .game-tab.active {
-      background: var(--g1);
-      border-color: var(--p);
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(108, 92, 231, .4)
-    }
-
-    .game-container {
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--rl);
-      padding: 26px;
-      max-width: 850px;
-      margin: 0 auto
-    }
-
-    .game-scores {
-      display: flex;
-      justify-content: center;
-      gap: 36px;
-      margin-bottom: 20px;
-      flex-wrap: wrap
-    }
-
-    .sc-item {
-      text-align: center
-    }
-
-    .sc-lbl {
-      display: block;
-      font-size: 11px;
-      color: var(--txm);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 3px
-    }
-
-    .sc-val {
-      font-size: 26px;
-      font-weight: 800;
-      background: var(--g4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-      display: inline-block
-    }
-
-    .game-canvas-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px
-    }
-
-    .game-canvas-wrap canvas {
-      border-radius: var(--r);
-      border: 2px solid var(--brd);
-      cursor: crosshair;
-      max-width: 100%
-    }
-
-    .game-ctrls {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 16px
-    }
-
-    .game-hint {
-      text-align: center;
-      padding: 14px;
-      background: var(--inp);
-      border-radius: var(--rs);
-      color: var(--tx2);
-      font-size: 13px
-    }
-
-    /* Memory Game */
-    .memory-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      max-width: 500px;
-      margin: 0 auto 20px
-    }
-
-    .memory-card {
-      aspect-ratio: 3/4;
-      background: var(--inp);
-      border: 2px solid var(--brd);
-      border-radius: var(--rs);
-      cursor: pointer;
-      transition: var(--tr);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      position: relative
-    }
-
-    .memory-card:hover {
-      border-color: var(--p);
-      transform: translateY(-3px)
-    }
-
-    .memory-card.flipped {
-      background: var(--g1);
-      border-color: var(--p)
-    }
-
-    .memory-card.matched {
-      background: var(--ok);
-      border-color: var(--ok);
-      animation: matchPulse .5s
-    }
-
-    @keyframes matchPulse {
-
-      0%,
-      100% {
-        transform: scale(1)
-      }
-
-      50% {
-        transform: scale(1.1)
-      }
-    }
-
-    /* Quiz Game */
-    .quiz-box {
-      background: var(--inp);
-      border-radius: var(--r);
-      padding: 28px;
-      margin-bottom: 20px;
-      min-height: 260px
-    }
-
-    .quiz-question {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      line-height: 1.5
-    }
-
-    .quiz-options {
-      display: grid;
-      gap: 12px
-    }
-
-    .quiz-opt {
-      padding: 16px 20px;
-      background: var(--card);
-      border: 2px solid var(--brd);
-      border-radius: var(--rs);
-      color: var(--tx);
-      font-size: 15px;
-      cursor: pointer;
-      transition: var(--tr);
-      text-align: left;
-      display: flex;
-      align-items: center;
-      gap: 12px
-    }
-
-    .quiz-opt:hover {
-      border-color: var(--p);
-      background: var(--card2)
-    }
-
-    .quiz-opt.correct {
-      border-color: var(--ok);
-      background: rgba(0, 184, 148, .1)
-    }
-
-    .quiz-opt.wrong {
-      border-color: var(--err);
-      background: rgba(255, 107, 107, .1)
-    }
-
-    .quiz-result {
-      text-align: center;
-      padding: 40px 20px
-    }
-
-    .quiz-result h3 {
-      font-size: 28px;
-      margin-bottom: 16px
-    }
-
-    .quiz-result p {
-      color: var(--tx2);
-      margin-bottom: 24px
-    }
-
-    /* Tic Tac Toe */
-    .ttt-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      max-width: 360px;
-      margin: 0 auto 20px
-    }
-
-    .ttt-cell {
-      aspect-ratio: 1;
-      background: var(--inp);
-      border: 2px solid var(--brd);
-      border-radius: var(--rs);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      font-weight: 900;
-      cursor: pointer;
-      transition: var(--tr)
-    }
-
-    .ttt-cell:hover {
-      border-color: var(--p);
-      background: var(--card2)
-    }
-
-    .ttt-cell.x {
-      color: var(--p)
-    }
-
-    .ttt-cell.o {
-      color: var(--a)
-    }
-
-    .ttt-cell.win {
-      background: var(--ok);
-      border-color: var(--ok);
-      animation: matchPulse .5s
-    }
-
-    .ttt-status {
-      text-align: center;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      min-height: 30px
-    }
-
-    /* 2048 Game */
-    .game-2048-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      max-width: 400px;
-      margin: 0 auto 20px;
-      background: var(--inp);
-      padding: 10px;
-      border-radius: var(--r)
-    }
-
-    .tile-2048 {
-      aspect-ratio: 1;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: 900;
-      transition: var(--tr)
-    }
-
-    .t2 {
-      background: #eee4da;
-      color: #776e65
-    }
-
-    .t4 {
-      background: #ede0c8;
-      color: #776e65
-    }
-
-    .t8 {
-      background: #f2b179;
-      color: #fff
-    }
-
-    .t16 {
-      background: #f59563;
-      color: #fff
-    }
-
-    .t32 {
-      background: #f67c5f;
-      color: #fff
-    }
-
-    .t64 {
-      background: #f65e3b;
-      color: #fff
-    }
-
-    .t128 {
-      background: #edcf72;
-      color: #fff;
-      font-size: 24px
-    }
-
-    .t256 {
-      background: #edcc61;
-      color: #fff;
-      font-size: 24px
-    }
-
-    .t512 {
-      background: #edc850;
-      color: #fff;
-      font-size: 24px
-    }
-
-    .t1024 {
-      background: #edc53f;
-      color: #fff;
-      font-size: 20px
-    }
-
-    .t2048 {
-      background: #edc22e;
-      color: #fff;
-      font-size: 20px
-    }
-
-    .tsuper {
-      background: #3c3a32;
-      color: #fff;
-      font-size: 18px
-    }
-
-    /* ===== AI ASSISTANT ===== */
-    .ai-assistant {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 4000
-    }
-
-    .ai-toggle {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--g1);
-      color: #fff;
-      font-size: 26px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 6px 30px rgba(108, 92, 231, .5);
-      transition: var(--tr);
-      animation: aiPulse 2s infinite
-    }
-
-    @keyframes aiPulse {
-
-      0%,
-      100% {
-        box-shadow: 0 6px 30px rgba(108, 92, 231, .5)
-      }
-
-      50% {
-        box-shadow: 0 6px 40px rgba(108, 92, 231, .8)
-      }
-    }
-
-    .ai-toggle:hover {
-      transform: scale(1.1)
-    }
-
-    .ai-window {
-      position: absolute;
-      bottom: 75px;
-      right: 0;
-      width: 380px;
-      max-width: 90vw;
-      height: 550px;
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--rl);
-      box-shadow: var(--shl);
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-      transition: var(--tr)
-    }
-
-    .ai-window.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0)
-    }
-
-    .ai-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 20px;
-      border-bottom: 1px solid var(--brd)
-    }
-
-    .ai-logo-text {
-      font-size: 18px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--g4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent
-    }
-
-    .ai-header button {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--inp);
-      border: 0;
-      color: var(--tx2);
-      cursor: pointer;
-      transition: var(--tr)
-    }
-
-    .ai-header button:hover {
-      color: var(--err)
-    }
-
-    .ai-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px
-    }
-
-    .ai-messages::-webkit-scrollbar {
-      width: 4px
-    }
-
-    .ai-messages::-webkit-scrollbar-thumb {
-      background: var(--brd);
-      border-radius: 4px
-    }
-
-    .ai-msg {
-      max-width: 85%;
-      padding: 12px 16px;
-      border-radius: var(--rs);
-      font-size: 14px;
-      line-height: 1.5
-    }
-
-    .ai-msg.bot {
-      background: var(--inp);
-      align-self: flex-start;
-      border-bottom-left-radius: 4px
-    }
-
-    .ai-msg.user {
-      background: var(--g1);
-      color: #fff;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px
-    }
-
-    .ai-input-wrap {
-      display: flex;
-      gap: 8px;
-      padding: 16px;
-      border-top: 1px solid var(--brd)
-    }
-
-    .ai-input-wrap input {
-      flex: 1;
-      padding: 12px 16px;
-      background: var(--inp);
-      border: 1px solid var(--brd);
-      border-radius: 25px;
-      color: var(--tx);
-      outline: 0;
-      font-family: inherit
-    }
-
-    .ai-input-wrap input:focus {
-      border-color: var(--p)
-    }
-
-    .ai-input-wrap button {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: var(--g1);
-      color: #fff;
-      border: 0;
-      cursor: pointer;
-      transition: var(--tr)
-    }
-
-    .ai-input-wrap button:hover {
-      transform: scale(1.1)
-    }
-
-    .ai-suggestions {
-      display: flex;
-      gap: 6px;
-      padding: 12px 16px;
-      border-top: 1px solid var(--brd);
-      flex-wrap: wrap
-    }
-
-    .ai-suggestions button {
-      padding: 8px 14px;
-      background: var(--inp);
-      border: 1px solid var(--brd);
-      border-radius: 20px;
-      color: var(--tx2);
-      font-size: 12px;
-      cursor: pointer;
-      transition: var(--tr)
-    }
-
-    .ai-suggestions button:hover {
-      border-color: var(--p);
-      color: var(--tx)
-    }
-
-    /* ===== FOOTER ===== */
-    .footer {
-      background: var(--card);
-      border-top: 1px solid var(--brd);
-      padding: 50px 0 0
-    }
-
-    .foot-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 36px;
-      margin-bottom: 36px
-    }
-
-    .foot-logo {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 14px
-    }
-
-    .foot-logo i {
-      color: var(--p)
-    }
-
-    .foot-logo span {
-      background: var(--g4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent
-    }
-
-    .foot-col p {
-      color: var(--tx2);
-      font-size: 13px;
-      margin-bottom: 16px
-    }
-
-    .foot-social {
-      display: flex;
-      gap: 10px
-    }
-
-    .foot-social a {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--inp);
-      border: 1px solid var(--brd);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--tx2);
-      font-size: 15px;
-      transition: var(--tr)
-    }
-
-    .foot-social a:hover {
-      background: var(--p);
-      color: #fff;
-      border-color: var(--p);
-      transform: translateY(-3px)
-    }
-
-    .foot-col h4 {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 16px
-    }
-
-    .foot-col ul {
-      list-style: none
-    }
-
-    .foot-col ul li {
-      margin-bottom: 8px
-    }
-
-    .foot-col ul li a,
-    .foot-col ul li {
-      color: var(--tx2);
-      font-size: 13px;
-      transition: var(--tr);
-      display: flex;
-      align-items: center;
-      gap: 7px
-    }
-
-    .foot-col ul li a:hover {
-      color: var(--p);
-      padding-left: 4px
-    }
-
-    .foot-bottom {
-      border-top: 1px solid var(--brd);
-      padding: 18px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px
-    }
-
-    .foot-bottom p {
-      color: var(--txm);
-      font-size: 13px
-    }
-
-    .pay-icons {
-      display: flex;
-      gap: 14px;
-      font-size: 26px;
-      color: var(--txm)
-    }
-
-    /* ===== TOAST ===== */
-    .toast-wrap {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 5000;
-      display: flex;
-      flex-direction: column;
-      gap: 8px
-    }
-
-    .toast {
-      padding: 14px 20px;
-      background: var(--card);
-      border: 1px solid var(--brd);
-      border-radius: var(--rs);
-      color: var(--tx);
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: var(--shl);
-      animation: ti .4s ease, to2 .4s ease 2.6s forwards;
-      min-width: 260px
-    }
-
-    .toast.success {
-      border-left: 4px solid var(--ok)
-    }
-
-    .toast.error {
-      border-left: 4px solid var(--err)
-    }
-
-    .toast.info {
-      border-left: 4px solid var(--p)
-    }
-
-    .toast i {
-      font-size: 16px
-    }
-
-    .toast.success i {
-      color: var(--ok)
-    }
-
-    .toast.error i {
-      color: var(--err)
-    }
-
-    .toast.info i {
-      color: var(--p)
-    }
-
-    @keyframes ti {
-      from {
-        opacity: 0;
-        transform: translateX(100px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0)
-      }
-    }
-
-    @keyframes to2 {
-      from {
-        opacity: 1;
-        transform: translateX(0)
-      }
-
-      to {
-        opacity: 0;
-        transform: translateX(100px)
-      }
-    }
-
-    /* ===== SCROLL TOP ===== */
-    .scroll-top {
-      position: fixed;
-      bottom: 28px;
-      right: 100px;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--g1);
-      color: #fff;
-      font-size: 17px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-      transition: var(--tr);
-      box-shadow: 0 4px 20px rgba(108, 92, 231, .4)
-    }
-
-    .scroll-top.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0)
-    }
-
-    .scroll-top:hover {
-      transform: translateY(-5px)
-    }
-
-    /* ===== SIDEBAR CART ===== */
-    .side-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, .6);
-      backdrop-filter: blur(4px);
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--tr)
-    }
-
-    .side-overlay.show {
-      opacity: 1;
-      visibility: visible
-    }
-
-    .side-panel {
-      position: fixed;
-      top: 0;
-      right: -420px;
-      width: 390px;
-      max-width: 90vw;
-      height: 100%;
-      background: var(--card);
-      border-left: 1px solid var(--brd);
-      z-index: 2001;
-      display: flex;
-      flex-direction: column;
-      transition: right .4s cubic-bezier(.16, 1, .3, 1)
-    }
-
-    .side-panel.show {
-      right: 0
-    }
-
-    .side-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      border-bottom: 1px solid var(--brd)
-    }
-
-    .side-head h3 {
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    .side-head button {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: var(--inp);
-      color: var(--tx2);
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--tr)
-    }
-
-    .side-head button:hover {
-      color: var(--err)
-    }
-
-    .side-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 14px
-    }
-
-    .side-items::-webkit-scrollbar {
-      width: 4px
-    }
-
-    .side-items::-webkit-scrollbar-thumb {
-      background: var(--brd);
-      border-radius: 4px
-    }
-
-    .side-empty {
-      text-align: center;
-      padding: 50px 20px;
-      color: var(--txm)
-    }
-
-    .side-empty i {
-      font-size: 44px;
-      margin-bottom: 14px;
-      display: block
-    }
-
-    .side-item {
-      display: flex;
-      gap: 14px;
-      padding: 14px;
-      background: var(--inp);
-      border-radius: var(--rs);
-      margin-bottom: 10px;
-      transition: var(--tr);
-      animation: si .3s ease
-    }
-
-    @keyframes si {
-      from {
-        opacity: 0;
-        transform: translateX(20px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0)
-      }
-    }
-
-    .side-item:hover {
-      border: 1px solid var(--brd)
-    }
-
-    .side-item-img {
-      width: 65px;
-      height: 65px;
-      border-radius: 10px;
-      overflow: hidden;
-      flex-shrink: 0
-    }
-
-    .side-item-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover
-    }
-
-    .side-item-info {
-      flex: 1
-    }
-
-    .side-item-name {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 3px
-    }
-
-    .side-item-price {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--a)
-    }
-
-    .side-item-qty {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 6px
-    }
-
-    .qty-btn {
-      width: 26px;
-      height: 26px;
-      border-radius: 7px;
-      background: var(--card);
-      border: 1px solid var(--brd);
-      color: var(--tx);
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--tr)
-    }
-
-    .qty-btn:hover {
-      background: var(--p);
-      border-color: var(--p)
-    }
-
-    .side-item-rm {
-      background: 0 0;
-      color: var(--txm);
-      font-size: 15px;
-      padding: 4px;
-      transition: var(--tr);
-      align-self: flex-start
-    }
-
-    .side-item-rm:hover {
-      color: var(--err)
-    }
-
-    .side-foot {
-      padding: 20px;
-      border-top: 1px solid var(--brd)
-    }
-
-    .side-total {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      font-size: 17px;
-      font-weight: 700
-    }
-
-    .side-total span:last-child {
-      color: var(--a);
-      font-size: 22px
-    }
-
-    .full {
-      width: 100%;
-      justify-content: center
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media(max-width:1024px) {
-      .hero .container {
-        flex-direction: column;
-        text-align: center
-      }
-
-      .hero-title {
-        font-size: 46px
-      }
-
-      .hero-desc {
-        margin: 0 auto 32px
-      }
-
-      .hero-btns {
-        justify-content: center
-      }
-
-      .hero-stats {
-        justify-content: center
-      }
-
-      .hero-visual {
-        display: none
-      }
-
-      .feat-grid {
-        grid-template-columns: repeat(2, 1fr)
-      }
-
-      .foot-grid {
-        grid-template-columns: repeat(2, 1fr)
-      }
-
-      .pd-grid {
-        grid-template-columns: 1fr
-      }
-
-      .pd-gallery {
-        position: static
-      }
-
-      .cart-layout,
-      .checkout-layout {
-        grid-template-columns: 1fr
-      }
-
-      .cart-summary,
-      .order-summary {
-        position: static
-      }
-    }
-
-    @media(max-width:768px) {
-      .header-top {
-        display: none
-      }
-
-      .hm-content {
-        flex-wrap: wrap;
-        gap: 10px
-      }
-
-      .search-bar {
-        order: 3;
-        max-width: 100%;
-        flex-basis: 100%
-      }
-
-      .hero {
-        margin-top: 115px
-      }
-
-      .hero-title {
-        font-size: 34px
-      }
-
-      .sec-title {
-        font-size: 26px
-      }
-
-      .prod-grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))
-      }
-
-      .feat-grid {
-        grid-template-columns: 1fr
-      }
-
-      .foot-grid {
-        grid-template-columns: 1fr
-      }
-
-      .auth-box {
-        padding: 22px
-      }
-
-      .form-row {
-        grid-template-columns: 1fr
-      }
-
-      .payment-methods {
-        grid-template-columns: 1fr
-      }
-
-      .pd-guarantee {
-        grid-template-columns: 1fr
-      }
-
-      .ai-window {
-        width: 340px;
-        height: 500px
-      }
-
-      .memory-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 8px
-      }
-
-      .memory-card {
-        font-size: 24px
-      }
-    }
-
-    @media(max-width:480px) {
-      .hero-title {
-        font-size: 28px
-      }
-
-      .hero-btns {
-        flex-direction: column
-      }
-
-      .hero-stats {
-        flex-direction: column;
-        gap: 16px
-      }
-
-      .prod-grid {
-        grid-template-columns: 1fr
-      }
-
-      .game-scores {
-        gap: 16px
-      }
-
-      .game-selector {
-        flex-direction: column
-      }
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- ===== AUTH OVERLAY ===== -->
-  <div class="auth-overlay" id="authOverlay">
-    <div class="auth-bg">
-      <div class="auth-shape as1"></div>
-      <div class="auth-shape as2"></div>
-      <div class="auth-shape as3"></div>
-      <div class="auth-shape as4"></div>
-      <div class="auth-shape as5"></div>
-    </div>
-    <div class="auth-box">
-      <div class="auth-logo">
-        <div class="auth-logo-icon"><i class="fas fa-bolt"></i></div>
-        <div class="auth-logo-text">Tech<span>Zone</span></div>
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-logo"><i class="fas fa-bolt"></i></div>
+      <div class="loader-bar">
+        <div class="loader-fill"></div>
       </div>
-      <p class="auth-subtitle">Premium texnika do'koniga xush kelibsiz!</p>
-      <div class="auth-tabs">
-        <button class="auth-tab active" data-tab="signin" onclick="switchAuthTab('signin')"><i
-            class="fas fa-sign-in-alt"></i> Kirish</button>
-        <button class="auth-tab" data-tab="signup" onclick="switchAuthTab('signup')"><i class="fas fa-user-plus"></i>
-          Ro'yxatdan o'tish</button>
-      </div>
-      <form class="auth-form active" id="signinForm" onsubmit="handleSignIn(event)">
-        <div class="input-group"><i class="fas fa-envelope input-icon"></i><input type="email"
-            placeholder="Email manzil" required id="signinEmail"></div>
-        <div class="input-group"><i class="fas fa-lock input-icon"></i><input type="password" placeholder="Parol"
-            required id="signinPassword"><button type="button" class="toggle-pass"
-            onclick="togglePass('signinPassword',this)"><i class="fas fa-eye"></i></button></div>
-        <div class="auth-options"><label class="remember"><input type="checkbox"> Eslab qolish</label><a href="#"
-            class="forgot">Parolni unutdingizmi?</a></div>
-        <button type="submit" class="auth-btn primary-btn"><span>Kirish</span><i
-            class="fas fa-arrow-right"></i></button>
-        <div class="auth-divider"><span>yoki davom eting</span></div>
-        <div class="social-btns">
-          <button type="button" class="s-btn google" onclick="socialAuth('Google')"><i
-              class="fab fa-google"></i></button>
-          <button type="button" class="s-btn apple" onclick="socialAuth('Apple')"><i class="fab fa-apple"></i></button>
-          <button type="button" class="s-btn telegram" onclick="socialAuth('Telegram')"><i
-              class="fab fa-telegram-plane"></i></button>
-        </div>
-      </form>
-      <form class="auth-form" id="signupForm" onsubmit="handleSignUp(event)">
-        <div class="input-group"><i class="fas fa-user input-icon"></i><input type="text" placeholder="To'liq ism"
-            required id="signupName"></div>
-        <div class="input-group"><i class="fas fa-envelope input-icon"></i><input type="email"
-            placeholder="Email manzil" required id="signupEmail"></div>
-        <div class="input-group"><i class="fas fa-phone input-icon"></i><input type="tel" placeholder="Telefon raqam"
-            required id="signupPhone"></div>
-        <div class="input-group"><i class="fas fa-lock input-icon"></i><input type="password"
-            placeholder="Parol (min 8 belgi)" required id="signupPassword" minlength="8"
-            oninput="checkStrength(this.value)"><button type="button" class="toggle-pass"
-            onclick="togglePass('signupPassword',this)"><i class="fas fa-eye"></i></button></div>
-        <div class="input-group"><i class="fas fa-lock input-icon"></i><input type="password"
-            placeholder="Parolni tasdiqlang" required id="signupConfirm"></div>
-        <div class="strength-wrap">
-          <div class="strength-bar">
-            <div class="strength-fill" id="strengthFill"></div>
-          </div><span class="strength-label" id="strengthLabel"></span>
-        </div>
-        <label class="terms"><input type="checkbox" required> <a href="#">Foydalanish shartlari</a>ga roziman</label>
-        <button type="submit" class="auth-btn signup-btn"><span>Ro'yxatdan o'tish</span><i
-            class="fas fa-rocket"></i></button>
-      </form>
+      <div class="loader-text">TechZone yuklanmoqda...</div>
     </div>
   </div>
 
-  <!-- ===== MAIN WEBSITE ===== -->
-  <div class="website" id="mainWebsite" style="display:none;">
+  <!-- AUTH PAGE -->
+  <div class="auth-page" id="authPage">
+    <div class="auth-bg">
+      <div class="auth-orb orb-1"></div>
+      <div class="auth-orb orb-2"></div>
+      <div class="auth-orb orb-3"></div>
+    </div>
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <div class="brand-mark"><i class="fas fa-bolt"></i></div>
+          <div class="brand-name">Tech<span>Zone</span></div>
+        </div>
+        <div class="auth-welcome">
+          <h1 class="auth-title">Xush kelibsiz</h1>
+          <p class="auth-sub">Premium texnika dunyosiga kiring</p>
+        </div>
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="signin" onclick="switchAuthTab('signin')">Kirish</button>
+          <button class="auth-tab" data-tab="signup" onclick="switchAuthTab('signup')">Ro'yxatdan o'tish</button>
+        </div>
+        <form class="auth-form active" id="signinForm" onsubmit="handleSignIn(event)">
+          <div class="field">
+            <label class="field-label">Email</label>
+            <div class="field-wrap">
+              <i class="fas fa-envelope field-icon"></i>
+              <input type="email" placeholder="ism@example.com" required id="signinEmail">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Parol</label>
+            <div class="field-wrap">
+              <i class="fas fa-lock field-icon"></i>
+              <input type="password" placeholder="••••••••" required id="signinPassword">
+              <button type="button" class="field-action" onclick="togglePass('signinPassword',this)"><i
+                  class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="auth-extras">
+            <label class="checkbox"><input type="checkbox"><span>Eslab qolish</span></label>
+            <a href="#" class="link">Parolni unutdingizmi?</a>
+          </div>
+          <button type="submit" class="btn-primary full"><span>Kirish</span><i class="fas fa-arrow-right"></i></button>
+          <div class="divider"><span>yoki</span></div>
+          <div class="social-row">
+            <button type="button" class="social-btn" onclick="socialAuth('Google')"><i
+                class="fab fa-google"></i></button>
+            <button type="button" class="social-btn" onclick="socialAuth('Apple')"><i class="fab fa-apple"></i></button>
+            <button type="button" class="social-btn" onclick="socialAuth('Telegram')"><i
+                class="fab fa-telegram-plane"></i></button>
+          </div>
+        </form>
+        <form class="auth-form" id="signupForm" onsubmit="handleSignUp(event)">
+          <div class="field">
+            <label class="field-label">To'liq ism</label>
+            <div class="field-wrap">
+              <i class="fas fa-user field-icon"></i>
+              <input type="text" placeholder="Ism Familiya" required id="signupName">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Email</label>
+            <div class="field-wrap">
+              <i class="fas fa-envelope field-icon"></i>
+              <input type="email" placeholder="ism@example.com" required id="signupEmail">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Telefon</label>
+            <div class="field-wrap">
+              <i class="fas fa-phone field-icon"></i>
+              <input type="tel" placeholder="+998 90 123 45 67" required id="signupPhone">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Parol</label>
+            <div class="field-wrap">
+              <i class="fas fa-lock field-icon"></i>
+              <input type="password" placeholder="Min 8 belgi" required id="signupPassword" minlength="8"
+                oninput="checkStrength(this.value)">
+              <button type="button" class="field-action" onclick="togglePass('signupPassword',this)"><i
+                  class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="strength-meter">
+            <div class="strength-track">
+              <div class="strength-fill" id="strengthFill"></div>
+            </div>
+            <span class="strength-text" id="strengthText"></span>
+          </div>
+          <div class="field">
+            <label class="field-label">Tasdiqlash</label>
+            <div class="field-wrap">
+              <i class="fas fa-lock field-icon"></i>
+              <input type="password" placeholder="Parolni qayta kiriting" required id="signupConfirm">
+            </div>
+          </div>
+          <label class="checkbox terms"><input type="checkbox" required><span><a href="#">Foydalanish shartlari</a>ga
+              roziman</span></label>
+          <button type="submit" class="btn-primary full accent"><span>Ro'yxatdan o'tish</span><i
+              class="fas fa-rocket"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN SITE -->
+  <div class="site" id="mainSite" style="display:none;">
 
     <!-- HEADER -->
-    <header class="header" id="header">
+    <header class="site-header" id="siteHeader">
       <div class="header-top">
         <div class="container">
-          <div class="ht-content">
-            <div class="ht-info"><span><i class="fas fa-phone-alt"></i> +998 90 123 45 67</span><span><i
-                  class="fas fa-map-marker-alt"></i> Toshkent, O'zbekiston</span></div>
-            <div class="ht-actions"><button class="ht-btn" onclick="showToast('Til o\'zgartirildi','info')"><i
-                  class="fas fa-globe"></i> UZ</button><button class="ht-btn"
-                onclick="showToast('Mavzu o\'zgartirildi','info')"><i class="fas fa-moon"></i></button></div>
+          <div class="header-top-inner">
+            <div class="top-info">
+              <span><i class="fas fa-phone"></i> +998 90 123 45 67</span>
+              <span><i class="fas fa-location-dot"></i> Toshkent, O'zbekiston</span>
+            </div>
+            <div class="top-actions">
+              <button class="top-btn"><i class="fas fa-globe"></i> O'zbekcha</button>
+            </div>
           </div>
         </div>
       </div>
       <div class="header-main">
         <div class="container">
-          <div class="hm-content">
-            <div class="logo" onclick="showPage('home')">
-              <div class="logo-icon"><i class="fas fa-bolt"></i></div>
-              <div class="logo-text"><span class="logo-name">Tech<span class="logo-accent">Zone</span></span><span
-                  class="logo-sub">Premium Texnika</span></div>
+          <div class="header-main-inner">
+            <a href="#" class="site-logo" onclick="showPage('home');return false;">
+              <div class="logo-mark"><i class="fas fa-bolt"></i></div>
+              <div class="logo-text">Tech<span>Zone</span></div>
+            </a>
+            <div class="search-wrap">
+              <div class="search-box">
+                <i class="fas fa-magnifying-glass search-icon"></i>
+                <input type="text" placeholder="Mahsulot qidirish..." id="searchInput" oninput="handleSearch()">
+                <button class="search-btn" onclick="handleSearch()">Qidirish</button>
+              </div>
+              <div class="search-dropdown" id="searchDropdown"></div>
             </div>
-            <div class="search-bar"><input type="text" placeholder="Mahsulot qidirish..." id="searchInput"
-                oninput="searchProducts()"><button onclick="searchProducts()"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="header-btns">
-              <button class="h-btn" onclick="showPage('games')"><i class="fas fa-gamepad"></i></button>
-              <button class="h-btn" onclick="showWishlist()"><i class="fas fa-heart"></i><span class="badge"
-                  id="wishCount">0</span></button>
-              <button class="h-btn" onclick="showCart()"><i class="fas fa-shopping-cart"></i><span class="badge"
-                  id="cartCount">0</span></button>
-              <div class="user-menu">
-                <button class="h-btn user-btn" onclick="toggleUserMenu()"><i class="fas fa-user-circle"></i><span
-                    id="userName">User</span></button>
-                <div class="user-dd" id="userDD">
-                  <a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Bosh sahifa</a>
-                  <a href="#" onclick="showPage('products')"><i class="fas fa-box"></i> Mahsulotlar</a>
-                  <a href="#" onclick="showPage('cart')"><i class="fas fa-shopping-cart"></i> Savatcha</a>
-                  <a href="#" onclick="showPage('games')"><i class="fas fa-gamepad"></i> O'yinlar</a>
-                  <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Chiqish</a>
+            <div class="header-actions">
+              <button class="icon-btn" onclick="showPage('wishlist')" data-tooltip="Sevimlilar">
+                <i class="far fa-heart"></i>
+                <span class="count" id="wishCount">0</span>
+              </button>
+              <button class="icon-btn" onclick="showPage('cart')" data-tooltip="Savat">
+                <i class="fas fa-bag-shopping"></i>
+                <span class="count" id="cartCount">0</span>
+              </button>
+              <div class="user-wrap">
+                <button class="user-btn" onclick="toggleUserMenu()">
+                  <div class="user-avatar" id="userAvatar">U</div>
+                  <span id="userName">User</span>
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="user-menu" id="userMenu">
+                  <div class="user-menu-header">
+                    <div class="user-avatar" id="userMenuAvatar">U</div>
+                    <div>
+                      <div class="user-menu-name" id="userMenuName">User</div>
+                      <div class="user-menu-email" id="userMenuEmail">email@uz</div>
+                    </div>
+                  </div>
+                  <a href="#" onclick="showPage('profile');return false;"><i class="fas fa-user"></i> Profil</a>
+                  <a href="#" onclick="showPage('orders');return false;"><i class="fas fa-box"></i> Buyurtmalar</a>
+                  <a href="#" onclick="showPage('wishlist');return false;"><i class="fas fa-heart"></i> Sevimlilar</a>
+                  <a href="#" onclick="showPage('games');return false;"><i class="fas fa-gamepad"></i> O'yinlar</a>
+                  <a href="#" onclick="logout();return false;" class="danger"><i class="fas fa-right-from-bracket"></i>
+                    Chiqish</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <nav class="nav">
+      <nav class="site-nav">
         <div class="container">
-          <div class="nav-cats" id="navCats">
-            <button class="nav-cat active" data-cat="all" onclick="filterCat('all',this);showPage('products')"><i
-                class="fas fa-th"></i> Barchasi</button>
-            <button class="nav-cat" data-cat="phones" onclick="filterCat('phones',this);showPage('products')"><i
-                class="fas fa-mobile-alt"></i> Telefonlar</button>
-            <button class="nav-cat" data-cat="laptops" onclick="filterCat('laptops',this);showPage('products')"><i
+          <div class="nav-inner">
+            <button class="nav-link active" onclick="filterCat('all',this);showPage('products')"><i
+                class="fas fa-grid-2"></i> Barchasi</button>
+            <button class="nav-link" onclick="filterCat('phones',this);showPage('products')"><i
+                class="fas fa-mobile-screen"></i> Telefonlar</button>
+            <button class="nav-link" onclick="filterCat('laptops',this);showPage('products')"><i
                 class="fas fa-laptop"></i> Noutbuklar</button>
-            <button class="nav-cat" data-cat="tablets" onclick="filterCat('tablets',this);showPage('products')"><i
-                class="fas fa-tablet-alt"></i> iPadlar</button>
-            <button class="nav-cat" data-cat="audio" onclick="filterCat('audio',this);showPage('products')"><i
+            <button class="nav-link" onclick="filterCat('tablets',this);showPage('products')"><i
+                class="fas fa-tablet-screen-button"></i> Planshetlar</button>
+            <button class="nav-link" onclick="filterCat('audio',this);showPage('products')"><i
                 class="fas fa-headphones"></i> Audio</button>
-            <button class="nav-cat" data-cat="gaming" onclick="filterCat('gaming',this);showPage('products')"><i
+            <button class="nav-link" onclick="filterCat('gaming',this);showPage('products')"><i
                 class="fas fa-gamepad"></i> Gaming</button>
-            <button class="nav-cat" data-cat="tvs" onclick="filterCat('tvs',this);showPage('products')"><i
-                class="fas fa-tv"></i> Televizorlar</button>
-            <button class="nav-cat" data-cat="appliances" onclick="filterCat('appliances',this);showPage('products')"><i
+            <button class="nav-link" onclick="filterCat('tvs',this);showPage('products')"><i class="fas fa-tv"></i>
+              TV</button>
+            <button class="nav-link" onclick="filterCat('appliances',this);showPage('products')"><i
                 class="fas fa-blender"></i> Maishiy</button>
-            <button class="nav-cat" data-cat="smart" onclick="filterCat('smart',this);showPage('products')"><i
-                class="fas fa-home"></i> Aqlli Uy</button>
-            <button class="nav-cat" data-cat="drones" onclick="filterCat('drones',this);showPage('products')"><i
+            <button class="nav-link" onclick="filterCat('smart',this);showPage('products')"><i
+                class="fas fa-house-signal"></i> Smart Home</button>
+            <button class="nav-link" onclick="filterCat('drones',this);showPage('products')"><i
                 class="fas fa-helicopter"></i> Dronlar</button>
-            <button class="nav-cat game-btn" onclick="showPage('games')"><i class="fas fa-futbol"></i> O'yinlar</button>
           </div>
         </div>
       </nav>
     </header>
 
-    <!-- ===== HOME PAGE ===== -->
+    <!-- HOME PAGE -->
     <div class="page active" id="page-home">
       <section class="hero">
         <div class="hero-bg">
-          <div class="hero-glow hg1"></div>
-          <div class="hero-glow hg2"></div>
-          <div class="hero-glow hg3"></div>
+          <div class="hero-orb orb-a"></div>
+          <div class="hero-orb orb-b"></div>
+          <div class="hero-orb orb-c"></div>
         </div>
         <div class="container">
-          <div class="hero-content">
-            <div class="hero-badge"><i class="fas fa-fire"></i> Yangi kolleksiya 2026</div>
-            <h1 class="hero-title"><span class="h-line">Eng yaxshi</span><span
-                class="h-line h-highlight">Texnika</span><span class="h-line">bu yerda!</span></h1>
-            <p class="hero-desc">5000+ mahsulot, bepul yetkazib berish, 2 yil kafolat. Premium sifat, arzon narxlar.</p>
-            <div class="hero-btns">
-              <button class="btn-p" onclick="showPage('products')"><i class="fas fa-shopping-bag"></i> Xarid
-                qilish</button>
-              <button class="btn-s" onclick="showPage('games')"><i class="fas fa-gamepad"></i> O'yin o'ynash</button>
-            </div>
-            <div class="hero-stats">
-              <div class="stat"><span class="stat-num" data-count="5000">0</span>+<span
-                  class="stat-lbl">Mahsulotlar</span></div>
-              <div class="stat"><span class="stat-num" data-count="50000">0</span>+<span
-                  class="stat-lbl">Mijozlar</span></div>
-              <div class="stat"><span class="stat-num" data-count="99">0</span>%<span class="stat-lbl">Mamnunlik</span>
+          <div class="hero-inner">
+            <div class="hero-content">
+              <div class="hero-badge"><span class="badge-dot"></span> Yangi kolleksiya 2026</div>
+              <h1 class="hero-title">Kelajak <span class="gradient-text">texnologiyasi</span> bugun</h1>
+              <p class="hero-desc">5000+ premium mahsulot, bepul yetkazib berish, 2 yil rasmiy kafolat. Eng yaxshi
+                narxlarda.</p>
+              <div class="hero-cta">
+                <button class="btn-primary" onclick="showPage('products')"><i class="fas fa-bag-shopping"></i> Xarid
+                  qilish</button>
+                <button class="btn-ghost" onclick="showPage('games')"><i class="fas fa-gamepad"></i> O'yinlar</button>
+              </div>
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <div class="stat-value" data-count="5000">0</div>
+                  <div class="stat-label">Mahsulot</div>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                  <div class="stat-value" data-count="50000">0</div>
+                  <div class="stat-label">Mijozlar</div>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                  <div class="stat-value" data-count="99">0</div>
+                  <div class="stat-label">Mamnunlik %</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="hero-visual">
-            <div class="hero-card">
-              <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400" alt="iPhone"
-                onerror="this.src='https://via.placeholder.com/400x300/6c5ce7/fff?text=iPhone+16+Pro'">
-              <div class="hero-card-info"><span>iPhone 16 Pro Max</span><span class="h-price">$1,199</span></div>
+            <div class="hero-visual">
+              <div class="hero-card">
+                <div class="hero-card-glow"></div>
+                <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500" alt="iPhone"
+                  onerror="this.src='https://via.placeholder.com/400x500/1a1a2e/6366f1?text=iPhone+16+Pro'">
+                <div class="hero-card-tag">
+                  <div class="tag-name">iPhone 16 Pro Max</div>
+                  <div class="tag-price">$1,199</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="categories-sec">
+      <section class="section">
         <div class="container">
-          <div class="sec-head">
-            <div class="sec-info"><span class="sec-badge">Kategoriyalar</span>
-              <h2 class="sec-title">Kategoriyalar bo'yicha xarid</h2>
-              <p class="sec-desc">O'zingizga kerakli mahsulotni toping</p>
+          <div class="section-head">
+            <div>
+              <div class="section-tag">Kategoriyalar</div>
+              <h2 class="section-title">Nima qidiryapsiz?</h2>
+              <p class="section-sub">O'zingizga kerakli mahsulotni toping</p>
             </div>
           </div>
           <div class="cat-grid" id="catGrid"></div>
@@ -3775,241 +296,315 @@
         <div class="container">
           <div class="feat-grid">
             <div class="feat-card">
-              <div class="feat-ic"><i class="fas fa-shipping-fast"></i></div>
-              <h3>Bepul Yetkazish</h3>
-              <p>500,000 so'mdan yuqori buyurtmalarga</p>
+              <div class="feat-icon"><i class="fas fa-truck-fast"></i></div>
+              <div>
+                <h4>Bepul yetkazish</h4>
+                <p>500K so'mdan yuqori</p>
+              </div>
             </div>
             <div class="feat-card">
-              <div class="feat-ic"><i class="fas fa-shield-alt"></i></div>
-              <h3>2 Yil Kafolat</h3>
-              <p>Barcha mahsulotlarga rasmiy kafolat</p>
+              <div class="feat-icon"><i class="fas fa-shield-halved"></i></div>
+              <div>
+                <h4>2 yil kafolat</h4>
+                <p>Rasmiy kafolat</p>
+              </div>
             </div>
             <div class="feat-card">
-              <div class="feat-ic"><i class="fas fa-undo"></i></div>
-              <h3>14 Kun Qaytarish</h3>
-              <p>Mamnun bo'lmasangiz qaytaring</p>
+              <div class="feat-icon"><i class="fas fa-rotate-left"></i></div>
+              <div>
+                <h4>14 kun qaytarish</h4>
+                <p>Mamnun bo'lmasangiz</p>
+              </div>
             </div>
             <div class="feat-card">
-              <div class="feat-ic"><i class="fas fa-headset"></i></div>
-              <h3>24/7 Qo'llab-quvvatlash</h3>
-              <p>Har doim aloqadamiz</p>
+              <div class="feat-icon"><i class="fas fa-headset"></i></div>
+              <div>
+                <h4>24/7 qo'llab-quvvatlash</h4>
+                <p>Har doim aloqada</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="products-sec">
+      <section class="section">
         <div class="container">
-          <div class="sec-head">
-            <div class="sec-info"><span class="sec-badge">Katalog</span>
-              <h2 class="sec-title">Ommabop Mahsulotlar</h2>
-              <p class="sec-desc">Eng yaxshi narxlarda premium texnika</p>
+          <div class="section-head">
+            <div>
+              <div class="section-tag">Ommabop</div>
+              <h2 class="section-title">Eng ko'p sotilganlar</h2>
+              <p class="section-sub">Mijozlarimiz tanlovi</p>
             </div>
-            <button class="btn-s" onclick="showPage('products')" style="padding:10px 20px;font-size:13px">Barchasini
-              ko'rish <i class="fas fa-arrow-right"></i></button>
+            <button class="btn-ghost small" onclick="showPage('products')">Barchasini ko'rish <i
+                class="fas fa-arrow-right"></i></button>
           </div>
           <div class="prod-grid" id="homeProdGrid"></div>
         </div>
       </section>
 
-      <section class="offers-sec">
+      <section class="promo-banner">
         <div class="container">
-          <div class="sec-head">
-            <div class="sec-info"><span class="sec-badge offer-badge">🔥 Aksiya</span>
-              <h2 class="sec-title">Maxsus Takliflar</h2>
+          <div class="promo-inner">
+            <div class="promo-content">
+              <div class="promo-tag">Chegarma</div>
+              <h2 class="promo-title">iPhone 16 Pro ga 20% chegirma</h2>
+              <p class="promo-desc">Faqat shu hafta davomida. Shoshiling!</p>
+              <div class="countdown">
+                <div class="cd-item">
+                  <div class="cd-num" id="cdHours">23</div>
+                  <div class="cd-lbl">Soat</div>
+                </div>
+                <div class="cd-item">
+                  <div class="cd-num" id="cdMins">59</div>
+                  <div class="cd-lbl">Daqiqa</div>
+                </div>
+                <div class="cd-item">
+                  <div class="cd-num" id="cdSecs">59</div>
+                  <div class="cd-lbl">Soniya</div>
+                </div>
+              </div>
+              <button class="btn-primary" onclick="showPage('products')" style="background:#fff;color:#6366f1"><i
+                  class="fas fa-bag-shopping"></i> Hozir xarid qilish</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-tag accent">🔥 Aksiyalar</div>
+              <h2 class="section-title">Maxsus takliflar</h2>
             </div>
           </div>
           <div class="offers-grid" id="offersGrid"></div>
         </div>
       </section>
 
-      <section class="newsletter-sec">
+      <section class="newsletter">
         <div class="container">
-          <div class="newsletter-box">
-            <h2>Yangiliklardan xabardor bo'ling!</h2>
-            <p>Eng so'nggi chegrimalar va yangi mahsulotlar haqida birinchi bo'lib biling</p>
-            <div class="newsletter-form"><input type="email" placeholder="Email manzilingiz"><button
-                onclick="showToast('Muvaffaqiyatli obuna bo\'ldingiz!','success')"><i class="fas fa-paper-plane"></i>
-                Obuna</button></div>
+          <div class="newsletter-inner">
+            <div class="newsletter-content">
+              <h2>Yangiliklardan xabardor bo'ling</h2>
+              <p>Chegrimalar va yangi mahsulotlar haqida birinchi bo'lib biling</p>
+              <form class="newsletter-form" onsubmit="event.preventDefault();showToast('Obuna bo\'ldingiz!','success')">
+                <input type="email" placeholder="Email manzilingiz" required>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Obuna bo'lish</button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- ===== PRODUCTS PAGE ===== -->
+    <!-- PRODUCTS PAGE -->
     <div class="page" id="page-products">
-      <section class="products-sec" style="margin-top:165px">
+      <section class="section products-page">
         <div class="container">
-          <div class="sec-head">
-            <div class="sec-info"><span class="sec-badge">Katalog</span>
-              <h2 class="sec-title">Barcha Mahsulotlar</h2>
-              <p class="sec-desc" id="prodCountText">60 ta mahsulot</p>
+          <div class="breadcrumbs">
+            <a href="#" onclick="showPage('home');return false;">Bosh sahifa</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Mahsulotlar</span>
+          </div>
+          <div class="section-head">
+            <div>
+              <h1 class="section-title">Barcha mahsulotlar</h1>
+              <p class="section-sub" id="prodCountText"></p>
             </div>
-            <div class="sec-filters">
-              <button class="f-btn active" onclick="sortProd('popular',this)">Ommabop</button>
-              <button class="f-btn" onclick="sortProd('new',this)">Yangi</button>
-              <button class="f-btn" onclick="sortProd('cheap',this)">Arzon</button>
-              <button class="f-btn" onclick="sortProd('expensive',this)">Qimmat</button>
+            <div class="filter-group">
+              <button class="filter-btn active" onclick="sortProd('popular',this)">Ommabop</button>
+              <button class="filter-btn" onclick="sortProd('new',this)">Yangi</button>
+              <button class="filter-btn" onclick="sortProd('cheap',this)">Arzon</button>
+              <button class="filter-btn" onclick="sortProd('expensive',this)">Qimmat</button>
             </div>
           </div>
           <div class="prod-grid" id="prodGrid"></div>
-          <div class="load-more"><button class="btn-p" id="loadMoreBtn" onclick="loadMore()"><i class="fas fa-plus"></i>
-              Ko'proq ko'rish</button></div>
+          <div class="load-more-wrap"><button class="btn-ghost" id="loadMoreBtn" onclick="loadMore()"><i
+                class="fas fa-plus"></i> Ko'proq yuklash</button></div>
         </div>
       </section>
     </div>
 
-    <!-- ===== PRODUCT DETAILS PAGE ===== -->
+    <!-- PRODUCT DETAIL PAGE -->
     <div class="page" id="page-product">
-      <section class="product-detail">
+      <section class="product-detail-page">
         <div class="container" id="productDetailContent"></div>
       </section>
     </div>
 
-    <!-- ===== CART PAGE ===== -->
+    <!-- CART PAGE -->
     <div class="page" id="page-cart">
       <section class="cart-page">
         <div class="container" id="cartPageContent"></div>
       </section>
     </div>
 
-    <!-- ===== CHECKOUT PAGE ===== -->
+    <!-- CHECKOUT PAGE -->
     <div class="page" id="page-checkout">
       <section class="checkout-page">
         <div class="container" id="checkoutPageContent"></div>
       </section>
     </div>
 
-    <!-- ===== GAMES PAGE ===== -->
+    <!-- WISHLIST PAGE -->
+    <div class="page" id="page-wishlist">
+      <section class="section">
+        <div class="container" id="wishlistPageContent"></div>
+      </section>
+    </div>
+
+    <!-- ORDERS PAGE -->
+    <div class="page" id="page-orders">
+      <section class="section">
+        <div class="container" id="ordersPageContent"></div>
+      </section>
+    </div>
+
+    <!-- PROFILE PAGE -->
+    <div class="page" id="page-profile">
+      <section class="section">
+        <div class="container" id="profilePageContent"></div>
+      </section>
+    </div>
+
+    <!-- GAMES PAGE -->
     <div class="page" id="page-games">
-      <section class="games-page">
+      <section class="section games-page">
         <div class="container">
-          <h1>🎮 TechZone Gaming Zone</h1>
-          <p class="sec-desc">4 ta qiziqarli o'yin - dam oling va sovrin qozoning!</p>
-          <div class="game-selector">
-            <button class="game-tab active" onclick="switchGame('snake',this)"><i class="fas fa-snake"></i>
-              Ilon</button>
+          <div class="section-head">
+            <div>
+              <div class="section-tag accent">🎮 O'yinlar</div>
+              <h1 class="section-title">TechZone Gaming Zone</h1>
+              <p class="section-sub">Dam oling va sovrin qozoning</p>
+            </div>
+          </div>
+          <div class="game-tabs">
+            <button class="game-tab active" onclick="switchGame('snake',this)"><i class="fas fa-snake"></i> Ilon
+              o'yini</button>
             <button class="game-tab" onclick="switchGame('memory',this)"><i class="fas fa-brain"></i> Xotira</button>
             <button class="game-tab" onclick="switchGame('quiz',this)"><i class="fas fa-question-circle"></i>
               Viktorina</button>
-            <button class="game-tab" onclick="switchGame('ttt',this)"><i class="fas fa-times"></i> X va O</button>
+            <button class="game-tab" onclick="switchGame('ttt',this)"><i class="fas fa-xmark"></i> X va O</button>
           </div>
-
-          <!-- SNAKE -->
           <div class="game-container" id="game-snake">
-            <div class="game-scores">
-              <div class="sc-item"><span class="sc-lbl">Ball</span><span class="sc-val" id="sScore">0</span></div>
-              <div class="sc-item"><span class="sc-lbl">Rekord</span><span class="sc-val" id="sHighScore">0</span></div>
-              <div class="sc-item"><span class="sc-lbl">Daraja</span><span class="sc-val" id="sLevel">1</span></div>
+            <div class="game-stats">
+              <div class="game-stat">
+                <div class="game-stat-label">Ball</div>
+                <div class="game-stat-value" id="sScore">0</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-label">Rekord</div>
+                <div class="game-stat-value" id="sHighScore">0</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-label">Daraja</div>
+                <div class="game-stat-value" id="sLevel">1</div>
+              </div>
             </div>
-            <div class="game-canvas-wrap"><canvas id="sCanvas" width="800" height="500"></canvas></div>
-            <div class="game-ctrls">
-              <button class="btn-p" onclick="startSnake()"><i class="fas fa-play"></i> Boshlash</button>
-              <button class="btn-s" onclick="resetSnake()"><i class="fas fa-redo"></i> Qayta</button>
+            <div class="game-canvas-wrap"><canvas id="sCanvas" width="800" height="400"></canvas></div>
+            <div class="game-controls">
+              <button class="btn-primary" onclick="startSnake()"><i class="fas fa-play"></i> Boshlash</button>
+              <button class="btn-ghost" onclick="resetSnake()"><i class="fas fa-rotate-right"></i> Qayta</button>
             </div>
-            <div class="game-hint">⌨️ Yo'naltirish tugmalari yoki W/A/S/D. Ovqatni yeng, devorga urilmang!</div>
+            <div class="game-hint">⌨️ Yo'naltirish tugmalari yoki W/A/S/D</div>
           </div>
-
-          <!-- MEMORY -->
           <div class="game-container" id="game-memory" style="display:none">
-            <div class="game-scores">
-              <div class="sc-item"><span class="sc-lbl">Yurishlar</span><span class="sc-val" id="mMoves">0</span></div>
-              <div class="sc-item"><span class="sc-lbl">Juftlik</span><span class="sc-val" id="mPairs">0/8</span></div>
-              <div class="sc-item"><span class="sc-lbl">Vaqt</span><span class="sc-val" id="mTime">0s</span></div>
+            <div class="game-stats">
+              <div class="game-stat">
+                <div class="game-stat-label">Yurishlar</div>
+                <div class="game-stat-value" id="mMoves">0</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-label">Juftlik</div>
+                <div class="game-stat-value" id="mPairs">0/8</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-label">Vaqt</div>
+                <div class="game-stat-value" id="mTime">0s</div>
+              </div>
             </div>
             <div class="memory-grid" id="memoryGrid"></div>
-            <div class="game-ctrls"><button class="btn-p" onclick="initMemory()"><i class="fas fa-refresh"></i> Yangi
-                o'yin</button></div>
-            <div class="game-hint">🧠 Bir xil rasmlarni toping va juftlashtiring!</div>
+            <div class="game-controls"><button class="btn-primary" onclick="initMemory()"><i
+                  class="fas fa-rotate-right"></i> Yangi o'yin</button></div>
+            <div class="game-hint">🧠 Bir xil emojilarni toping</div>
           </div>
-
-          <!-- QUIZ -->
           <div class="game-container" id="game-quiz" style="display:none">
-            <div class="game-scores">
-              <div class="sc-item"><span class="sc-lbl">To'g'ri</span><span class="sc-val" id="qCorrect">0</span></div>
-              <div class="sc-item"><span class="sc-lbl">Noto'g'ri</span><span class="sc-val" id="qWrong">0</span></div>
-              <div class="sc-item"><span class="sc-lbl">Savol</span><span class="sc-val" id="qNumber">1/10</span></div>
+            <div class="game-stats">
+              <div class="game-stat">
+                <div class="game-stat-label">To'g'ri</div>
+                <div class="game-stat-value" id="qCorrect">0</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-label">Noto'g'ri</div>
+                <div class="game-stat-value" id="qWrong">0</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-label">Savol</div>
+                <div class="game-stat-value" id="qNumber">1/10</div>
+              </div>
             </div>
             <div class="quiz-box" id="quizBox">
               <div class="quiz-question" id="quizQuestion"></div>
               <div class="quiz-options" id="quizOptions"></div>
             </div>
-            <div class="game-ctrls"><button class="btn-p" onclick="initQuiz()"><i class="fas fa-redo"></i> Qayta
-                boshlash</button></div>
-            <div class="game-hint">📚 Texnika haqida savollarga javob bering!</div>
+            <div class="game-controls"><button class="btn-primary" onclick="initQuiz()"><i
+                  class="fas fa-rotate-right"></i> Qayta</button></div>
+            <div class="game-hint">📚 Texnika haqida 10 ta savol</div>
           </div>
-
-          <!-- TIC TAC TOE -->
           <div class="game-container" id="game-ttt" style="display:none">
-            <div class="game-scores">
-              <div class="sc-item"><span class="sc-lbl">Siz (X)</span><span class="sc-val" id="tttPlayer">0</span></div>
-              <div class="sc-item"><span class="sc-lbl">Durrang</span><span class="sc-val" id="tttDraw">0</span></div>
-              <div class="sc-item"><span class="sc-lbl">AI (O)</span><span class="sc-val" id="tttAI">0</span></div>
+            <div class="game-stats">
+              <div class="game-stat">
+                <div class="game-stat-label">Siz (X)</div>
+                <div class="game-stat-value" id="tttPlayer">0</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-label">Durrang</div>
+                <div class="game-stat-value" id="tttDraw">0</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-label">AI (O)</div>
+                <div class="game-stat-value" id="tttAI">0</div>
+              </div>
             </div>
             <div class="ttt-status" id="tttStatus">Sizning navbatingiz (X)</div>
             <div class="ttt-grid" id="tttGrid"></div>
-            <div class="game-ctrls"><button class="btn-p" onclick="initTTT()"><i class="fas fa-redo"></i> Qayta
-                boshlash</button></div>
-            <div class="game-hint">❌ AI ga qarshi o'ynang! 3 ta belgini bir qatorga qo'ying!</div>
+            <div class="game-controls"><button class="btn-primary" onclick="initTTT()"><i
+                  class="fas fa-rotate-right"></i> Qayta</button></div>
+            <div class="game-hint">❌ Aqlli AI ga qarshi o'ynang</div>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- CART SIDEBAR -->
-    <div class="side-overlay" id="cartOv" onclick="closeCart()"></div>
-    <div class="side-panel" id="cartPanel">
-      <div class="side-head">
-        <h3><i class="fas fa-shopping-cart"></i> Savat</h3><button onclick="closeCart()"><i
-            class="fas fa-times"></i></button>
-      </div>
-      <div class="side-items" id="cartItems">
-        <div class="side-empty"><i class="fas fa-shopping-cart"></i>
-          <p>Savat bo'sh</p>
-        </div>
-      </div>
-      <div class="side-foot">
-        <div class="side-total"><span>Jami:</span><span id="cartTotal">$0</span></div>
-        <button class="btn-p full" onclick="showPage('cart');closeCart()"><i class="fas fa-shopping-cart"></i> Savatga
-          o'tish</button>
-      </div>
-    </div>
-
-    <!-- WISHLIST SIDEBAR -->
-    <div class="side-overlay" id="wishOv" onclick="closeWishlist()"></div>
-    <div class="side-panel" id="wishPanel">
-      <div class="side-head">
-        <h3><i class="fas fa-heart"></i> Sevimlilar</h3><button onclick="closeWishlist()"><i
-            class="fas fa-times"></i></button>
-      </div>
-      <div class="side-items" id="wishItems">
-        <div class="side-empty"><i class="fas fa-heart"></i>
-          <p>Sevimlilar bo'sh</p>
-        </div>
-      </div>
-    </div>
-
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="site-footer">
       <div class="container">
-        <div class="foot-grid">
-          <div class="foot-col">
-            <div class="foot-logo"><i class="fas fa-bolt"></i><span>Tech<span>Zone</span></span></div>
-            <p>O'zbekistondagi eng yirik online texnika do'koni. Premium sifat, arzon narxlar.</p>
-            <div class="foot-social"><a href="#"><i class="fab fa-telegram-plane"></i></a><a href="#"><i
-                  class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i
-                  class="fab fa-facebook"></i></a></div>
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="footer-brand">
+              <div class="logo-mark small"><i class="fas fa-bolt"></i></div>
+              <div class="logo-text">Tech<span>Zone</span></div>
+            </div>
+            <p>O'zbekistondagi eng yirik premium texnika do'koni. 2020-yildan beri xizmatdamiz.</p>
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-telegram-plane"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
           </div>
-          <div class="foot-col">
+          <div class="footer-col">
             <h4>Sahifalar</h4>
             <ul>
-              <li><a href="#" onclick="showPage('home')">Bosh sahifa</a></li>
-              <li><a href="#" onclick="showPage('products')">Mahsulotlar</a></li>
-              <li><a href="#" onclick="showPage('cart')">Savatcha</a></li>
-              <li><a href="#" onclick="showPage('games')">O'yinlar</a></li>
+              <li><a href="#" onclick="showPage('home');return false;">Bosh sahifa</a></li>
+              <li><a href="#" onclick="showPage('products');return false;">Mahsulotlar</a></li>
+              <li><a href="#" onclick="showPage('cart');return false;">Savat</a></li>
+              <li><a href="#" onclick="showPage('games');return false;">O'yinlar</a></li>
             </ul>
           </div>
-          <div class="foot-col">
+          <div class="footer-col">
             <h4>Kompaniya</h4>
             <ul>
               <li><a href="#">Biz haqimizda</a></li>
@@ -4018,398 +613,65 @@
               <li><a href="#">Blog</a></li>
             </ul>
           </div>
-          <div class="foot-col">
+          <div class="footer-col">
             <h4>Aloqa</h4>
-            <ul>
+            <ul class="contact-list">
               <li><i class="fas fa-phone"></i> +998 90 123 45 67</li>
               <li><i class="fas fa-envelope"></i> info@techzone.uz</li>
-              <li><i class="fas fa-map-marker-alt"></i> Toshkent, Amir Temur 108</li>
+              <li><i class="fas fa-location-dot"></i> Toshkent, Amir Temur 108</li>
+              <li><i class="fas fa-clock"></i> 09:00 - 22:00</li>
             </ul>
-            <div class="newsletter-form" style="margin-top:14px"><input type="email" placeholder="Email"
-                style="padding:10px 14px;font-size:13px"><button style="padding:10px 14px"><i
-                  class="fas fa-paper-plane"></i></button></div>
           </div>
         </div>
-        <div class="foot-bottom">
-          <p>&copy; 2026 TechZone. Barcha huquqlar himoyalangan.</p>
-          <div class="pay-icons"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i
-              class="fab fa-cc-apple-pay"></i><i class="fab fa-google-pay"></i></div>
+        <div class="footer-bottom">
+          <div>&copy; 2026 TechZone. Barcha huquqlar himoyalangan.</div>
+          <div class="payment-methods">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-apple-pay"></i>
+            <i class="fab fa-google-pay"></i>
+          </div>
         </div>
       </div>
     </footer>
 
-    <!-- AI ASSISTANT -->
-    <div class="ai-assistant" id="aiAssistant">
-      <div class="ai-toggle" onclick="toggleAI()"><i class="fas fa-robot"></i></div>
-      <div class="ai-window" id="aiWindow">
+    <!-- AI WIDGET -->
+    <div class="ai-widget" id="aiWidget">
+      <button class="ai-toggle" onclick="toggleAI()" id="aiToggle"><i class="fas fa-robot"></i></button>
+      <div class="ai-panel" id="aiPanel">
         <div class="ai-header">
-          <div class="ai-logo-text"><i class="fas fa-brain"></i> TechAI</div><button onclick="toggleAI()"><i
-              class="fas fa-times"></i></button>
+          <div class="ai-header-info">
+            <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+            <div>
+              <div class="ai-title">TechAI</div>
+              <div class="ai-status"><span class="status-dot"></span> Online</div>
+            </div>
+          </div>
+          <button onclick="toggleAI()"><i class="fas fa-xmark"></i></button>
         </div>
         <div class="ai-messages" id="aiMessages">
           <div class="ai-msg bot">
-            <p>Salom! Men TechZone AI yordamchisiman. Sizga qanday yordam bera olaman? 😊</p>
+            <p>Salom! 👋 Men TechZone AI yordamchisiman. Mahsulotlar, narxlar yoki buyurtmalar bo'yicha savollaringizga
+              javob beraman.</p>
           </div>
         </div>
-        <div class="ai-input-wrap"><input type="text" id="aiInput" placeholder="Savolingizni yozing..."
-            onkeypress="handleAIKey(event)"><button onclick="sendAI()"><i class="fas fa-paper-plane"></i></button></div>
         <div class="ai-suggestions">
-          <button onclick="quickAI('iPhone haqida maslahat ber')">iPhone</button>
-          <button onclick="quickAI('Eng yaxshi noutbuk')">Noutbuk</button>
-          <button onclick="quickAI('Arzon telefonlar')">Arzon telefon</button>
-          <button onclick="quickAI('Gaming qurilmalar')">Gaming</button>
+          <button onclick="quickAI('iPhone haqida')">📱 iPhone</button>
+          <button onclick="quickAI('Noutbuk tavsiya qil')">💻 Noutbuk</button>
+          <button onclick="quickAI('Arzon variantlar')">💰 Arzon</button>
+          <button onclick="quickAI('Yetkazish shartlari')">🚚 Yetkazish</button>
+        </div>
+        <div class="ai-input-wrap">
+          <input type="text" id="aiInput" placeholder="Savolingizni yozing..." onkeypress="handleAIKey(event)">
+          <button onclick="sendAI()"><i class="fas fa-paper-plane"></i></button>
         </div>
       </div>
     </div>
 
-    <!-- TOAST -->
-    <div class="toast-wrap" id="toastWrap"></div>
-    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+    <div class="toast-container" id="toastContainer"></div>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
 
-    <script>
-      // ===== PRODUCTS DATA (60 items) =====
-      const products = [
-        { id: 1, name: "iPhone 16 Pro Max 256GB", category: "phones", price: 1199, oldPrice: 1399, image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400", rating: 4.9, reviews: 2847, badge: "hot", desc: "A18 Pro chip, 48MP kamera, Titan dizayn. Eng kuchli iPhone.", specs: ["A18 Pro chip", "6.9 inch Super Retina XDR", "48MP + 12MP + 12MP kamera", "256GB xotira", "Titanium dizayn", "USB-C port", "5G qo'llab-quvvatlash", "Face ID"] },
-        { id: 2, name: "iPhone 16 Pro 128GB", category: "phones", price: 999, oldPrice: 1099, image: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400", rating: 4.8, reviews: 1923, badge: "new", desc: "A18 Pro chip, ProMotion displey", specs: ["A18 Pro chip", "6.3 inch display", "48MP kamera", "128GB", "ProMotion 120Hz"] },
-        { id: 3, name: "iPhone 16 128GB", category: "phones", price: 799, oldPrice: null, image: "https://images.unsplash.com/photo-1592286927505-1def25115558?w=400", rating: 4.7, reviews: 3421, badge: null, desc: "A18 chip, 48MP asosiy kamera", specs: ["A18 chip", "6.1 inch", "48MP kamera", "128GB", "5G"] },
-        { id: 4, name: "Samsung Galaxy S24 Ultra", category: "phones", price: 1099, oldPrice: 1299, image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400", rating: 4.8, reviews: 2156, badge: "sale", desc: "Snapdragon 8 Gen 3, 200MP kamera, S Pen", specs: ["Snapdragon 8 Gen 3", "6.8 inch Dynamic AMOLED", "200MP kamera", "S Pen", "12GB RAM", "512GB"] },
-        { id: 5, name: "Samsung Galaxy S24+", category: "phones", price: 899, oldPrice: 999, image: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=400", rating: 4.6, reviews: 1534, badge: null, desc: "6.7 inch Dynamic AMOLED, 50MP", specs: ["Snapdragon 8 Gen 3", "6.7 inch", "50MP kamera", "12GB RAM"] },
-        { id: 6, name: "Samsung Galaxy Z Fold 5", category: "phones", price: 1799, oldPrice: 1999, image: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=400", rating: 4.5, reviews: 876, badge: "hot", desc: "Buklama ekran, 7.6 inch", specs: ["Snapdragon 8 Gen 2", "7.6 inch buklama", "12GB RAM", "512GB", "S Pen qo'llab-quvvatlash"] },
-        { id: 7, name: "Google Pixel 8 Pro", category: "phones", price: 899, oldPrice: 999, image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400", rating: 4.7, reviews: 1245, badge: "new", desc: "Tensor G3, AI kamera, 50MP", specs: ["Tensor G3", "6.7 inch LTPO OLED", "50MP kamera", "12GB RAM", "AI xususiyatlar"] },
-        { id: 8, name: "Xiaomi 14 Pro", category: "phones", price: 699, oldPrice: 799, image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400", rating: 4.6, reviews: 987, badge: null, desc: "Snapdragon 8 Gen 3, Leica kamera", specs: ["Snapdragon 8 Gen 3", "6.73 inch", "Leica 50MP kamera", "12GB RAM"] },
-        { id: 9, name: "OnePlus 12", category: "phones", price: 799, oldPrice: null, image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=400", rating: 4.5, reviews: 654, badge: "new", desc: "Snapdragon 8 Gen 3, 100W zaryad", specs: ["Snapdragon 8 Gen 3", "6.82 inch", "50MP kamera", "16GB RAM", "100W zaryad"] },
-        { id: 10, name: "Huawei Mate 60 Pro", category: "phones", price: 999, oldPrice: 1199, image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=400", rating: 4.4, reviews: 432, badge: "sale", desc: "Kirin 9000s, Sunway kamera", specs: ["Kirin 9000s", "6.82 inch", "50MP kamera", "12GB RAM"] },
-        { id: 11, name: "MacBook Pro 16 M3 Max", category: "laptops", price: 3499, oldPrice: 3999, image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400", rating: 4.9, reviews: 1876, badge: "hot", desc: "M3 Max chip, 36GB RAM, 1TB SSD", specs: ["M3 Max chip", "16.2 inch Liquid Retina XDR", "36GB RAM", "1TB SSD", "22 soat batareya"] },
-        { id: 12, name: "MacBook Pro 14 M3 Pro", category: "laptops", price: 1999, oldPrice: 2199, image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=400", rating: 4.8, reviews: 2341, badge: null, desc: "M3 Pro chip, 18GB RAM, 512GB SSD", specs: ["M3 Pro chip", "14.2 inch", "18GB RAM", "512GB SSD"] },
-        { id: 13, name: "MacBook Air 15 M3", category: "laptops", price: 1299, oldPrice: null, image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400", rating: 4.7, reviews: 3124, badge: "new", desc: "M3 chip, 8GB RAM, 256GB SSD", specs: ["M3 chip", "15.3 inch", "8GB RAM", "256GB SSD", "18 soat batareya"] },
-        { id: 14, name: "MacBook Air 13 M2", category: "laptops", price: 999, oldPrice: 1099, image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400", rating: 4.7, reviews: 4532, badge: "sale", desc: "M2 chip, 8GB RAM, 256GB SSD", specs: ["M2 chip", "13.6 inch", "8GB RAM", "256GB SSD"] },
-        { id: 15, name: "Dell XPS 15 OLED", category: "laptops", price: 1899, oldPrice: 2199, image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400", rating: 4.6, reviews: 1234, badge: null, desc: "Intel i9, 32GB RAM, RTX 4060", specs: ["Intel i9-13900H", "15.6 inch OLED", "32GB RAM", "RTX 4060", "1TB SSD"] },
-        { id: 16, name: "ASUS ROG Strix G16", category: "laptops", price: 1599, oldPrice: 1799, image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400", rating: 4.7, reviews: 876, badge: "hot", desc: "Intel i9-13980HX, RTX 4070, 16GB", specs: ["Intel i9-13980HX", "16 inch 240Hz", "RTX 4070", "16GB RAM", "1TB SSD"] },
-        { id: 17, name: "Lenovo ThinkPad X1 Carbon", category: "laptops", price: 1499, oldPrice: null, image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400", rating: 4.6, reviews: 1543, badge: null, desc: "Intel i7-1365U, 16GB RAM, 512GB", specs: ["Intel i7-1365U", "14 inch", "16GB RAM", "512GB SSD"] },
-        { id: 18, name: "HP Spectre x360 14", category: "laptops", price: 1399, oldPrice: 1599, image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=400", rating: 4.5, reviews: 765, badge: "sale", desc: "Intel i7, OLED, 16GB RAM", specs: ["Intel i7-1355U", "14 inch OLED", "16GB RAM", "1TB SSD"] },
-        { id: 19, name: "ASUS ZenBook 14 OLED", category: "laptops", price: 999, oldPrice: 1199, image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400", rating: 4.6, reviews: 1098, badge: null, desc: "AMD Ryzen 7, 16GB RAM, OLED", specs: ["AMD Ryzen 7 7730U", "14 inch OLED", "16GB RAM", "512GB SSD"] },
-        { id: 20, name: "Microsoft Surface Laptop 5", category: "laptops", price: 1299, oldPrice: null, image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400", rating: 4.5, reviews: 654, badge: "new", desc: "Intel i7, 16GB RAM, 512GB SSD", specs: ["Intel i7-1265U", "13.5 inch", "16GB RAM", "512GB SSD"] },
-        { id: 21, name: "iPad Pro 13 M4", category: "tablets", price: 1299, oldPrice: 1499, image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400", rating: 4.9, reviews: 1567, badge: "hot", desc: "M4 chip, OLED displey, 256GB", specs: ["M4 chip", "13 inch OLED", "256GB", "Apple Pencil Pro"] },
-        { id: 22, name: "iPad Pro 11 M4", category: "tablets", price: 999, oldPrice: 1099, image: "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=400", rating: 4.8, reviews: 2134, badge: null, desc: "M4 chip, 128GB, Wi-Fi", specs: ["M4 chip", "11 inch", "128GB", "Wi-Fi 6E"] },
-        { id: 23, name: "iPad Air M2 13\"", category: "tablets", price: 799, oldPrice: null, image: "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=400", rating: 4.7, reviews: 1876, badge: "new", desc: "M2 chip, 128GB, Wi-Fi", specs: ["M2 chip", "13 inch", "128GB", "Wi-Fi"] },
-        { id: 24, name: "iPad Air M2 11\"", category: "tablets", price: 599, oldPrice: 699, image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?w=400", rating: 4.7, reviews: 2345, badge: "sale", desc: "M2 chip, 64GB, Wi-Fi", specs: ["M2 chip", "11 inch", "64GB"] },
-        { id: 25, name: "iPad 10-avlod", category: "tablets", price: 449, oldPrice: null, image: "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=400", rating: 4.5, reviews: 3456, badge: null, desc: "A14 Bionic, 64GB, 10.9 inch", specs: ["A14 Bionic", "10.9 inch", "64GB", "USB-C"] },
-        { id: 26, name: "Samsung Galaxy Tab S9 Ultra", category: "tablets", price: 1199, oldPrice: 1399, image: "https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?w=400", rating: 4.6, reviews: 876, badge: "hot", desc: "Snapdragon 8 Gen 2, 14.6 inch AMOLED", specs: ["Snapdragon 8 Gen 2", "14.6 inch AMOLED", "12GB RAM", "S Pen"] },
-        { id: 27, name: "Samsung Galaxy Tab S9+", category: "tablets", price: 899, oldPrice: 999, image: "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=400", rating: 4.5, reviews: 654, badge: null, desc: "12.4 inch AMOLED, S Pen", specs: ["Snapdragon 8 Gen 2", "12.4 inch AMOLED", "12GB RAM"] },
-        { id: 28, name: "AirPods Pro 2 (USB-C)", category: "audio", price: 249, oldPrice: 279, image: "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f49?w=400", rating: 4.8, reviews: 5678, badge: "hot", desc: "Adaptive Audio, USB-C, 30 soat batareya", specs: ["H2 chip", "Adaptive Audio", "USB-C", "30 soat batareya", "IP54"] },
-        { id: 29, name: "AirPods Max", category: "audio", price: 549, oldPrice: 599, image: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=400", rating: 4.7, reviews: 2345, badge: null, desc: "Spatial Audio, 20 soat batareya", specs: ["H1 chip", "Spatial Audio", "20 soat", "Lightning"] },
-        { id: 30, name: "AirPods 3-avlod", category: "audio", price: 169, oldPrice: 179, image: "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=400", rating: 4.6, reviews: 4321, badge: "sale", desc: "Spatial Audio, MagSafe", specs: ["H1 chip", "Spatial Audio", "MagSafe", "30 soat"] },
-        { id: 31, name: "Sony WH-1000XM5", category: "audio", price: 349, oldPrice: 399, image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400", rating: 4.8, reviews: 3456, badge: "hot", desc: "Industry-leading ANC, 30 soat", specs: ["Industry-leading ANC", "30 soat batareya", "LDAC", "Multipoint"] },
-        { id: 32, name: "Sony WF-1000XM5", category: "audio", price: 279, oldPrice: 299, image: "https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400", rating: 4.7, reviews: 2134, badge: null, desc: "True wireless, ANC, LDAC", specs: ["ANC", "LDAC", "8 soat batareya", "IPX4"] },
-        { id: 33, name: "Bose QuietComfort Ultra", category: "audio", price: 429, oldPrice: null, image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400", rating: 4.7, reviews: 1567, badge: "new", desc: "Immersive Audio, ANC", specs: ["Immersive Audio", "ANC", "24 soat", "Bluetooth 5.3"] },
-        { id: 34, name: "JBL Tune 770NC", category: "audio", price: 99, oldPrice: 129, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400", rating: 4.4, reviews: 2876, badge: "sale", desc: "ANC, 70 soat batareya", specs: ["ANC", "70 soat batareya", "Bluetooth 5.3", "JBL Pure Bass"] },
-        { id: 35, name: "Samsung Galaxy Buds3 Pro", category: "audio", price: 229, oldPrice: 249, image: "https://images.unsplash.com/photo-1598331668871-c8a6b5a8a6e7?w=400", rating: 4.5, reviews: 1234, badge: null, desc: "ANC, 360 Audio, IPX7", specs: ["ANC", "360 Audio", "IPX7", "Galaxy AI"] },
-        { id: 36, name: "PlayStation 5 Slim", category: "gaming", price: 449, oldPrice: 499, image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400", rating: 4.9, reviews: 8765, badge: "hot", desc: "1TB SSD, 4K gaming, DualSense", specs: ["1TB SSD", "4K 120fps", "Ray Tracing", "DualSense controller"] },
-        { id: 37, name: "PlayStation 5 Pro", category: "gaming", price: 699, oldPrice: null, image: "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=400", rating: 4.8, reviews: 3456, badge: "new", desc: "8K gaming, 2TB SSD, Ray Tracing", specs: ["2TB SSD", "8K gaming", "Ray Tracing", "Wi-Fi 7"] },
-        { id: 38, name: "Xbox Series X", category: "gaming", price: 499, oldPrice: 549, image: "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=400", rating: 4.7, reviews: 5432, badge: "sale", desc: "1TB SSD, 12 TFLOPS, 4K 120fps", specs: ["1TB SSD", "12 TFLOPS", "4K 120fps", "Game Pass"] },
-        { id: 39, name: "Nintendo Switch OLED", category: "gaming", price: 349, oldPrice: null, image: "https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=400", rating: 4.8, reviews: 6789, badge: null, desc: "7 inch OLED, 64GB, Joy-Con", specs: ["7 inch OLED", "64GB", "Joy-Con", "Docking station"] },
-        { id: 40, name: "Steam Deck OLED 1TB", category: "gaming", price: 649, oldPrice: 699, image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400", rating: 4.7, reviews: 2345, badge: "hot", desc: "7.4 inch OLED, 1TB, Wi-Fi 6E", specs: ["7.4 inch OLED", "1TB SSD", "Wi-Fi 6E", "50Wh batareya"] },
-        { id: 41, name: "ASUS ROG Ally", category: "gaming", price: 599, oldPrice: 699, image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400", rating: 4.5, reviews: 1234, badge: "sale", desc: "AMD Z1 Extreme, 7 inch 120Hz", specs: ["AMD Z1 Extreme", "7 inch 120Hz", "16GB RAM", "512GB SSD"] },
-        { id: 42, name: "PS5 DualSense Controller", category: "gaming", price: 69, oldPrice: 79, image: "https://images.unsplash.com/photo-1592840496011-b8052509813c?w=400", rating: 4.7, reviews: 4567, badge: null, desc: "Haptic feedback, Adaptive triggers", specs: ["Haptic feedback", "Adaptive triggers", "USB-C", "Built-in microphone"] },
-        { id: 43, name: "Samsung 65\" QN90C Neo QLED 4K", category: "tvs", price: 1799, oldPrice: 2199, image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400", rating: 4.8, reviews: 1234, badge: "sale", desc: "Neo QLED, 4K 120Hz, Gaming Hub", specs: ["65 inch", "Neo QLED", "4K 120Hz", "Gaming Hub", "Object Tracking Sound"] },
-        { id: 44, name: "LG 55\" C3 OLED 4K", category: "tvs", price: 1299, oldPrice: 1499, image: "https://images.unsplash.com/photo-1461151304267-38535e780c79?w=400", rating: 4.9, reviews: 2345, badge: "hot", desc: "OLED evo, α9 Gen6, Dolby Vision", specs: ["55 inch", "OLED evo", "α9 Gen6", "Dolby Vision", "4K 120Hz"] },
-        { id: 45, name: "Sony 65\" A95L QD-OLED", category: "tvs", price: 2799, oldPrice: null, image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400", rating: 4.9, reviews: 876, badge: "new", desc: "QD-OLED, XR Processor, 4K 120Hz", specs: ["65 inch", "QD-OLED", "XR Processor", "4K 120Hz", "Dolby Vision"] },
-        { id: 46, name: "TCL 55\" C845 Mini LED 4K", category: "tvs", price: 699, oldPrice: 899, image: "https://images.unsplash.com/photo-1461151304267-38535e780c79?w=400", rating: 4.5, reviews: 1567, badge: "sale", desc: "Mini LED, 144Hz, Google TV", specs: ["55 inch", "Mini LED", "144Hz", "Google TV", "Dolby Vision"] },
-        { id: 47, name: "Samsung Bespoke AI Fridge", category: "appliances", price: 2499, oldPrice: 2999, image: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400", rating: 4.6, reviews: 543, badge: "hot", desc: "AI Energy Mode, 28 cu ft, Family Hub", specs: ["28 cu ft", "Family Hub", "AI Energy Mode", "Bespoke dizayn"] },
-        { id: 48, name: "LG WashTower AI", category: "appliances", price: 1899, oldPrice: 2199, image: "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=400", rating: 4.7, reviews: 432, badge: "new", desc: "AI Direct Drive, 5.2 cu ft", specs: ["5.2 cu ft", "AI Direct Drive", "ThinQ AI", "TurboWash"] },
-        { id: 49, name: "Dyson V15 Detect", category: "appliances", price: 749, oldPrice: 849, image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400", rating: 4.8, reviews: 2134, badge: null, desc: "Laser dust detection, 60 min", specs: ["Laser dust detection", "60 min batareya", "HEPA filtr", "LCD ekran"] },
-        { id: 50, name: "iRobot Roomba j9+", category: "appliances", price: 899, oldPrice: 999, image: "https://images.unsplash.com/photo-1589820296156-2454bb8a4250?w=400", rating: 4.6, reviews: 1876, badge: "sale", desc: "AI navigation, Auto-empty, Pet friendly", specs: ["AI navigation", "Auto-empty", "Pet friendly", "Smart mapping"] },
-        { id: 51, name: "Ninja Foodi 14-in-1", category: "appliances", price: 299, oldPrice: 349, image: "https://images.unsplash.com/photo-1585515320310-259814833e62?w=400", rating: 4.7, reviews: 3456, badge: null, desc: "Pressure cook, air fry, bake", specs: ["14-in-1 funksiyalar", "8 qt", "Pressure cook", "Air fry", "Bake"] },
-        { id: 52, name: "Apple HomePod 2", category: "smart", price: 299, oldPrice: null, image: "https://images.unsplash.com/photo-1543512214-318c77a07298?w=400", rating: 4.6, reviews: 1234, badge: "new", desc: "Spatial Audio, Siri, Smart Home Hub", specs: ["Spatial Audio", "Siri", "Smart Home Hub", "Thread qo'llab-quvvatlash"] },
-        { id: 53, name: "Google Nest Hub Max", category: "smart", price: 229, oldPrice: 249, image: "https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=400", rating: 4.5, reviews: 2345, badge: null, desc: "10 inch display, Google Assistant", specs: ["10 inch display", "Google Assistant", "Kamera", "Smart Home control"] },
-        { id: 54, name: "Amazon Echo Show 15", category: "smart", price: 279, oldPrice: 299, image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400", rating: 4.4, reviews: 1567, badge: "sale", desc: "15.6 inch, Alexa, Smart display", specs: ["15.6 inch", "Alexa", "Smart display", "Video qo'ng'iroq"] },
-        { id: 55, name: "Ring Video Doorbell Pro 2", category: "smart", price: 249, oldPrice: null, image: "https://images.unsplash.com/photo-1558002038-1055907df827?w=400", rating: 4.5, reviews: 3456, badge: null, desc: "1536p video, 3D motion, Alexa", specs: ["1536p video", "3D motion detection", "Alexa", "Night vision"] },
-        { id: 56, name: "DJI Mavic 3 Pro", category: "drones", price: 2199, oldPrice: 2499, image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400", rating: 4.9, reviews: 876, badge: "hot", desc: "Hasselblad camera, 46 min flight", specs: ["Hasselblad camera", "46 min flight", "5.1K video", "Omnidirectional sensing"] },
-        { id: 57, name: "DJI Air 3", category: "drones", price: 1099, oldPrice: 1199, image: "https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?w=400", rating: 4.7, reviews: 1234, badge: "new", desc: "Dual camera, 46 min, 20km range", specs: ["Dual camera", "46 min flight", "20km range", "4K HDR"] },
-        { id: 58, name: "DJI Mini 4 Pro", category: "drones", price: 759, oldPrice: null, image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=400", rating: 4.8, reviews: 2345, badge: null, desc: "249g, 4K HDR, Omnidirectional sensing", specs: ["249g", "4K HDR", "Omnidirectional sensing", "34 min flight"] },
-        { id: 59, name: "Autel EVO Lite+", category: "drones", price: 1149, oldPrice: 1299, image: "https://images.unsplash.com/photo-1508614589041-895b8c9d7ef5?w=400", rating: 4.6, reviews: 543, badge: "sale", desc: "1-inch sensor, 40 min flight", specs: ["1-inch sensor", "40 min flight", "6K video", "Obstacle avoidance"] },
-        { id: 60, name: "DJI FPV Combo", category: "drones", price: 999, oldPrice: 1199, image: "https://images.unsplash.com/photo-1506947411487-a56738c4b582?w=400", rating: 4.5, reviews: 765, badge: null, desc: "Immersive FPV, 4K 60fps, 140 km/h", specs: ["Immersive FPV", "4K 60fps", "140 km/h", "Motion controller"] }
-      ];
-
-      // ===== STATE =====
-      let cart = [], wishlist = [], currentUser = null, displayed = 12, curCat = 'all', curSort = 'popular', currentPage = 'home';
-
-      // ===== AUTH =====
-      function switchAuthTab(tab) { document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active')); document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active')); document.querySelector(`[data-tab="${tab}"]`).classList.add('active'); document.getElementById(tab === 'signin' ? 'signinForm' : 'signupForm').classList.add('active') }
-      function togglePass(id, btn) { const i = document.getElementById(id), ic = btn.querySelector('i'); if (i.type === 'password') { i.type = 'text'; ic.className = 'fas fa-eye-slash' } else { i.type = 'password'; ic.className = 'fas fa-eye' } }
-      function checkStrength(pw) { let s = 0; if (pw.length >= 8) s++; if (pw.length >= 12) s++; if (/[A-Z]/.test(pw)) s++; if (/[0-9]/.test(pw)) s++; if (/[^A-Za-z0-9]/.test(pw)) s++; const lv = [{ p: 20, c: '#ff6b6b', l: 'Juda zaif' }, { p: 40, c: '#fdcb6e', l: 'Zaif' }, { p: 60, c: '#ffeaa7', l: "O'rtacha" }, { p: 80, c: '#00b894', l: 'Kuchli' }, { p: 100, c: '#00cec9', l: 'Juda kuchli' }]; const v = lv[Math.min(s, 4)]; const f = document.getElementById('strengthFill'), lb = document.getElementById('strengthLabel'); if (f) { f.style.width = v.p + '%'; f.style.background = v.c } if (lb) { lb.textContent = v.l; lb.style.color = v.c } }
-      function handleSignIn(e) { e.preventDefault(); const em = document.getElementById('signinEmail').value, pw = document.getElementById('signinPassword').value; const users = JSON.parse(localStorage.getItem('tz_users') || '[]'); const user = users.find(u => u.email === em && u.password === pw); if (user) { currentUser = user; localStorage.setItem('tz_cur', JSON.stringify(user)); enterSite(); showToast('Xush kelibsiz, ' + user.name + '!', 'success') } else { const nu = { name: em.split('@')[0], email: em, password: pw, phone: '' }; users.push(nu); localStorage.setItem('tz_users', JSON.stringify(users)); currentUser = nu; localStorage.setItem('tz_cur', JSON.stringify(nu)); enterSite(); showToast('Muvaffaqiyatli kirdingiz!', 'success') } }
-      function handleSignUp(e) { e.preventDefault(); const nm = document.getElementById('signupName').value, em = document.getElementById('signupEmail').value, ph = document.getElementById('signupPhone').value, pw = document.getElementById('signupPassword').value, cf = document.getElementById('signupConfirm').value; if (pw !== cf) { showToast('Parollar mos kelmaydi!', 'error'); return } const users = JSON.parse(localStorage.getItem('tz_users') || '[]'); if (users.find(u => u.email === em)) { showToast('Bu email allaqachon ro\'yxatdan o\'tgan!', 'error'); return } const nu = { name: nm, email: em, phone: ph, password: pw }; users.push(nu); localStorage.setItem('tz_users', JSON.stringify(users)); currentUser = nu; localStorage.setItem('tz_cur', JSON.stringify(nu)); enterSite(); showToast('Muvaffaqiyatli ro\'yxatdan o\'tdingiz!', 'success') }
-      function socialAuth(pr) { currentUser = { name: pr + ' User', email: 'user@' + pr.toLowerCase() + '.com', phone: '' }; localStorage.setItem('tz_cur', JSON.stringify(currentUser)); enterSite(); showToast(pr + ' orqali muvaffaqiyatli kirdingiz!', 'success') }
-      function enterSite() { document.getElementById('authOverlay').style.display = 'none'; document.getElementById('mainWebsite').style.display = 'block'; document.getElementById('userName').textContent = currentUser.name; initSite() }
-      function logout() { currentUser = null; localStorage.removeItem('tz_cur'); document.getElementById('mainWebsite').style.display = 'none'; document.getElementById('authOverlay').style.display = 'flex'; document.getElementById('userDD').classList.remove('show'); showToast('Tizimdan chiqdingiz', 'info') }
-      window.addEventListener('load', () => { const s = localStorage.getItem('tz_cur'); if (s) { currentUser = JSON.parse(s); enterSite() } });
-
-      // ===== PAGE NAVIGATION =====
-      function showPage(page) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById('page-' + page).classList.add('active');
-        currentPage = page;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        if (page === 'products') renderProds();
-        if (page === 'cart') renderCartPage();
-        if (page === 'checkout') renderCheckoutPage();
-        if (page === 'games') initGames();
-      }
-
-      // ===== SITE INIT =====
-      function initSite() { renderCategories(); renderHomeProds(); renderOffers(); initScroll(); animStats() }
-
-      function renderCategories() {
-        const cats = [{ id: 'phones', name: 'Telefonlar', icon: 'fa-mobile-alt', count: 10 }, { id: 'laptops', name: 'Noutbuklar', icon: 'fa-laptop', count: 10 }, { id: 'tablets', name: 'iPadlar', icon: 'fa-tablet-alt', count: 7 }, { id: 'audio', name: 'Audio', icon: 'fa-headphones', count: 8 }, { id: 'gaming', name: 'Gaming', icon: 'fa-gamepad', count: 7 }, { id: 'tvs', name: 'Televizorlar', icon: 'fa-tv', count: 4 }, { id: 'appliances', name: 'Maishiy', icon: 'fa-blender', count: 5 }, { id: 'smart', name: 'Aqlli Uy', icon: 'fa-home', count: 4 }, { id: 'drones', name: 'Dronlar', icon: 'fa-helicopter', count: 5 }];
-        document.getElementById('catGrid').innerHTML = cats.map(c => `<div class="cat-card" onclick="filterCat('${c.id}',null);showPage('products')"><div class="cat-icon"><i class="fas ${c.icon}"></i></div><h3>${c.name}</h3><p>${c.count} mahsulot</p></div>`).join('');
-      }
-
-      function renderHomeProds() {
-        const g = document.getElementById('homeProdGrid');
-        const f = products.filter(p => p.badge === 'hot' || p.badge === 'new').slice(0, 8);
-        g.innerHTML = f.map((p, i) => prodCardHTML(p, i)).join('');
-      }
-
-      function prodCardHTML(p, i) {
-        return `<div class="prod-card" style="animation-delay:${i * .04}s" onclick="showProductDetail(${p.id})">
-        ${p.badge ? `<span class="prod-badge badge-${p.badge}">${p.badge === 'new' ? 'YANGI' : p.badge === 'sale' ? 'AKSIYA' : '🔥 HIT'}</span>` : ''}
-        <button class="prod-wish ${wishlist.includes(p.id) ? 'active' : ''}" onclick="event.stopPropagation();toggleWish(${p.id})"><i class="fas fa-heart"></i></button>
-        <div class="prod-img"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/6c5ce7/fff?text=${encodeURIComponent(p.name.split(' ')[0])}'">
-        <div class="quick-acts"><button class="qa-btn" onclick="event.stopPropagation();showProductDetail(${p.id})"><i class="fas fa-eye"></i> Ko'rish</button><button class="qa-btn add" onclick="event.stopPropagation();addToCart(${p.id})"><i class="fas fa-cart-plus"></i> Savatga</button></div></div>
-        <div class="prod-info"><div class="prod-cat">${catName(p.category)}</div><h3 class="prod-name">${p.name}</h3><div class="prod-rating"><span class="stars">${stars(p.rating)}</span><span class="rating-cnt">(${p.reviews})</span></div><div class="prod-price"><span class="price-cur">$${p.price.toLocaleString()}</span>${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toLocaleString()}</span>` : ''}</div></div></div>`;
-      }
-
-      function renderProds() {
-        const g = document.getElementById('prodGrid');
-        let f = getFiltered().slice(0, displayed);
-        g.innerHTML = f.map((p, i) => prodCardHTML(p, i)).join('');
-        document.getElementById('prodCountText').textContent = getFiltered().length + ' ta mahsulot';
-        const lb = document.getElementById('loadMoreBtn'); if (lb) lb.style.display = displayed >= getFiltered().length ? 'none' : 'inline-flex';
-      }
-
-      function getFiltered() { let f = curCat === 'all' ? [...products] : products.filter(p => p.category === curCat); const s = document.getElementById('searchInput')?.value?.toLowerCase() || ''; if (s) f = f.filter(p => p.name.toLowerCase().includes(s) || p.desc.toLowerCase().includes(s)); switch (curSort) { case 'cheap': f.sort((a, b) => a.price - b.price); break; case 'expensive': f.sort((a, b) => b.price - a.price); break; case 'new': f.sort((a, b) => (b.badge === 'new' ? 1 : 0) - (a.badge === 'new' ? 1 : 0)); break; default: f.sort((a, b) => b.reviews - a.reviews) }return f }
-      function catName(c) { return { phones: 'Telefonlar', laptops: 'Noutbuklar', tablets: 'iPadlar', audio: 'Audio', gaming: 'Gaming', tvs: 'Televizorlar', appliances: 'Maishiy texnika', smart: 'Aqlli Uy', drones: 'Dronlar' }[c] || c }
-      function stars(r) { const f = Math.floor(r), h = r % 1 >= .5 ? 1 : 0, e = 5 - f - h; return '★'.repeat(f) + (h ? '½' : '') + '☆'.repeat(e) }
-      function filterCat(c, btn) { curCat = c; displayed = 12; document.querySelectorAll('.nav-cat').forEach(x => x.classList.remove('active')); if (btn) btn.classList.add('active'); if (currentPage === 'products') renderProds() }
-      function sortProd(s, btn) { curSort = s; document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active')); if (btn) btn.classList.add('active'); renderProds() }
-      function searchProducts() { displayed = 60; if (currentPage !== 'products') showPage('products'); else renderProds() }
-      function loadMore() { displayed += 12; renderProds() }
-
-      // ===== PRODUCT DETAIL =====
-      function showProductDetail(id) {
-        const p = products.find(x => x.id === id); if (!p) return;
-        const similar = products.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
-        const reviews = [{ name: 'Ali Valiyev', date: '2026-10-01', text: 'Ajoyib mahsulot! Sifati juda yaxshi, tavsiya qilaman.', rating: 5 }, { name: 'Madina Karimova', date: '2026-09-28', text: 'Narxi biroz qimmat, lekin sifati arziydi. Yetkazib berish tez bo\'ldi.', rating: 4 }, { name: 'Jasur Toshmatov', date: '2026-09-25', text: '2 haftadan beri ishlataman, hech qanday muammo yo\'q. Kafolat ham bor.', rating: 5 }];
-        const disc = p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : 0;
-        document.getElementById('productDetailContent').innerHTML = `
-        <div class="pd-grid">
-            <div class="pd-gallery">
-                <div class="pd-main-img"><img src="${p.image}" alt="${p.name}" id="pdMainImg" onerror="this.src='https://via.placeholder.com/600x500/6c5ce7/fff?text=${encodeURIComponent(p.name.split(' ')[0])}'"></div>
-                <div class="pd-thumbs">
-                    ${[p.image, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=200', 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=200'].map((img, i) => `<div class="pd-thumb ${i === 0 ? 'active' : ''}" onclick="changePdImg('${img}',this)"><img src="${img}" alt="thumb" onerror="this.src='https://via.placeholder.com/150/6c5ce7/fff?text=${i + 1}'"></div>`).join('')}
-                </div>
-            </div>
-            <div class="pd-info">
-                <div class="prod-cat">${catName(p.category)}</div>
-                <h1>${p.name}</h1>
-                <div class="pd-rating"><span class="stars">${stars(p.rating)}</span><span>${p.rating} (${p.reviews} sharh)</span></div>
-                <div class="pd-price-box">
-                    <div class="pd-price"><span class="price-cur">$${p.price.toLocaleString()}</span>${p.oldPrice ? `<span class="price-old">$${p.oldPrice.toLocaleString()}</span>` : ''}${disc ? `<span class="pd-discount">-${disc}%</span>` : ''}</div>
-                </div>
-                <p class="pd-desc">${p.desc}</p>
-                <div class="pd-features"><h3>Xususiyatlar</h3><ul class="pd-feat-list">${(p.specs || []).map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}</ul></div>
-                <div class="pd-qty"><label>Miqdor:</label><div class="qty-ctrl"><button onclick="changePdQty(-1)">-</button><span id="pdQty">1</span><button onclick="changePdQty(1)">+</button></div></div>
-                <div class="pd-actions">
-                    <button class="btn-p" onclick="addToCartQty(${p.id})"><i class="fas fa-cart-plus"></i> Savatga qo'shish</button>
-                    <button class="btn-s" onclick="toggleWish(${p.id})"><i class="fas fa-heart"></i></button>
-                </div>
-                <div class="pd-guarantee">
-                    <div><i class="fas fa-truck"></i><span>Bepul yetkazish</span></div>
-                    <div><i class="fas fa-shield-alt"></i><span>2 yil kafolat</span></div>
-                    <div><i class="fas fa-undo"></i><span>14 kun qaytarish</span></div>
-                </div>
-            </div>
-        </div>
-        <div class="reviews-sec"><h2>Sharhlar (${reviews.length})</h2>${reviews.map(r => `<div class="review-card"><div class="review-header"><div class="review-avatar">${r.name[0]}</div><div><div class="review-name">${r.name}</div><div class="review-date">${r.date} · <span class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span></div></div></div><p class="review-text">${r.text}</p></div>`).join('')}</div>
-        <div class="similar-sec"><h2>O'xshash mahsulotlar</h2><div class="prod-grid">${similar.map((s, i) => prodCardHTML(s, i)).join('')}</div></div>`;
-        showPage('product');
-      }
-      let pdQtyVal = 1;
-      function changePdImg(src, el) { document.getElementById('pdMainImg').src = src; document.querySelectorAll('.pd-thumb').forEach(t => t.classList.remove('active')); el.classList.add('active') }
-      function changePdQty(d) { pdQtyVal = Math.max(1, pdQtyVal + d); document.getElementById('pdQty').textContent = pdQtyVal }
-      function addToCartQty(id) { for (let i = 0; i < pdQtyVal; i++)addToCart(id); pdQtyVal = 1 }
-
-      // ===== CART =====
-      function addToCart(id) { const p = products.find(x => x.id === id); if (!p) return; const ex = cart.find(x => x.id === id); if (ex) ex.qty++; else cart.push({ ...p, qty: 1 }); updateCartUI(); showToast(p.name + ' savatga qo\'shildi!', 'success') }
-      function removeFromCart(id) { cart = cart.filter(x => x.id !== id); updateCartUI(); if (currentPage === 'cart') renderCartPage(); renderCart() }
-      function updateQty(id, d) { const it = cart.find(x => x.id === id); if (it) { it.qty += d; if (it.qty <= 0) { removeFromCart(id); return } } updateCartUI(); if (currentPage === 'cart') renderCartPage(); renderCart() }
-      function updateCartUI() { const c = cart.reduce((s, x) => s + x.qty, 0), t = cart.reduce((s, x) => s + x.price * x.qty, 0); document.getElementById('cartCount').textContent = c; document.getElementById('cartTotal').textContent = '$' + t.toLocaleString() }
-      function renderCart() { const c = document.getElementById('cartItems'); if (!cart.length) { c.innerHTML = '<div class="side-empty"><i class="fas fa-shopping-cart"></i><p>Savat bo\'sh</p></div>'; return } c.innerHTML = cart.map(it => `<div class="side-item"><div class="side-item-img"><img src="${it.image}" alt="${it.name}" onerror="this.src='https://via.placeholder.com/70/6c5ce7/fff?text=IMG'"></div><div class="side-item-info"><div class="side-item-name">${it.name}</div><div class="side-item-price">$${(it.price * it.qty).toLocaleString()}</div><div class="side-item-qty"><button class="qty-btn" onclick="updateQty(${it.id},-1)">-</button><span>${it.qty}</span><button class="qty-btn" onclick="updateQty(${it.id},1)">+</button></div></div><button class="side-item-rm" onclick="removeFromCart(${it.id})"><i class="fas fa-trash"></i></button></div>`).join('') }
-      function showCart() { renderCart(); document.getElementById('cartOv').classList.add('show'); document.getElementById('cartPanel').classList.add('show') }
-      function closeCart() { document.getElementById('cartOv').classList.remove('show'); document.getElementById('cartPanel').classList.remove('show') }
-
-      function renderCartPage() {
-        const c = document.getElementById('cartPageContent');
-        if (!cart.length) { c.innerHTML = `<h1>Savatcha</h1><div class="cart-empty-state"><i class="fas fa-shopping-cart"></i><h3>Savatchangiz bo'sh</h3><p>Mahsulotlarni qo'shing va xaridni boshlang</p><button class="btn-p" onclick="showPage('products')"><i class="fas fa-shopping-bag"></i> Xarid qilish</button></div>`; return }
-        const subtotal = cart.reduce((s, x) => s + x.price * x.qty, 0);
-        const shipping = subtotal > 500 ? 0 : 29;
-        const tax = Math.round(subtotal * .12);
-        const total = subtotal + shipping + tax;
-        c.innerHTML = `<h1>Savatcha (${cart.length} ta mahsulot)</h1>
-        <div class="cart-layout">
-            <div class="cart-items-list">${cart.map(it => `<div class="cart-item-card"><div class="cart-item-img"><img src="${it.image}" alt="${it.name}" onerror="this.src='https://via.placeholder.com/120/6c5ce7/fff?text=IMG'"></div><div class="cart-item-details"><h3>${it.name}</h3><div class="cat">${catName(it.category)}</div><div class="price">$${(it.price * it.qty).toLocaleString()}</div><div class="cart-item-actions"><div class="qty-ctrl"><button onclick="updateQty(${it.id},-1)">-</button><span>${it.qty}</span><button onclick="updateQty(${it.id},1)">+</button></div><button class="cart-item-remove" onclick="removeFromCart(${it.id})"><i class="fas fa-trash"></i> O'chirish</button></div></div></div>`).join('')}</div>
-            <div class="cart-summary"><h3>Buyurtma xulosasi</h3>
-                <div class="promo-code"><input type="text" placeholder="Promo-kod" id="promoInput"><button onclick="applyPromo()">Qo'llash</button></div>
-                <div class="cart-totals">
-                    <div class="cart-total-row"><span>Subtotal</span><span>$${subtotal.toLocaleString()}</span></div>
-                    <div class="cart-total-row"><span>Yetkazish</span><span>${shipping === 0 ? 'BEPUL' : '$' + shipping}</span></div>
-                    <div class="cart-total-row"><span>Soliq (12%)</span><span>$${tax.toLocaleString()}</span></div>
-                    <div class="cart-total-row total"><span>Jami</span><span>$${total.toLocaleString()}</span></div>
-                </div>
-                <button class="btn-p full" onclick="showPage('checkout')"><i class="fas fa-credit-card"></i> Buyurtma berish</button>
-                <button class="btn-s full" style="margin-top:10px;justify-content:center" onclick="showPage('products')"><i class="fas fa-arrow-left"></i> Xaridni davom ettirish</button>
-            </div>
-        </div>`;
-      }
-      function applyPromo() { const code = document.getElementById('promoInput').value.trim().toUpperCase(); if (code === 'TECH20') { showToast('Promo-kod qo\'llandi! 20% chegirma', 'success') } else if (code) { showToast('Noto\'g\'ri promo-kod', 'error') } else { showToast('Promo-kod kiriting', 'info') } }
-
-      // ===== CHECKOUT =====
-      function renderCheckoutPage() {
-        const c = document.getElementById('checkoutPageContent');
-        const subtotal = cart.reduce((s, x) => s + x.price * x.qty, 0);
-        const shipping = subtotal > 500 ? 0 : 29;
-        const tax = Math.round(subtotal * .12);
-        const total = subtotal + shipping + tax;
-        c.innerHTML = `<h1>Buyurtmani rasmiylashtirish</h1>
-        <div class="checkout-layout">
-            <div>
-                <div class="checkout-form" style="margin-bottom:24px">
-                    <h3><i class="fas fa-user"></i> Shaxsiy ma'lumotlar</h3>
-                    <div class="form-row"><div class="form-group"><label>Ism</label><input type="text" value="${currentUser?.name || ''}" id="coName"></div><div class="form-group"><label>Familiya</label><input type="text" id="coLastname"></div></div>
-                    <div class="form-row"><div class="form-group"><label>Email</label><input type="email" value="${currentUser?.email || ''}" id="coEmail"></div><div class="form-group"><label>Telefon</label><input type="tel" value="${currentUser?.phone || ''}" id="coPhone"></div></div>
-                </div>
-                <div class="checkout-form" style="margin-bottom:24px">
-                    <h3><i class="fas fa-truck"></i> Yetkazib berish manzili</h3>
-                    <div class="form-group"><label>Manzil</label><input type="text" placeholder="Ko'cha, uy raqami" id="coAddress"></div>
-                    <div class="form-row"><div class="form-group"><label>Shahar</label><select id="coCity"><option>Toshkent</option><option>Samarqand</option><option>Buxoro</option><option>Xiva</option><option>Farg'ona</option><option>Namangan</option><option>Andijon</option><option>Nukus</option></select></div><div class="form-group"><label>Indeks</label><input type="text" placeholder="100000" id="coZip"></div></div>
-                    <div class="form-group"><label>Izoh (ixtiyoriy)</label><textarea placeholder="Qo'shimcha ma'lumot..." id="coNote"></textarea></div>
-                </div>
-                <div class="checkout-form">
-                    <h3><i class="fas fa-credit-card"></i> To'lov usuli</h3>
-                    <div class="payment-methods">
-                        <div class="pay-method active" onclick="selectPay(this)"><i class="fas fa-credit-card"></i><span>Karta</span></div>
-                        <div class="pay-method" onclick="selectPay(this)"><i class="fas fa-money-bill-wave"></i><span>Naqd</span></div>
-                        <div class="pay-method" onclick="selectPay(this)"><i class="fas fa-mobile-alt"></i><span>Click/Payme</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="order-summary">
-                <h3>Buyurtma xulosasi</h3>
-                <div class="order-items">${cart.map(it => `<div class="order-item"><div class="order-item-img"><img src="${it.image}" alt="${it.name}" onerror="this.src='https://via.placeholder.com/60/6c5ce7/fff?text=IMG'"></div><div class="order-item-info"><h4>${it.name}</h4><div class="qty">${it.qty} x $${it.price.toLocaleString()}</div></div><div class="order-item-price">$${(it.price * it.qty).toLocaleString()}</div></div>`).join('')}</div>
-                <div class="order-totals">
-                    <div class="cart-total-row"><span>Subtotal</span><span>$${subtotal.toLocaleString()}</span></div>
-                    <div class="cart-total-row"><span>Yetkazish</span><span>${shipping === 0 ? 'BEPUL' : '$' + shipping}</span></div>
-                    <div class="cart-total-row"><span>Soliq</span><span>$${tax.toLocaleString()}</span></div>
-                    <div class="cart-total-row total"><span>Jami</span><span>$${total.toLocaleString()}</span></div>
-                </div>
-                <button class="btn-p full" onclick="confirmOrder()" style="margin-top:16px"><i class="fas fa-check"></i> Buyurtmani tasdiqlash</button>
-            </div>
-        </div>`;
-      }
-      function selectPay(el) { document.querySelectorAll('.pay-method').forEach(p => p.classList.remove('active')); el.classList.add('active') }
-      function confirmOrder() {
-        const name = document.getElementById('coName').value, addr = document.getElementById('coAddress').value;
-        if (!name || !addr) { showToast('Iltimos, barcha maydonlarni to\'ldiring', 'error'); return }
-        cart = []; updateCartUI();
-        document.getElementById('checkoutPageContent').innerHTML = `<div class="checkout-success"><i class="fas fa-check-circle"></i><h2>Buyurtma muvaffaqiyatli qabul qilindi!</h2><p>Buyurtma raqami: #TZ${Math.floor(Math.random() * 900000 + 100000)}<br>Tez orada siz bilan bog'lanamiz.</p><button class="btn-p" onclick="showPage('home')" style="justify-content:center;margin:0 auto"><i class="fas fa-home"></i> Bosh sahifaga qaytish</button></div>`;
-        showToast('Buyurtma tasdiqlandi!', 'success');
-      }
-
-      // ===== WISHLIST =====
-      function toggleWish(id) { const i = wishlist.indexOf(id); if (i > -1) { wishlist.splice(i, 1); showToast('Sevimlilardan olib tashlandi', 'info') } else { wishlist.push(id); showToast('Sevimlilarga qo\'shildi!', 'success') } document.getElementById('wishCount').textContent = wishlist.length; if (currentPage === 'products') renderProds(); if (currentPage === 'home') renderHomeProds(); renderWish() }
-      function renderWish() { const c = document.getElementById('wishItems'), items = products.filter(p => wishlist.includes(p.id)); if (!items.length) { c.innerHTML = '<div class="side-empty"><i class="fas fa-heart"></i><p>Sevimlilar bo\'sh</p></div>'; return } c.innerHTML = items.map(it => `<div class="side-item"><div class="side-item-img"><img src="${it.image}" alt="${it.name}" onerror="this.src='https://via.placeholder.com/70/6c5ce7/fff?text=IMG'"></div><div class="side-item-info"><div class="side-item-name">${it.name}</div><div class="side-item-price">$${it.price.toLocaleString()}</div></div><button class="side-item-rm" onclick="toggleWish(${it.id})"><i class="fas fa-times"></i></button></div>`).join('') }
-      function showWishlist() { renderWish(); document.getElementById('wishOv').classList.add('show'); document.getElementById('wishPanel').classList.add('show') }
-      function closeWishlist() { document.getElementById('wishOv').classList.remove('show'); document.getElementById('wishPanel').classList.remove('show') }
-
-      // ===== OFFERS =====
-      function renderOffers() { const os = [{ t: "iPhone 16 Pro", d: "20% chegirma - faqat shu hafta!", i: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600" }, { t: "MacBook M3", d: "Bepul AirPods sovg'a!", i: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600" }, { t: "PlayStation 5", d: "2 ta o'yin bepul!", i: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600" }]; document.getElementById('offersGrid').innerHTML = os.map(o => `<div class="offer-card"><img src="${o.i}" alt="${o.t}" onerror="this.src='https://via.placeholder.com/400x200/6c5ce7/fff?text=${encodeURIComponent(o.t)}'"><div class="offer-ov"><h3>${o.t}</h3><p>${o.d}</p><button class="o-btn">Batafsil</button></div></div>`).join('') }
-
-      // ===== SCROLL =====
-      function initScroll() { const h = document.getElementById('header'), s = document.getElementById('scrollTopBtn'); window.addEventListener('scroll', () => { if (window.scrollY > 50) h.classList.add('scrolled'); else h.classList.remove('scrolled'); if (window.scrollY > 400) s.classList.add('show'); else s.classList.remove('show') }) }
-      function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }) }
-      function animStats() { document.querySelectorAll('.stat-num').forEach(el => { const t = parseInt(el.dataset.count), dur = 2000, st = performance.now(); function up(ct) { const e = ct - st, p = Math.min(e / dur, 1), ez = 1 - Math.pow(1 - p, 3), v = Math.floor(ez * t); el.textContent = v.toLocaleString(); if (p < 1) requestAnimationFrame(up); else el.textContent = t.toLocaleString() } requestAnimationFrame(up) }) }
-
-      // ===== USER MENU =====
-      function toggleUserMenu() { document.getElementById('userDD').classList.toggle('show') }
-      document.addEventListener('click', e => { if (!e.target.closest('.user-menu')) { const d = document.getElementById('userDD'); if (d) d.classList.remove('show') } });
-
-      // ===== TOAST =====
-      function showToast(msg, type = 'info') { const c = document.getElementById('toastWrap'), t = document.createElement('div'); t.className = 'toast ' + type; const ic = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' }; t.innerHTML = `<i class="fas ${ic[type]}"></i><span>${msg}</span>`; c.appendChild(t); setTimeout(() => t.remove(), 3000) }
-
-      // ===== GAMES =====
-      function initGames() { switchGame('snake', document.querySelector('.game-tab')) }
-      function switchGame(game, btn) {
-        document.querySelectorAll('.game-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.game-container').forEach(c => c.style.display = 'none');
-        if (btn) btn.classList.add('active'); else document.querySelector(`.game-tab:first-child`)?.classList.add('active');
-        document.getElementById('game-' + game).style.display = 'block';
-        if (sInterval) clearInterval(sInterval);
-        if (game === 'snake') { setTimeout(initSnake, 100) }
-        else if (game === 'memory') { setTimeout(initMemory, 100) }
-        else if (game === 'quiz') { setTimeout(initQuiz, 100) }
-        else if (game === 'ttt') { setTimeout(initTTT, 100) }
-      }
-
-      // ===== SNAKE GAME =====
-      let sCanvas, sCtx, snake, food, sDirection, sNextDir, sInterval, sScoreVal = 0, sLevel = 1, sHighScore = parseInt(localStorage.getItem('snakeHigh') || '0');
-      function initSnake() { sCanvas = document.getElementById('sCanvas'); sCtx = sCanvas.getContext('2d'); resetSnake(); drawSnake() }
-      function resetSnake() { snake = [{ x: 10, y: 10 }]; food = spawnFood(); sDirection = 'right'; sNextDir = 'right'; sScoreVal = 0; sLevel = 1; updateSnakeUI(); if (sInterval) clearInterval(sInterval) }
-      function spawnFood() { return { x: Math.floor(Math.random() * 39) + 1, y: Math.floor(Math.random() * 24) + 1 } }
-      function startSnake() { if (sInterval) return; sInterval = setInterval(updateSnake, Math.max(50, 120 - sLevel * 10)) }
-      function updateSnake() { sDirection = sNextDir; const head = { ...snake[0] }; switch (sDirection) { case 'up': head.y--; break; case 'down': head.y++; break; case 'left': head.x--; break; case 'right': head.x++; break }if (head.x < 0 || head.x > 40 || head.y < 0 || head.y > 25 || snake.some(s => s.x === head.x && s.y === head.y)) { clearInterval(sInterval); sInterval = null; if (sScoreVal > sHighScore) { sHighScore = sScoreVal; localStorage.setItem('snakeHigh', sHighScore) } showToast('O\'yin tugadi! Ball: ' + sScoreVal, 'error'); updateSnakeUI(); return } snake.unshift(head); if (head.x === food.x && head.y === food.y) { sScoreVal += 10 * sLevel; if (sScoreVal % 100 === 0) sLevel++; food = spawnFood(); updateSnakeUI(); clearInterval(sInterval); sInterval = setInterval(updateSnake, Math.max(50, 120 - sLevel * 10)) } else { snake.pop() } drawSnake() }
-      function drawSnake() { sCtx.fillStyle = '#1a472a'; sCtx.fillRect(0, 0, 800, 500); sCtx.strokeStyle = 'rgba(255,255,255,.05)'; sCtx.lineWidth = 1; for (let i = 0; i <= 40; i++) { sCtx.beginPath(); sCtx.moveTo(i * 20, 0); sCtx.lineTo(i * 20, 500); sCtx.stroke() } for (let i = 0; i <= 25; i++) { sCtx.beginPath(); sCtx.moveTo(0, i * 20); sCtx.lineTo(800, i * 20); sCtx.stroke() } sCtx.fillStyle = '#ff6b6b'; sCtx.shadowColor = '#ff6b6b'; sCtx.shadowBlur = 15; sCtx.beginPath(); sCtx.arc(food.x * 20 + 10, food.y * 20 + 10, 8, 0, Math.PI * 2); sCtx.fill(); sCtx.shadowBlur = 0; snake.forEach((seg, i) => { const grad = sCtx.createLinearGradient(seg.x * 20, seg.y * 20, seg.x * 20 + 20, seg.y * 20 + 20); grad.addColorStop(0, '#00cec9'); grad.addColorStop(1, '#0984e3'); sCtx.fillStyle = grad; if (i === 0) { sCtx.shadowColor = '#00cec9'; sCtx.shadowBlur = 10 } sCtx.fillRect(seg.x * 20 + 1, seg.y * 20 + 1, 18, 18); sCtx.shadowBlur = 0 }) }
-      function updateSnakeUI() { document.getElementById('sScore').textContent = sScoreVal; document.getElementById('sHighScore').textContent = sHighScore; document.getElementById('sLevel').textContent = sLevel }
-      document.addEventListener('keydown', e => { if (document.getElementById('game-snake')?.style.display === 'none') return; switch (e.key) { case 'ArrowUp': case 'w': case 'W': if (sDirection !== 'down') sNextDir = 'up'; break; case 'ArrowDown': case 's': case 'S': if (sDirection !== 'up') sNextDir = 'down'; break; case 'ArrowLeft': case 'a': case 'A': if (sDirection !== 'right') sNextDir = 'left'; break; case 'ArrowRight': case 'd': case 'D': if (sDirection !== 'left') sNextDir = 'right'; break } });
-
-      // ===== MEMORY GAME =====
-      let memoryCards = [], memoryFlipped = [], memoryMatched = [], memoryMoves = 0, memoryTimer, memorySeconds = 0;
-      const memoryIcons = ['📱', '💻', '🎧', '', '📺', '⌚', '️', '🎯'];
-      function initMemory() { const grid = document.getElementById('memoryGrid'); grid.innerHTML = ''; memoryCards = [...memoryIcons, ...memoryIcons].sort(() => Math.random() - .5); memoryFlipped = []; memoryMatched = []; memoryMoves = 0; memorySeconds = 0; clearInterval(memoryTimer); memoryTimer = setInterval(() => { memorySeconds++; document.getElementById('mTime').textContent = memorySeconds + 's' }, 1000); updateMemoryUI(); memoryCards.forEach((icon, i) => { const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.index = i; card.dataset.icon = icon; card.innerHTML = `<span>${icon}</span>`; card.onclick = () => flipMemoryCard(card); grid.appendChild(card) }) }
-      function flipMemoryCard(card) { if (card.classList.contains('flipped') || card.classList.contains('matched') || memoryFlipped.length >= 2) return; card.classList.add('flipped'); memoryFlipped.push(card); if (memoryFlipped.length === 2) { memoryMoves++; updateMemoryUI(); checkMemoryMatch() } }
-      function checkMemoryMatch() { const [c1, c2] = memoryFlipped; if (c1.dataset.icon === c2.dataset.icon) { setTimeout(() => { c1.classList.add('matched'); c2.classList.add('matched'); memoryMatched.push(c1, c2); memoryFlipped = []; updateMemoryUI(); if (memoryMatched.length === 16) { clearInterval(memoryTimer); showToast(`Tabriklaymiz! ${memoryMoves} yurishda, ${memorySeconds} soniyada yakunladingiz!`, 'success') } }, 500) } else { setTimeout(() => { c1.classList.remove('flipped'); c2.classList.remove('flipped'); memoryFlipped = [] }, 1000) } }
-      function updateMemoryUI() { document.getElementById('mMoves').textContent = memoryMoves; document.getElementById('mPairs').textContent = `${memoryMatched.length / 2}/8` }
-
-      // ===== QUIZ GAME =====
-      const quizQuestions = [{ q: "iPhone 16 Pro Max qaysi chip bilan ishlaydi?", a: ["A18 Pro", "A17 Pro", "M3", "Snapdragon 8 Gen 3"], c: 0 }, { q: "MacBook Pro 16 M3 Max narxi qancha?", a: ["$2499", "$3499", "$4499", "$1999"], c: 1 }, { q: "PlayStation 5 Pro qachon chiqarilgan?", a: ["2023", "2024", "2025", "2022"], c: 1 }, { q: "AirPods Pro 2 qaysi port bilan keladi?", a: ["Lightning", "USB-C", "Micro USB", "Wireless"], c: 1 }, { q: "Samsung Galaxy S24 Ultra kamerasi nechta MP?", a: ["108MP", "200MP", "50MP", "48MP"], c: 1 }, { q: "DJI Mavic 3 Pro uchish vaqti qancha?", a: ["30 daqiqa", "46 daqiqa", "60 daqiqa", "40 daqiqa"], c: 1 }, { q: "iPad Pro 13 M4 displeyi qanday?", a: ["LCD", "OLED", "Mini LED", "QD-OLED"], c: 1 }, { q: "Sony WH-1000XM5 batareyasi qancha ishlaydi?", a: ["20 soat", "30 soat", "40 soat", "25 soat"], c: 1 }, { q: "Steam Deck OLED xotirasi nechta?", a: ["256GB", "512GB", "1TB", "2TB"], c: 2 }, { q: "LG C3 OLED qaysi protsessorga ega?", a: ["α8 Gen5", "α9 Gen6", "XR Processor", "Tensor G3"], c: 1 }];
-      let quizCurrent = 0, quizCorrect = 0, quizWrong = 0;
-      function initQuiz() { quizCurrent = 0; quizCorrect = 0; quizWrong = 0; showQuizQuestion(); updateQuizUI() }
-      function showQuizQuestion() { if (quizCurrent >= quizQuestions.length) { showQuizResult(); return } const q = quizQuestions[quizCurrent]; document.getElementById('quizQuestion').textContent = `${quizCurrent + 1}. ${q.q}`; const opts = document.getElementById('quizOptions'); opts.innerHTML = ''; q.a.forEach((opt, i) => { const btn = document.createElement('button'); btn.className = 'quiz-opt'; btn.innerHTML = `<span>${String.fromCharCode(65 + i)})</span><span>${opt}</span>`; btn.onclick = () => answerQuiz(i); opts.appendChild(btn) }) }
-      function answerQuiz(ans) { const q = quizQuestions[quizCurrent]; const opts = document.querySelectorAll('.quiz-opt'); opts.forEach((o, i) => { o.classList.add(i === q.c ? 'correct' : i === ans && i !== q.c ? 'wrong' : ''); o.style.pointerEvents = 'none' }); if (ans === q.c) quizCorrect++; else quizWrong++; updateQuizUI(); setTimeout(() => { quizCurrent++; showQuizQuestion() }, 1500) }
-      function showQuizResult() { const box = document.getElementById('quizBox'); const percent = Math.round(quizCorrect / quizQuestions.length * 100); box.innerHTML = `<div class="quiz-result"><h3>${percent >= 80 ? '🏆 Ajoyib!' : percent >= 60 ? '👍 Yaxshi!' : ' Yana o\'rganing!'}</h3><p>${quizCorrect} ta to'g'ri, ${quizWrong} ta noto'g'ri<br>Natija: ${percent}%</p><button class="btn-p" onclick="initQuiz()" style="justify-content:center;margin:0 auto"><i class="fas fa-redo"></i> Qayta boshlash</button></div>`; if (percent >= 80) showToast('Tabriklaymiz! Siz texnika bo\'yicha ekspertsiz!', 'success') }
-      function updateQuizUI() { document.getElementById('qCorrect').textContent = quizCorrect; document.getElementById('qWrong').textContent = quizWrong; document.getElementById('qNumber').textContent = `${Math.min(quizCurrent + 1, quizQuestions.length)}/${quizQuestions.length}` }
-
-      // ===== TIC TAC TOE =====
-      let tttBoard, tttCurrentPlayer, tttGameOver, tttScores = { player: 0, ai: 0, draw: 0 };
-      function initTTT() { tttBoard = Array(9).fill(''); tttCurrentPlayer = 'X'; tttGameOver = false; document.getElementById('tttStatus').textContent = 'Sizning navbatingiz (X)'; renderTTT() }
-      function renderTTT() { const grid = document.getElementById('tttGrid'); grid.innerHTML = ''; tttBoard.forEach((cell, i) => { const div = document.createElement('div'); div.className = 'ttt-cell' + (cell === 'X' ? ' x' : cell === 'O' ? ' o' : ''); div.textContent = cell; div.onclick = () => tttMove(i); grid.appendChild(div) }); document.getElementById('tttPlayer').textContent = tttScores.player; document.getElementById('tttAI').textContent = tttScores.ai; document.getElementById('tttDraw').textContent = tttScores.draw }
-      function tttMove(i) { if (tttBoard[i] || tttGameOver || tttCurrentPlayer !== 'X') return; tttBoard[i] = 'X'; if (checkTTTWin('X')) { tttGameOver = true; tttScores.player++; showToast('Siz yutdingiz! 🎉', 'success'); document.getElementById('tttStatus').textContent = 'Siz yutdingiz! 🎉'; renderTTT(); return } if (tttBoard.every(c => c)) { tttGameOver = true; tttScores.draw++; document.getElementById('tttStatus').textContent = 'Durrang!'; renderTTT(); return } tttCurrentPlayer = 'O'; document.getElementById('tttStatus').textContent = 'AI o\'ylamoqda...'; renderTTT(); setTimeout(tttAI, 500) }
-      function tttAI() { if (tttGameOver) return; const best = tttBestMove(); tttBoard[best] = 'O'; if (checkTTTWin('O')) { tttGameOver = true; tttScores.ai++; showToast('AI yutdi! 😅', 'error'); document.getElementById('tttStatus').textContent = 'AI yutdi!'; renderTTT(); return } if (tttBoard.every(c => c)) { tttGameOver = true; tttScores.draw++; document.getElementById('tttStatus').textContent = 'Durrang!'; renderTTT(); return } tttCurrentPlayer = 'X'; document.getElementById('tttStatus').textContent = 'Sizning navbatingiz (X)'; renderTTT() }
-      function tttBestMove() { let bestScore = -Infinity, bestMove = 0; for (let i = 0; i < 9; i++) { if (!tttBoard[i]) { tttBoard[i] = 'O'; let score = minimax(tttBoard, 0, false); tttBoard[i] = ''; if (score > bestScore) { bestScore = score; bestMove = i } } } return bestMove }
-      function minimax(board, depth, isMax) { if (checkTTTWin('O')) return 10 - depth; if (checkTTTWin('X')) return depth - 10; if (board.every(c => c)) return 0; if (isMax) { let best = -Infinity; for (let i = 0; i < 9; i++) { if (!board[i]) { board[i] = 'O'; best = Math.max(best, minimax(board, depth + 1, false)); board[i] = '' } } return best } else { let best = Infinity; for (let i = 0; i < 9; i++) { if (!board[i]) { board[i] = 'X'; best = Math.min(best, minimax(board, depth + 1, true)); board[i] = '' } } return best } }
-      function checkTTTWin(p) { const w = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]; return w.some(([a, b, c]) => tttBoard[a] === p && tttBoard[b] === p && tttBoard[c] === p) }
-
-      // ===== AI ASSISTANT =====
-      function toggleAI() { document.getElementById('aiWindow').classList.toggle('show') }
-      function quickAI(text) { document.getElementById('aiInput').value = text; sendAI() }
-      function handleAIKey(e) { if (e.key === 'Enter') sendAI() }
-      function sendAI() { const input = document.getElementById('aiInput'); const msg = input.value.trim(); if (!msg) return; addAIMessage(msg, 'user'); input.value = ''; setTimeout(() => { const response = getAIResponse(msg); addAIMessage(response, 'bot') }, 500 + Math.random() * 1000) }
-      function addAIMessage(text, type) { const div = document.createElement('div'); div.className = `ai-msg ${type}`; div.innerHTML = `<p>${text}</p>`; const container = document.getElementById('aiMessages'); container.appendChild(div); container.scrollTop = container.scrollHeight }
-      function getAIResponse(msg) { msg = msg.toLowerCase(); if (msg.includes('iphone') || msg.includes('telefon')) return 'iPhone uchun maslahatim:<br>• iPhone 16 Pro Max - eng kuchli (A18 Pro, 48MP)<br>• iPhone 16 - optimal narx/sifat<br>• iPhone 15 - arzonroq variant<br>Budgetingiz qancha?'; if (msg.includes('noutbuk') || msg.includes('laptop') || msg.includes('macbook')) return 'Noutbuk tanlashda:<br>• MacBook Pro M3 - professional ishlar uchun<br>• MacBook Air M3 - yengil, ofis ishlari<br>• ASUS ROG - gaming uchun<br>• Dell XPS - biznes uchun<br>Qaysi maqsadda kerak?'; if (msg.includes('arzon') || msg.includes('uchun')) return 'Arzon variantlar:<br>📱 iPhone 15 - $799<br>💻 MacBook Air M2 - $999<br>🎧 AirPods 3 - $169<br>⌚ iPad 10 - $449<br>Bularning barchasi a\'lo sifat!'; if (msg.includes('gaming') || msg.includes('o\'yin')) return 'Gaming uchun:<br> PS5 Pro - $699 (eng yaxshi)<br>🎮 Xbox Series X - $499<br>💻 ASUS ROG Strix - $1599<br>🎧 Sony WH-1000XM5 - $349<br>Qaysi platforma afzal?'; if (msg.includes('salom') || msg.includes('hi')) return 'Salom! 😊 Men TechZone AI yordamchisiman. Sizga qanday yordam bera olaman? Mahsulotlar haqida savol bering!'; if (msg.includes('rahmat') || msg.includes('thanks')) return 'Arzimaydi! 😊 Yana savollar bo\'lsa, bemalol so\'rang. Xarid qilishda omad tilayman!'; if (msg.includes('yetkazish') || msg.includes('delivery')) return '📦 Yetkazib berish:<br>• 500,000 so\'mdan yuqori - BEPUL<br>• Toshkent ichida - 1-2 kun<br>• Viloyatlar - 3-5 kun<br>• Express - 24 soat (qo\'shimcha to\'lov)'; if (msg.includes('kafolat') || msg.includes('warranty')) return '🛡️ Kafolat:<br>• Barcha mahsulotlarga 2 yil rasmiy kafolat<br>• 14 kun ichida qaytarish mumkin<br>• Servis markazlari Toshkentda<br>• Online qo\'llab-quvvatlash 24/7'; return 'Tushundim! Bu haqida batafsil ma\'lumot uchun:<br>• Mahsulotlar bo\'limiga qarang<br>• Telefon: +998 90 123 45 67<br>• Email: info@techzone.uz<br>Yoki boshqa savolingiz bormi?' }
-
-      // ===== IMAGE FALLBACK =====
-      document.addEventListener('error', function (e) { if (e.target.tagName === 'IMG' && !e.target.src.includes('placeholder')) { e.target.src = `https://via.placeholder.com/400x300/6c5ce7/ffffff?text=${encodeURIComponent(e.target.alt || 'Product')}` } }, true);
-    </script>
+    <script src="./main.js"></script>
 </body>
 
 </html>
