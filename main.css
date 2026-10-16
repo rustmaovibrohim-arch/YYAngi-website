@@ -6,7 +6,6 @@
     box-sizing: border-box
 }
 
-/* ===== DARK MODE (default) ===== */
 :root {
     --bg: #0a0a0f;
     --bg-2: #12121a;
@@ -39,7 +38,6 @@
     --tr: all .25s cubic-bezier(.4, 0, .2, 1);
 }
 
-/* ===== LIGHT MODE ===== */
 body.light-mode {
     --bg: #f5f5f7;
     --bg-2: #ffffff;
@@ -103,7 +101,6 @@ img {
     color: transparent
 }
 
-/* SNOW CANVAS */
 #snowCanvas {
     position: fixed;
     top: 0;
@@ -120,7 +117,6 @@ img {
     opacity: 1
 }
 
-/* LOADER */
 .loader {
     position: fixed;
     inset: 0;
@@ -197,7 +193,7 @@ img {
     letter-spacing: 1px
 }
 
-/* AUTH PAGE */
+/* AUTH - IXCHAMLASHTIRILGAN */
 .auth-page {
     position: fixed;
     top: 0;
@@ -275,8 +271,8 @@ img {
 .auth-container {
     position: relative;
     width: 100%;
-    max-width: 440px;
-    padding: 24px;
+    max-width: 400px;
+    padding: 16px;
     z-index: 2
 }
 
@@ -284,7 +280,7 @@ img {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--r-xl);
-    padding: 40px;
+    padding: 24px;
     box-shadow: var(--shadow-xl);
     animation: cardIn .6s cubic-bezier(.16, 1, .3, 1)
 }
@@ -305,25 +301,25 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 32px
+    gap: 10px;
+    margin-bottom: 16px
 }
 
 .brand-mark {
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     background: var(--g1);
-    border-radius: 14px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 18px;
     color: #fff
 }
 
 .brand-name {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 700
 }
 
@@ -337,19 +333,19 @@ img {
 
 .auth-welcome {
     text-align: center;
-    margin-bottom: 28px
+    margin-bottom: 16px
 }
 
 .auth-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
-    margin-bottom: 6px
+    margin-bottom: 4px
 }
 
 .auth-sub {
     color: var(--text-3);
-    font-size: 14px
+    font-size: 13px
 }
 
 .auth-tabs {
@@ -358,16 +354,16 @@ img {
     background: var(--bg-3);
     border-radius: var(--r);
     padding: 4px;
-    margin-bottom: 24px
+    margin-bottom: 16px
 }
 
 .auth-tab {
     flex: 1;
-    padding: 11px;
-    border-radius: 10px;
+    padding: 9px;
+    border-radius: 8px;
     color: var(--text-3);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     transition: var(--tr)
 }
 
@@ -399,15 +395,15 @@ img {
 }
 
 .field {
-    margin-bottom: 16px
+    margin-bottom: 10px
 }
 
 .field-label {
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--text-2);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     text-transform: uppercase;
     letter-spacing: .5px
 }
@@ -420,20 +416,20 @@ img {
 
 .field-icon {
     position: absolute;
-    left: 14px;
+    left: 12px;
     color: var(--text-4);
     transition: var(--tr);
-    font-size: 14px
+    font-size: 13px
 }
 
 .field-wrap input {
     width: 100%;
-    padding: 13px 14px 13px 42px;
+    padding: 10px 12px 10px 38px;
     background: var(--bg-3);
     border: 1.5px solid var(--border);
     border-radius: var(--r);
     color: var(--text);
-    font-size: 14px;
+    font-size: 13px;
     font-family: inherit;
     transition: var(--tr);
     outline: none
@@ -441,7 +437,7 @@ img {
 
 .field-wrap input:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, .12)
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, .12)
 }
 
 .field-action {
@@ -449,24 +445,24 @@ img {
     right: 10px;
     background: none;
     color: var(--text-4);
-    padding: 6px
+    padding: 4px
 }
 
 .auth-extras {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    font-size: 13px
+    margin-bottom: 14px;
+    font-size: 12px
 }
 
 .checkbox {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: var(--text-2);
     cursor: pointer;
-    font-size: 13px
+    font-size: 12px
 }
 
 .checkbox input {
@@ -475,15 +471,15 @@ img {
 
 .link {
     color: var(--primary-2);
-    font-size: 13px
+    font-size: 12px
 }
 
 .btn-primary {
-    padding: 13px 28px;
+    padding: 11px 24px;
     background: var(--g1);
     color: #fff;
     border-radius: var(--r);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -509,9 +505,9 @@ img {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 20px 0;
+    margin: 14px 0;
     color: var(--text-4);
-    font-size: 12px
+    font-size: 11px
 }
 
 .divider::before,
@@ -524,18 +520,18 @@ img {
 
 .social-row {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     justify-content: center
 }
 
 .social-btn {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     border-radius: var(--r);
     background: var(--bg-3);
     border: 1px solid var(--border);
     color: var(--text-2);
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -549,38 +545,37 @@ img {
 }
 
 .strength-meter {
-    margin-bottom: 14px
+    margin-bottom: 8px
 }
 
 .strength-track {
-    height: 4px;
+    height: 3px;
     background: var(--bg-3);
-    border-radius: 4px;
+    border-radius: 3px;
     overflow: hidden;
-    margin-bottom: 4px
+    margin-bottom: 3px
 }
 
 .strength-fill {
     height: 100%;
     width: 0;
     transition: var(--tr);
-    border-radius: 4px
+    border-radius: 3px
 }
 
 .strength-text {
-    font-size: 11px;
+    font-size: 10px;
     color: var(--text-4)
 }
 
 .terms {
-    margin-top: 14px
+    margin-top: 10px
 }
 
 .terms a {
     color: var(--primary-2)
 }
 
-/* HEADER */
 .site-header {
     position: fixed;
     top: 0;
@@ -1006,7 +1001,6 @@ img {
     box-shadow: 0 4px 12px rgba(99, 102, 241, .3)
 }
 
-/* PAGES */
 .page {
     display: none;
     min-height: 100vh
@@ -1027,7 +1021,6 @@ img {
     }
 }
 
-/* HERO */
 .hero {
     padding: 180px 0 80px;
     position: relative;
@@ -1267,7 +1260,6 @@ img {
     color: var(--accent)
 }
 
-/* SECTIONS */
 .section {
     padding: 80px 0
 }
@@ -1314,7 +1306,6 @@ img {
     font-size: 15px
 }
 
-/* CATEGORIES */
 .cat-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1368,7 +1359,6 @@ img {
     color: var(--text-4)
 }
 
-/* FEATURES */
 .features {
     padding: 60px 0;
     background: var(--bg-2);
@@ -1422,7 +1412,6 @@ img {
     color: var(--text-4)
 }
 
-/* PRODUCTS */
 .prod-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1622,7 +1611,6 @@ img {
     margin-top: 48px
 }
 
-/* PROMO */
 .promo-banner {
     padding: 80px 0
 }
@@ -1693,7 +1681,6 @@ img {
     color: rgba(255, 255, 255, .8)
 }
 
-/* OFFERS */
 .offers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -1748,7 +1735,6 @@ img {
     font-size: 13px
 }
 
-/* NEWSLETTER */
 .newsletter {
     padding: 80px 0
 }
@@ -1804,7 +1790,6 @@ img {
     font-weight: 600
 }
 
-/* BREADCRUMBS & FILTERS */
 .breadcrumbs {
     display: flex;
     align-items: center;
@@ -1849,7 +1834,6 @@ img {
     color: #fff
 }
 
-/* PRODUCT DETAIL */
 .product-detail-page {
     padding: 180px 0 60px
 }
@@ -2105,7 +2089,6 @@ img {
     font-size: 14px
 }
 
-/* CART & CHECKOUT */
 .cart-page,
 .checkout-page,
 .wishlist-page,
@@ -2461,7 +2444,6 @@ img {
     margin-bottom: 12px
 }
 
-/* PROFILE */
 .profile-layout {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -2587,7 +2569,6 @@ img {
     font-weight: 600
 }
 
-/* ORDERS */
 .order-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -2667,7 +2648,6 @@ img {
     color: var(--accent)
 }
 
-/* GAMES */
 .games-page {
     padding: 180px 0 60px
 }
@@ -2886,7 +2866,6 @@ img {
     margin-bottom: 16px
 }
 
-/* AI */
 .ai-widget {
     position: fixed;
     bottom: 30px;
@@ -3070,7 +3049,6 @@ img {
     color: #fff
 }
 
-/* FOOTER */
 .site-footer {
     background: var(--bg-2);
     border-top: 1px solid var(--border);
@@ -3174,7 +3152,6 @@ img {
     color: var(--text-3)
 }
 
-/* TOAST */
 .toast-container {
     position: fixed;
     top: 20px;
@@ -3257,7 +3234,6 @@ img {
     transform: translateY(0)
 }
 
-/* RESPONSIVE */
 @media(max-width:1024px) {
     .hero-inner {
         flex-direction: column;
@@ -3311,7 +3287,7 @@ img {
     }
 
     .auth-card {
-        padding: 24px
+        padding: 20px
     }
 
     .form-row {

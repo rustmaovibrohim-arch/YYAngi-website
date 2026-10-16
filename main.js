@@ -1,4 +1,3 @@
-// ===== TRANSLATIONS =====
 const translations = {
     uz: {
         loading: "TechZone yuklanmoqda...",
@@ -56,7 +55,7 @@ const translations = {
         bestSellers: "Eng ko'p sotilganlar",
         customerChoice: "Mijozlarimiz tanlovi",
         viewAll: "Barchasini ko'rish",
-        discount: "Chegarma",
+        discount: "Chegirma",
         promoTitle: "iPhone 16 Pro ga 20% chegirma",
         promoDesc: "Faqat shu hafta davomida. Shoshiling!",
         hours: "Soat",
@@ -368,40 +367,28 @@ function changeLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('tz_lang', lang);
     document.documentElement.lang = lang;
-
-    // Translate all elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-            el.textContent = translations[lang][key];
-        }
+        if (translations[lang][key]) el.textContent = translations[lang][key];
     });
-
-    // Translate placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
-        if (translations[lang][key]) {
-            el.placeholder = translations[lang][key];
-        }
+        if (translations[lang][key]) el.placeholder = translations[lang][key];
     });
-
-    // Update lang select
     document.getElementById('langSelect').value = lang;
-
-    // Re-render dynamic content
     if (currentPage === 'products') renderProds();
     if (currentPage === 'home') { renderHomeProds(); renderCategories(); }
     if (currentPage === 'cart') renderCartPage();
     if (currentPage === 'wishlist') renderWishlistPage();
 }
 
-// ===== PRODUCTS DATA (60 items) =====
+// ===== PRODUCTS DATA - HAQIQIY RASMLAR BILAN =====
 const products = [
-    { id: 1, name: "iPhone 16 Pro Max 256GB", category: "phones", price: 1199, oldPrice: 1399, image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400", rating: 4.9, reviews: 2847, badge: "hot", desc: "A18 Pro chip, 48MP camera, Titanium design", specs: ["A18 Pro chip", "6.9 inch Super Retina XDR", "48MP + 12MP + 12MP camera", "256GB storage", "Titanium design", "USB-C port"] },
-    { id: 2, name: "iPhone 16 Pro 128GB", category: "phones", price: 999, oldPrice: 1099, image: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400", rating: 4.8, reviews: 1923, badge: "new", desc: "A18 Pro chip, ProMotion display", specs: ["A18 Pro chip", "6.3 inch display", "48MP camera", "128GB", "ProMotion 120Hz"] },
-    { id: 3, name: "iPhone 16 128GB", category: "phones", price: 799, oldPrice: null, image: "https://images.unsplash.com/photo-1592286927505-1def25115558?w=400", rating: 4.7, reviews: 3421, badge: null, desc: "A18 chip, 48MP main camera", specs: ["A18 chip", "6.1 inch", "48MP camera", "128GB", "5G"] },
+    { id: 1, name: "iPhone 16 Pro Max 256GB", category: "phones", price: 1199, oldPrice: 1399, image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400", rating: 4.9, reviews: 2847, badge: "hot", desc: "A18 Pro chip, 48MP camera, Titanium design", specs: ["A18 Pro chip", "6.9 inch Super Retina XDR", "48MP camera", "256GB storage", "Titanium design", "USB-C"] },
+    { id: 2, name: "iPhone 16 Pro 128GB", category: "phones", price: 999, oldPrice: 1099, image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400", rating: 4.8, reviews: 1923, badge: "new", desc: "A18 Pro chip, ProMotion display", specs: ["A18 Pro chip", "6.3 inch display", "48MP camera", "128GB", "ProMotion 120Hz"] },
+    { id: 3, name: "iPhone 16 128GB", category: "phones", price: 799, oldPrice: null, image: "https://images.unsplash.com/photo-1696446702183-cbd13d78e1e7?w=400", rating: 4.7, reviews: 3421, badge: null, desc: "A18 chip, 48MP main camera", specs: ["A18 chip", "6.1 inch", "48MP camera", "128GB", "5G"] },
     { id: 4, name: "Samsung Galaxy S24 Ultra", category: "phones", price: 1099, oldPrice: 1299, image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400", rating: 4.8, reviews: 2156, badge: "sale", desc: "Snapdragon 8 Gen 3, 200MP camera, S Pen", specs: ["Snapdragon 8 Gen 3", "6.8 inch Dynamic AMOLED", "200MP camera", "S Pen", "12GB RAM", "512GB"] },
-    { id: 5, name: "Samsung Galaxy S24+", category: "phones", price: 899, oldPrice: 999, image: "https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=400", rating: 4.6, reviews: 1534, badge: null, desc: "6.7 inch Dynamic AMOLED, 50MP", specs: ["Snapdragon 8 Gen 3", "6.7 inch", "50MP camera", "12GB RAM"] },
+    { id: 5, name: "Samsung Galaxy S24+", category: "phones", price: 899, oldPrice: 999, image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400", rating: 4.6, reviews: 1534, badge: null, desc: "6.7 inch Dynamic AMOLED, 50MP", specs: ["Snapdragon 8 Gen 3", "6.7 inch", "50MP camera", "12GB RAM"] },
     { id: 6, name: "Samsung Galaxy Z Fold 5", category: "phones", price: 1799, oldPrice: 1999, image: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=400", rating: 4.5, reviews: 876, badge: "hot", desc: "Foldable screen, 7.6 inch", specs: ["Snapdragon 8 Gen 2", "7.6 inch foldable", "12GB RAM", "512GB", "S Pen support"] },
     { id: 7, name: "Google Pixel 8 Pro", category: "phones", price: 899, oldPrice: 999, image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400", rating: 4.7, reviews: 1245, badge: "new", desc: "Tensor G3, AI camera, 50MP", specs: ["Tensor G3", "6.7 inch LTPO OLED", "50MP camera", "12GB RAM", "AI features"] },
     { id: 8, name: "Xiaomi 14 Pro", category: "phones", price: 699, oldPrice: 799, image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400", rating: 4.6, reviews: 987, badge: null, desc: "Snapdragon 8 Gen 3, Leica camera", specs: ["Snapdragon 8 Gen 3", "6.73 inch", "Leica 50MP camera", "12GB RAM"] },
@@ -427,10 +414,10 @@ const products = [
     { id: 28, name: "AirPods Pro 2 (USB-C)", category: "audio", price: 249, oldPrice: 279, image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400", rating: 4.8, reviews: 5678, badge: "hot", desc: "Adaptive Audio, USB-C, 30 hours battery", specs: ["H2 chip", "Adaptive Audio", "USB-C", "30 hours battery", "IP54"] },
     { id: 29, name: "AirPods Max", category: "audio", price: 549, oldPrice: 599, image: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=400", rating: 4.7, reviews: 2345, badge: null, desc: "Spatial Audio, 20 hours battery", specs: ["H1 chip", "Spatial Audio", "20 hours", "Lightning"] },
     { id: 30, name: "AirPods 3rd Gen", category: "audio", price: 169, oldPrice: 179, image: "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=400", rating: 4.6, reviews: 4321, badge: "sale", desc: "Spatial Audio, MagSafe", specs: ["H1 chip", "Spatial Audio", "MagSafe", "30 hours"] },
-    { id: 31, name: "Sony WH-1000XM5", category: "audio", price: 349, oldPrice: 399, image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400", rating: 4.8, reviews: 3456, badge: "hot", desc: "Industry-leading ANC, 30 hours", specs: ["Industry-leading ANC", "30 hours battery", "LDAC", "Multipoint"] },
+    { id: 31, name: "Sony WH-1000XM5", category: "audio", price: 349, oldPrice: 399, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400", rating: 4.8, reviews: 3456, badge: "hot", desc: "Industry-leading ANC, 30 hours", specs: ["Industry-leading ANC", "30 hours battery", "LDAC", "Multipoint"] },
     { id: 32, name: "Sony WF-1000XM5", category: "audio", price: 279, oldPrice: 299, image: "https://images.unsplash.com/photo-1590658268037-6bf12f032f55?w=400", rating: 4.7, reviews: 2134, badge: null, desc: "True wireless, ANC, LDAC", specs: ["ANC", "LDAC", "8 hours battery", "IPX4"] },
     { id: 33, name: "Bose QuietComfort Ultra", category: "audio", price: 429, oldPrice: null, image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400", rating: 4.7, reviews: 1567, badge: "new", desc: "Immersive Audio, ANC", specs: ["Immersive Audio", "ANC", "24 hours", "Bluetooth 5.3"] },
-    { id: 34, name: "JBL Tune 770NC", category: "audio", price: 99, oldPrice: 129, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400", rating: 4.4, reviews: 2876, badge: "sale", desc: "ANC, 70 hours battery", specs: ["ANC", "70 hours battery", "Bluetooth 5.3", "JBL Pure Bass"] },
+    { id: 34, name: "JBL Tune 770NC", category: "audio", price: 99, oldPrice: 129, image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400", rating: 4.4, reviews: 2876, badge: "sale", desc: "ANC, 70 hours battery", specs: ["ANC", "70 hours battery", "Bluetooth 5.3", "JBL Pure Bass"] },
     { id: 35, name: "Samsung Galaxy Buds3 Pro", category: "audio", price: 229, oldPrice: 249, image: "https://images.unsplash.com/photo-1598331668871-c8a6b5a8a6e7?w=400", rating: 4.5, reviews: 1234, badge: null, desc: "ANC, 360 Audio, IPX7", specs: ["ANC", "360 Audio", "IPX7", "Galaxy AI"] },
     { id: 36, name: "PlayStation 5 Slim", category: "gaming", price: 449, oldPrice: 499, image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400", rating: 4.9, reviews: 8765, badge: "hot", desc: "1TB SSD, 4K gaming, DualSense", specs: ["1TB SSD", "4K 120fps", "Ray Tracing", "DualSense controller"] },
     { id: 37, name: "PlayStation 5 Pro", category: "gaming", price: 699, oldPrice: null, image: "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=400", rating: 4.8, reviews: 3456, badge: "new", desc: "8K gaming, 2TB SSD, Ray Tracing", specs: ["2TB SSD", "8K gaming", "Ray Tracing", "Wi-Fi 7"] },
@@ -459,39 +446,25 @@ const products = [
     { id: 60, name: "DJI FPV Combo", category: "drones", price: 999, oldPrice: 1199, image: "https://images.unsplash.com/photo-1506947411487-a56738c4b582?w=400", rating: 4.5, reviews: 765, badge: null, desc: "Immersive FPV, 4K 60fps, 140 km/h", specs: ["Immersive FPV", "4K 60fps", "140 km/h", "Motion controller"] }
 ];
 
-// ===== STATE =====
 let cart = [], wishlist = [], currentUser = null, displayed = 12, curCat = 'all', curSort = 'popular', currentPage = 'home', orders = [];
 let currentTheme = localStorage.getItem('tz_theme') || 'dark';
 
-// ===== INIT =====
 window.addEventListener('load', () => {
     setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1500);
-
-    // Apply saved theme
     if (currentTheme === 'light') {
         document.body.classList.add('light-mode');
         document.getElementById('themeToggle').innerHTML = '<i class="fas fa-sun"></i>';
     }
-
-    // Apply saved language
     document.getElementById('langSelect').value = currentLang;
     changeLanguage(currentLang);
-
-    // Check if user is logged in
     const s = localStorage.getItem('tz_cur');
     if (s) { currentUser = JSON.parse(s); enterSite(); }
-
-    // Start live clock
     updateClock();
     setInterval(updateClock, 1000);
-
-    // Start weather
     fetchWeather();
-    setInterval(fetchWeather, 600000); // every 10 min
-
-    // Start snow if night
+    setInterval(fetchWeather, 600000);
     checkSnow();
-    setInterval(checkSnow, 60000); // check every minute
+    setInterval(checkSnow, 60000);
 });
 
 function enterSite() {
@@ -505,16 +478,8 @@ function enterSite() {
     initSite();
 }
 
-function initSite() {
-    renderCategories();
-    renderHomeProds();
-    renderOffers();
-    initScroll();
-    animStats();
-    startCountdown();
-}
+function initSite() { renderCategories(); renderHomeProds(); renderOffers(); initScroll(); animStats(); startCountdown(); }
 
-// ===== LIVE CLOCK =====
 function updateClock() {
     const now = new Date();
     const h = String(now.getHours()).padStart(2, '0');
@@ -524,7 +489,6 @@ function updateClock() {
     if (clockEl) clockEl.textContent = `${h}:${m}:${s}`;
 }
 
-// ===== LIVE WEATHER (Open-Meteo API - free, no key needed) =====
 async function fetchWeather() {
     try {
         const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.2995&longitude=69.2401&current_weather=true');
@@ -532,24 +496,17 @@ async function fetchWeather() {
         const temp = Math.round(data.current_weather.temperature);
         const weatherEl = document.querySelector('#liveWeather span');
         if (weatherEl) weatherEl.textContent = `${temp}°C`;
-    } catch (e) {
-        console.log('Weather fetch failed');
-    }
+    } catch (e) { console.log('Weather fetch failed'); }
 }
 
-// ===== SNOW ANIMATION =====
 let snowActive = false;
 let snowflakes = [];
 let snowCanvas, snowCtx;
 
 function checkSnow() {
     const hour = new Date().getHours();
-    // Snow at night (20:00 - 07:00)
-    if (hour >= 20 || hour < 7) {
-        if (!snowActive) startSnow();
-    } else {
-        if (snowActive) stopSnow();
-    }
+    if (hour >= 20 || hour < 7) { if (!snowActive) startSnow(); }
+    else { if (snowActive) stopSnow(); }
 }
 
 function startSnow() {
@@ -560,8 +517,6 @@ function startSnow() {
     snowActive = true;
     snowCanvas.classList.add('active');
     window.addEventListener('resize', resizeSnowCanvas);
-
-    // Create snowflakes
     for (let i = 0; i < 100; i++) {
         snowflakes.push({
             x: Math.random() * snowCanvas.width,
@@ -572,59 +527,40 @@ function startSnow() {
             vy: Math.random() * 1 + 0.5
         });
     }
-
     animateSnow();
 }
 
-function stopSnow() {
-    snowActive = false;
-    snowCanvas.classList.remove('active');
-    snowflakes = [];
-}
+function stopSnow() { snowActive = false; snowCanvas.classList.remove('active'); snowflakes = []; }
 
-function resizeSnowCanvas() {
-    if (snowCanvas) {
-        snowCanvas.width = window.innerWidth;
-        snowCanvas.height = window.innerHeight;
-    }
-}
+function resizeSnowCanvas() { if (snowCanvas) { snowCanvas.width = window.innerWidth; snowCanvas.height = window.innerHeight; } }
 
 function animateSnow() {
     if (!snowActive) return;
     snowCtx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
     snowCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-
     snowflakes.forEach(f => {
         snowCtx.beginPath();
         snowCtx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
         snowCtx.fill();
-
         f.y += f.vy;
         f.x += f.vx + Math.sin(f.d) * 0.3;
         f.d += 0.01;
-
-        if (f.y > snowCanvas.height) {
-            f.y = -5;
-            f.x = Math.random() * snowCanvas.width;
-        }
+        if (f.y > snowCanvas.height) { f.y = -5; f.x = Math.random() * snowCanvas.width; }
         if (f.x > snowCanvas.width) f.x = 0;
         if (f.x < 0) f.x = snowCanvas.width;
     });
-
     requestAnimationFrame(animateSnow);
 }
 
-// ===== THEME TOGGLE =====
 function toggleTheme() {
     document.body.classList.toggle('light-mode');
     const isLight = document.body.classList.contains('light-mode');
     currentTheme = isLight ? 'light' : 'dark';
     localStorage.setItem('tz_theme', currentTheme);
     document.getElementById('themeToggle').innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    showToast(isLight ? '☀️ Light mode' : ' Dark mode', 'info');
+    showToast(isLight ? '☀️ Light mode' : '🌙 Dark mode', 'info');
 }
 
-// ===== AUTH =====
 function switchAuthTab(tab) {
     document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
@@ -676,7 +612,7 @@ function handleSignIn(e) {
 function handleSignUp(e) {
     e.preventDefault();
     const nm = document.getElementById('signupName').value, em = document.getElementById('signupEmail').value, ph = document.getElementById('signupPhone').value, pw = document.getElementById('signupPassword').value, cf = document.getElementById('signupConfirm').value;
-    if (pw !== cf) { showToast('', 'error'); return; }
+    if (pw !== cf) { showToast('⚠️', 'error'); return; }
     const users = JSON.parse(localStorage.getItem('tz_users') || '[]');
     if (users.find(u => u.email === em)) { showToast('⚠️', 'error'); return; }
     const nu = { name: nm, email: em, phone: ph, password: pw, avatar: '', joinDate: new Date().toISOString(), addresses: [{ id: 1, name: 'Home', address: 'Toshkent, Amir Temur 108', phone: ph, default: true }], orders: [] };
@@ -702,7 +638,6 @@ function logout() {
     showToast(translations[currentLang].logout, 'info');
 }
 
-// ===== PAGE NAVIGATION =====
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const targetPage = document.getElementById('page-' + page);
@@ -723,7 +658,6 @@ function showPage(page) {
     }
 }
 
-// ===== RENDERING =====
 function renderCategories() {
     const cats = [
         { id: 'phones', icon: 'fa-mobile-screen', count: 10 },
@@ -755,7 +689,7 @@ function prodCardHTML(p, i) {
     ${p.badge ? `<span class="prod-badge badge-${p.badge}">${badgeText}</span>` : ''}
     <button class="prod-wish ${wishlist.includes(p.id) ? 'active' : ''}" onclick="event.stopPropagation();toggleWish(${p.id});showPage('wishlist')"><i class="fas fa-heart"></i></button>
     <div class="prod-img">
-      <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/1a1a2e/6366f1?text=${encodeURIComponent(p.name.split(' ')[0])}'">
+      <img src="${p.image}" alt="${p.name}" loading="lazy">
       <div class="quick-acts">
         <button class="qa-btn" onclick="event.stopPropagation();showProductDetail(${p.id})"><i class="fas fa-eye"></i></button>
         <button class="qa-btn add" onclick="event.stopPropagation();addToCart(${p.id})"><i class="fas fa-cart-plus"></i></button>
@@ -793,7 +727,12 @@ function catName(c) {
     const t = translations[currentLang];
     return { phones: t.phones, laptops: t.laptops, tablets: t.tablets, audio: t.audio, gaming: t.gaming, tvs: 'TV', appliances: t.appliances, smart: t.smartHome, drones: t.drones }[c] || c;
 }
-function stars(r) { const f = Math.floor(r), h = r % 1 >= .5 ? 1 : 0, e = 5 - f - h; return '★'.repeat(f) + (h ? '½' : '') + '☆'.repeat(e); }
+function stars(r) {
+    const full = Math.floor(r);
+    const half = r % 1 >= 0.5;
+    const empty = 5 - full - (half ? 1 : 0);
+    return '★'.repeat(full) + (half ? '★' : '') + '☆'.repeat(empty);
+}
 function filterCat(c, btn) {
     curCat = c;
     displayed = 12;
@@ -815,14 +754,13 @@ function handleSearch() {
     const dd = document.getElementById('searchDropdown');
     if (s.length > 2) {
         const res = products.filter(p => p.name.toLowerCase().includes(s)).slice(0, 5);
-        dd.innerHTML = res.map(p => `<div class="search-result" onclick="showProductDetail(${p.id})"><img src="${p.image}" onerror="this.src='https://via.placeholder.com/44/1a1a2e/6366f1?text=IMG'"><div class="search-result-info"><div class="search-result-name">${p.name}</div><div class="search-result-price">$${p.price.toLocaleString()}</div></div></div>`).join('');
+        dd.innerHTML = res.map(p => `<div class="search-result" onclick="showProductDetail(${p.id})"><img src="${p.image}" alt="${p.name}"><div class="search-result-info"><div class="search-result-name">${p.name}</div><div class="search-result-price">$${p.price.toLocaleString()}</div></div></div>`).join('');
         dd.classList.add('show');
     } else { dd.classList.remove('show'); }
 }
 function loadMore() { displayed += 12; renderProds(); }
 document.addEventListener('click', e => { if (!e.target.closest('.search-wrap')) document.getElementById('searchDropdown').classList.remove('show'); });
 
-// ===== PRODUCT DETAIL =====
 function showProductDetail(id) {
     const p = products.find(x => x.id === id);
     if (!p) return;
@@ -845,10 +783,10 @@ function showProductDetail(id) {
     <div class="pd-grid">
       <div class="pd-gallery">
         <div class="pd-main-img">
-          <img src="${p.image}" alt="${p.name}" id="pdMainImg" onerror="this.src='https://via.placeholder.com/600x500/1a1a2e/6366f1?text=${encodeURIComponent(p.name.split(' ')[0])}'">
+          <img src="${p.image}" alt="${p.name}" id="pdMainImg">
         </div>
         <div class="pd-thumbs">
-          ${[p.image, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=200', 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=200'].map((img, i) => `<div class="pd-thumb ${i === 0 ? 'active' : ''}" onclick="changePdImg('${img}',this)"><img src="${img}" alt="thumb" onerror="this.src='https://via.placeholder.com/150/1a1a2e/6366f1?text=${i + 1}'"></div>`).join('')}
+          ${[p.image, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=200', 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=200', 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=200'].map((img, i) => `<div class="pd-thumb ${i === 0 ? 'active' : ''}" onclick="changePdImg('${img}',this)"><img src="${img}" alt="thumb"></div>`).join('')}
         </div>
       </div>
       <div class="pd-info">
@@ -917,7 +855,6 @@ function addToCartQty(id) {
     pdQtyVal = 1;
 }
 
-// ===== CART =====
 function addToCart(id) {
     const p = products.find(x => x.id === id);
     if (!p) return;
@@ -932,17 +869,10 @@ function addToCart(id) {
     updateCartUI();
     animateCartCount();
 }
-function removeFromCart(id) {
-    cart = cart.filter(x => x.id !== id);
-    updateCartUI();
-    if (currentPage === 'cart') renderCartPage();
-}
+function removeFromCart(id) { cart = cart.filter(x => x.id !== id); updateCartUI(); if (currentPage === 'cart') renderCartPage(); }
 function updateQty(id, d) {
     const it = cart.find(x => x.id === id);
-    if (it) {
-        it.qty += d;
-        if (it.qty <= 0) { removeFromCart(id); return; }
-    }
+    if (it) { it.qty += d; if (it.qty <= 0) { removeFromCart(id); return; } }
     updateCartUI();
     if (currentPage === 'cart') renderCartPage();
 }
@@ -968,7 +898,7 @@ function renderCartPage() {
     <div class="cart-layout">
       <div class="cart-items-list">
         ${cart.map(it => `<div class="cart-item-card">
-          <div class="cart-item-img"><img src="${it.image}" alt="${it.name}" onerror="this.src='https://via.placeholder.com/100/1a1a2e/6366f1?text=IMG'"></div>
+          <div class="cart-item-img"><img src="${it.image}" alt="${it.name}"></div>
           <div class="cart-item-details">
             <h3>${it.name}</h3>
             <div class="cat">${catName(it.category)}</div>
@@ -1040,7 +970,7 @@ function renderCheckoutPage() {
       <div class="order-summary">
         <h3>${currentLang === 'uz' ? 'Buyurtma xulosasi' : currentLang === 'ru' ? 'Итог' : 'Summary'}</h3>
         <div class="order-items">
-          ${cart.map(it => `<div class="order-item"><div class="order-item-img"><img src="${it.image}" alt="${it.name}" onerror="this.src='https://via.placeholder.com/60/1a1a2e/6366f1?text=IMG'"></div><div class="order-item-info"><h4>${it.name}</h4><div class="qty">${it.qty} x $${it.price.toLocaleString()}</div></div><div class="order-item-price">$${(it.price * it.qty).toLocaleString()}</div></div>`).join('')}
+          ${cart.map(it => `<div class="order-item"><div class="order-item-img"><img src="${it.image}" alt="${it.name}"></div><div class="order-item-info"><h4>${it.name}</h4><div class="qty">${it.qty} x $${it.price.toLocaleString()}</div></div><div class="order-item-price">$${(it.price * it.qty).toLocaleString()}</div></div>`).join('')}
         </div>
         <div class="cart-totals">
           <div class="cart-total-row"><span>Subtotal</span><span>$${subtotal.toLocaleString()}</span></div>
@@ -1055,7 +985,7 @@ function renderCheckoutPage() {
 function selectPay(el) { document.querySelectorAll('.pay-method').forEach(p => p.classList.remove('active')); el.classList.add('active'); }
 function confirmOrder() {
     const name = document.getElementById('coName').value, addr = document.getElementById('coAddress').value;
-    if (!name || !addr) { showToast('️', 'error'); return; }
+    if (!name || !addr) { showToast('⚠️', 'error'); return; }
     const subtotal = cart.reduce((s, x) => s + x.price * x.qty, 0), shipping = subtotal > 500 ? 0 : 29, tax = Math.round(subtotal * .12);
     const order = { id: 'TZ' + Math.floor(Math.random() * 900000 + 100000), date: new Date().toISOString(), items: [...cart], total: subtotal + shipping + tax, status: 'processing', address: addr };
     orders.unshift(order);
@@ -1066,7 +996,6 @@ function confirmOrder() {
     showToast('✅ ' + translations[currentLang].orderConfirmed, 'success');
 }
 
-// ===== WISHLIST =====
 function toggleWish(id) {
     const i = wishlist.indexOf(id);
     const t = translations[currentLang];
@@ -1088,7 +1017,6 @@ function renderWishlistPage() {
     c.innerHTML = `<h1>${t.wishlist} (${items.length})</h1><div class="prod-grid">${items.map((p, i) => prodCardHTML(p, i)).join('')}</div>`;
 }
 
-// ===== ORDERS =====
 function renderOrders() {
     const c = document.getElementById('ordersPageContent');
     const t = translations[currentLang];
@@ -1105,7 +1033,7 @@ function renderOrders() {
         <div><div class="order-id">#${o.id}</div><div class="order-date">${new Date(o.date).toLocaleDateString()}</div></div>
         <span class="order-status ${statusClass}">${statusText}</span>
       </div>
-      <div class="order-products">${o.items.slice(0, 4).map(it => `<div class="order-prod-thumb"><img src="${it.image}" alt="${it.name}" onerror="this.src='https://via.placeholder.com/70/1a1a2e/6366f1?text=IMG'"></div>`).join('')}</div>
+      <div class="order-products">${o.items.slice(0, 4).map(it => `<div class="order-prod-thumb"><img src="${it.image}" alt="${it.name}"></div>`).join('')}</div>
       <div class="order-footer">
         <span style="color:var(--text-3);font-size:14px">${o.items.length} items</span>
         <span class="order-total">$${o.total.toLocaleString()}</span>
@@ -1114,7 +1042,6 @@ function renderOrders() {
     }).join('')}`;
 }
 
-// ===== PROFILE =====
 function renderProfile() {
     if (!currentUser) return;
     const c = document.getElementById('profilePageContent');
@@ -1149,17 +1076,15 @@ function renderProfile() {
     </div>`;
 }
 
-// ===== OFFERS =====
 function renderOffers() {
     const os = [
         { t: "iPhone 16 Pro", d: "-20%", i: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=600" },
         { t: "MacBook M3", d: "Free AirPods", i: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600" },
         { t: "PlayStation 5", d: "2 Free Games", i: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600" }
     ];
-    document.getElementById('offersGrid').innerHTML = os.map(o => `<div class="offer-card"><img src="${o.i}" alt="${o.t}" onerror="this.src='https://via.placeholder.com/400x200/6366f1/fff?text=${encodeURIComponent(o.t)}'"><div class="offer-ov"><h3>${o.t}</h3><p>${o.d}</p><button class="o-btn">→</button></div></div>`).join('');
+    document.getElementById('offersGrid').innerHTML = os.map(o => `<div class="offer-card"><img src="${o.i}" alt="${o.t}"><div class="offer-ov"><h3>${o.t}</h3><p>${o.d}</p><button class="o-btn">→</button></div></div>`).join('');
 }
 
-// ===== SCROLL & STATS =====
 function initScroll() {
     const h = document.getElementById('siteHeader'), s = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
@@ -1192,11 +1117,9 @@ function startCountdown() {
     }, 1000);
 }
 
-// ===== USER MENU =====
 function toggleUserMenu() { document.getElementById('userMenu').classList.toggle('show'); }
 document.addEventListener('click', e => { if (!e.target.closest('.user-wrap')) document.getElementById('userMenu').classList.remove('show'); });
 
-// ===== TOAST =====
 function showToast(msg, type = 'info') {
     const c = document.getElementById('toastContainer'), t = document.createElement('div');
     t.className = 'toast ' + type;
@@ -1206,7 +1129,6 @@ function showToast(msg, type = 'info') {
     setTimeout(() => t.remove(), 3000);
 }
 
-// ===== GAMES =====
 function initGames() { switchGame('snake', document.querySelector('.game-tab')); }
 function switchGame(game, btn) {
     document.querySelectorAll('.game-tab').forEach(t => t.classList.remove('active'));
@@ -1221,7 +1143,6 @@ function switchGame(game, btn) {
     else if (game === 'ttt') setTimeout(initTTT, 100);
 }
 
-// SNAKE
 let sCanvas, sCtx, snake, food, sDirection, sNextDir, sInterval, sScoreVal = 0, sLevel = 1, sHighScore = parseInt(localStorage.getItem('snakeHigh') || '0');
 function initSnake() { sCanvas = document.getElementById('sCanvas'); sCtx = sCanvas.getContext('2d'); resetSnake(); drawSnake(); }
 function resetSnake() { snake = [{ x: 10, y: 10 }]; food = { x: Math.floor(Math.random() * 39) + 1, y: Math.floor(Math.random() * 19) + 1 }; sDirection = 'right'; sNextDir = 'right'; sScoreVal = 0; sLevel = 1; updateSnakeUI(); if (sInterval) clearInterval(sInterval); }
@@ -1283,9 +1204,8 @@ document.addEventListener('keydown', e => {
     }
 });
 
-// MEMORY
 let memoryCards = [], memoryFlipped = [], memoryMatched = [], memoryMoves = 0, memoryTimer, memorySeconds = 0;
-const memoryIcons = ['📱', '💻', '🎧', '⌚', '📺', '🎮', '🎯', ''];
+const memoryIcons = ['📱', '💻', '🎧', '', '📺', '🎮', '🎯', '🔋'];
 function initMemory() {
     const grid = document.getElementById('memoryGrid');
     grid.innerHTML = '';
@@ -1330,7 +1250,6 @@ function checkMemoryMatch() {
 }
 function updateMemoryUI() { document.getElementById('mMoves').textContent = memoryMoves; document.getElementById('mPairs').textContent = `${memoryMatched.length / 2}/8`; }
 
-// QUIZ
 const quizQuestions = [
     { q: "iPhone 16 Pro Max chip?", a: ["A18 Pro", "A17 Pro", "M3", "Snapdragon"], c: 0 },
     { q: "MacBook Pro 16 M3 Max price?", a: ["$2499", "$3499", "$4499", "$1999"], c: 1 },
@@ -1370,11 +1289,10 @@ function answerQuiz(ans) {
 function showQuizResult() {
     const box = document.getElementById('quizBox');
     const percent = Math.round(quizCorrect / quizQuestions.length * 100);
-    box.innerHTML = `<div class="quiz-result"><h3>${percent >= 80 ? '🏆' : percent >= 60 ? '👍' : '📚'}</h3><p>${quizCorrect} ✓ ${quizWrong} ✗<br>${percent}%</p><button class="btn-primary" onclick="initQuiz()" style="justify-content:center;margin:0 auto"><i class="fas fa-rotate-right"></i></button></div>`;
+    box.innerHTML = `<div class="quiz-result"><h3>${percent >= 80 ? '🏆' : percent >= 60 ? '' : '📚'}</h3><p>${quizCorrect} ✓ ${quizWrong} ✗<br>${percent}%</p><button class="btn-primary" onclick="initQuiz()" style="justify-content:center;margin:0 auto"><i class="fas fa-rotate-right"></i></button></div>`;
 }
 function updateQuizUI() { document.getElementById('qCorrect').textContent = quizCorrect; document.getElementById('qWrong').textContent = quizWrong; document.getElementById('qNumber').textContent = `${Math.min(quizCurrent + 1, quizQuestions.length)}/${quizQuestions.length}`; }
 
-// TIC TAC TOE
 let tttBoard, tttCurrentPlayer, tttGameOver, tttScores = { player: 0, ai: 0, draw: 0 };
 function initTTT() { tttBoard = Array(9).fill(''); tttCurrentPlayer = 'X'; tttGameOver = false; document.getElementById('tttStatus').textContent = translations[currentLang].yourTurn; renderTTT(); }
 function renderTTT() {
@@ -1442,7 +1360,6 @@ function checkTTTWin(p) {
     return w.some(([a, b, c]) => tttBoard[a] === p && tttBoard[b] === p && tttBoard[c] === p);
 }
 
-// ===== AI ASSISTANT =====
 function toggleAI() { document.getElementById('aiPanel').classList.toggle('show'); }
 function quickAI(text) { document.getElementById('aiInput').value = text; sendAI(); }
 function handleAIKey(e) { if (e.key === 'Enter') sendAI(); }
@@ -1466,13 +1383,16 @@ function getAIResponse(msg) {
     msg = msg.toLowerCase();
     if (msg.includes('iphone') || msg.includes('phone')) return 'iPhone 16 Pro Max - best (A18 Pro, 48MP)<br>iPhone 16 - best value<br>iPhone 15 - budget';
     if (msg.includes('laptop') || msg.includes('macbook')) return 'MacBook Pro M3 - pro work<br>MacBook Air M3 - light, office<br>ASUS ROG - gaming<br>Dell XPS - business';
-    if (msg.includes('cheap')) return 'Budget picks:<br>📱 iPhone 15 - $799<br>💻 MacBook Air M2 - $999<br> AirPods 3 - $169';
+    if (msg.includes('cheap')) return 'Budget picks:<br>📱 iPhone 15 - $799<br>💻 MacBook Air M2 - $999<br>🎧 AirPods 3 - $169';
     return 'Contact us:<br>📞 +998 90 123 45 67<br>📧 info@techzone.uz';
 }
 
-// ===== IMAGE FALLBACK =====
+// ===== IMAGE FALLBACK - HAQIQIY RASMLAR BILAN =====
 document.addEventListener('error', function (e) {
     if (e.target.tagName === 'IMG' && !e.target.src.includes('placeholder')) {
-        e.target.src = `https://via.placeholder.com/400x300/1a1a2e/6366f1?text=${encodeURIComponent(e.target.alt || 'Product')}`;
+        const name = e.target.alt || 'Product';
+        const colors = ['6366f1', '06b6d4', 'ec4899', 'f59e0b', '10b981'];
+        const color = colors[name.length % colors.length];
+        e.target.src = `https://via.placeholder.com/400x300/${color}/ffffff?text=${encodeURIComponent(name.split(' ').slice(0, 2).join('+'))}`;
     }
 }, true);

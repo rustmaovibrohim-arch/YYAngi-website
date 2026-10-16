@@ -14,10 +14,8 @@
 
 <body>
 
-  <!-- SNOW CANVAS -->
   <canvas id="snowCanvas"></canvas>
 
-  <!-- LOADER -->
   <div class="loader" id="loader">
     <div class="loader-content">
       <div class="loader-logo"><i class="fas fa-bolt"></i></div>
@@ -28,7 +26,6 @@
     </div>
   </div>
 
-  <!-- AUTH PAGE -->
   <div class="auth-page" id="authPage">
     <div class="auth-bg">
       <div class="auth-orb orb-1"></div>
@@ -125,10 +122,8 @@
     </div>
   </div>
 
-  <!-- MAIN SITE -->
   <div class="site" id="mainSite" style="display:none;">
 
-    <!-- HEADER -->
     <header class="site-header" id="siteHeader">
       <div class="header-top">
         <div class="container">
@@ -141,9 +136,9 @@
               <div class="live-clock" id="liveClock"><i class="fas fa-clock"></i> <span>00:00:00</span></div>
               <div class="live-weather" id="liveWeather"><i class="fas fa-cloud"></i> <span>--°C</span></div>
               <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
-                <option value="uz">🇿 O'zbekcha</option>
+                <option value="uz">🇺🇿 O'zbekcha</option>
                 <option value="ru">🇺 Русский</option>
-                <option value="en">🇬 English</option>
+                <option value="en">🇬🇧 English</option>
               </select>
               <button class="top-btn" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
             </div>
@@ -233,7 +228,6 @@
       </nav>
     </header>
 
-    <!-- HOME PAGE -->
     <div class="page active" id="page-home">
       <section class="hero">
         <div class="hero-bg">
@@ -277,7 +271,7 @@
               <div class="hero-card">
                 <div class="hero-card-glow"></div>
                 <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500" alt="iPhone"
-                  onerror="this.src='https://via.placeholder.com/400x500/1a1a2e/6366f1?text=iPhone+16+Pro'">
+                  onerror="this.style.display='none'">
                 <div class="hero-card-tag">
                   <div class="tag-name">iPhone 16 Pro Max</div>
                   <div class="tag-price">$1,199</div>
@@ -409,7 +403,6 @@
       </section>
     </div>
 
-    <!-- PRODUCTS PAGE -->
     <div class="page" id="page-products">
       <section class="section products-page">
         <div class="container">
@@ -437,49 +430,42 @@
       </section>
     </div>
 
-    <!-- PRODUCT DETAIL PAGE -->
     <div class="page" id="page-product">
       <section class="product-detail-page">
         <div class="container" id="productDetailContent"></div>
       </section>
     </div>
 
-    <!-- CART PAGE -->
     <div class="page" id="page-cart">
       <section class="cart-page">
         <div class="container" id="cartPageContent"></div>
       </section>
     </div>
 
-    <!-- CHECKOUT PAGE -->
     <div class="page" id="page-checkout">
       <section class="checkout-page">
         <div class="container" id="checkoutPageContent"></div>
       </section>
     </div>
 
-    <!-- WISHLIST PAGE -->
     <div class="page" id="page-wishlist">
       <section class="section">
         <div class="container" id="wishlistPageContent"></div>
       </section>
     </div>
 
-    <!-- ORDERS PAGE -->
     <div class="page" id="page-orders">
       <section class="section">
         <div class="container" id="ordersPageContent"></div>
       </section>
     </div>
 
-    <!-- PROFILE PAGE -->
     <div class="page" id="page-profile">
       <section class="section">
         <div class="container" id="profilePageContent"></div>
       </section>
     </div>
 
-    <!-- GAMES PAGE -->
     <div class="page" id="page-games">
       <section class="section games-page">
         <div class="container">
@@ -588,7 +574,6 @@
       </section>
     </div>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="container">
         <div class="footer-grid">
@@ -646,7 +631,6 @@
       </div>
     </footer>
 
-    <!-- AI WIDGET -->
     <div class="ai-widget" id="aiWidget">
       <button class="ai-toggle" onclick="toggleAI()"><i class="fas fa-robot"></i></button>
       <div class="ai-panel" id="aiPanel">
