@@ -10,13 +10,11 @@
     --bg: #0a0a0f;
     --bg-2: #12121a;
     --bg-3: #1a1a25;
-    --bg-4: #22222f;
     --card: #16161f;
     --card-2: #1e1e2a;
-    --card-3: #262636;
     --border: #2a2a3a;
     --border-2: #3a3a4a;
-    --text: #ffffff;
+    --text: #fff;
     --text-2: #b0b0c0;
     --text-3: #707080;
     --text-4: #505060;
@@ -26,7 +24,7 @@
     --success: #10b981;
     --warning: #f59e0b;
     --danger: #ef4444;
-    --g1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+    --g1: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
     --g2: linear-gradient(135deg, #06b6d4, #3b82f6);
     --g3: linear-gradient(135deg, #f43f5e, #ec4899);
     --shadow: 0 8px 24px rgba(0, 0, 0, .4);
@@ -40,12 +38,10 @@
 
 body.light-mode {
     --bg: #f5f5f7;
-    --bg-2: #ffffff;
+    --bg-2: #fff;
     --bg-3: #e8e8ed;
-    --bg-4: #d8d8dd;
-    --card: #ffffff;
+    --card: #fff;
     --card-2: #f0f0f5;
-    --card-3: #e5e5ea;
     --border: #d0d0d8;
     --border-2: #c0c0c8;
     --text: #1a1a2e;
@@ -193,7 +189,6 @@ img {
     letter-spacing: 1px
 }
 
-/* AUTH - IXCHAMLASHTIRILGAN */
 .auth-page {
     position: fixed;
     top: 0;
@@ -204,7 +199,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow-y: auto;
     background: var(--bg)
 }
 
@@ -271,8 +266,8 @@ img {
 .auth-container {
     position: relative;
     width: 100%;
-    max-width: 400px;
-    padding: 16px;
+    max-width: 420px;
+    padding: 20px;
     z-index: 2
 }
 
@@ -280,7 +275,7 @@ img {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--r-xl);
-    padding: 24px;
+    padding: 32px 28px;
     box-shadow: var(--shadow-xl);
     animation: cardIn .6s cubic-bezier(.16, 1, .3, 1)
 }
@@ -306,8 +301,8 @@ img {
 }
 
 .brand-mark {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     background: var(--g1);
     border-radius: 12px;
     display: flex;
@@ -319,7 +314,7 @@ img {
 
 .brand-name {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700
 }
 
@@ -338,7 +333,7 @@ img {
 
 .auth-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     margin-bottom: 4px
 }
@@ -359,7 +354,7 @@ img {
 
 .auth-tab {
     flex: 1;
-    padding: 9px;
+    padding: 10px;
     border-radius: 8px;
     color: var(--text-3);
     font-weight: 600;
@@ -424,7 +419,7 @@ img {
 
 .field-wrap input {
     width: 100%;
-    padding: 10px 12px 10px 38px;
+    padding: 11px 12px 11px 38px;
     background: var(--bg-3);
     border: 1.5px solid var(--border);
     border-radius: var(--r);
@@ -475,16 +470,33 @@ img {
 }
 
 .btn-primary {
-    padding: 11px 24px;
+    padding: 12px 24px;
     background: var(--g1);
     color: #fff;
     border-radius: var(--r);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: var(--tr)
+    transition: var(--tr);
+    position: relative;
+    overflow: hidden
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+    transition: .6s
+}
+
+.btn-primary:hover::before {
+    left: 100%
 }
 
 .btn-primary:hover {
@@ -525,8 +537,8 @@ img {
 }
 
 .social-btn {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: var(--r);
     background: var(--bg-3);
     border: 1px solid var(--border);
@@ -983,9 +995,6 @@ img {
     color: var(--text-3);
     font-size: 13px;
     font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 7px;
     transition: var(--tr);
     border: 1px solid transparent
 }
@@ -1236,6 +1245,26 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover
+}
+
+.hero-card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, .15) 0%, transparent 60%);
+    animation: glowRotate 8s linear infinite
+}
+
+@keyframes glowRotate {
+    from {
+        transform: rotate(0)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
 }
 
 .hero-card-tag {
@@ -1523,7 +1552,6 @@ img {
     padding: 10px;
     border-radius: 10px;
     background: var(--bg-3);
-    backdrop-filter: blur(10px);
     color: #fff;
     font-size: 12px;
     font-weight: 600;
@@ -2668,9 +2696,6 @@ img {
     color: var(--text-3);
     font-size: 15px;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
     cursor: pointer
 }
 
@@ -3287,7 +3312,7 @@ img {
     }
 
     .auth-card {
-        padding: 20px
+        padding: 24px
     }
 
     .form-row {
