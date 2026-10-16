@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechZone PRO — Premium Electronics</title>
+  <title>TechZone PRO</title>
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link
@@ -14,6 +14,9 @@
 
 <body>
 
+  <!-- SNOW CANVAS -->
+  <canvas id="snowCanvas"></canvas>
+
   <!-- LOADER -->
   <div class="loader" id="loader">
     <div class="loader-content">
@@ -21,7 +24,7 @@
       <div class="loader-bar">
         <div class="loader-fill"></div>
       </div>
-      <div class="loader-text">TechZone yuklanmoqda...</div>
+      <div class="loader-text" data-i18n="loading">TechZone yuklanmoqda...</div>
     </div>
   </div>
 
@@ -39,23 +42,25 @@
           <div class="brand-name">Tech<span>Zone</span></div>
         </div>
         <div class="auth-welcome">
-          <h1 class="auth-title">Xush kelibsiz</h1>
-          <p class="auth-sub">Premium texnika dunyosiga kiring</p>
+          <h1 class="auth-title" data-i18n="welcome">Xush kelibsiz</h1>
+          <p class="auth-sub" data-i18n="authSub">Premium texnika dunyosiga kiring</p>
         </div>
         <div class="auth-tabs">
-          <button class="auth-tab active" data-tab="signin" onclick="switchAuthTab('signin')">Kirish</button>
-          <button class="auth-tab" data-tab="signup" onclick="switchAuthTab('signup')">Ro'yxatdan o'tish</button>
+          <button class="auth-tab active" data-tab="signin" onclick="switchAuthTab('signin')"
+            data-i18n="signIn">Kirish</button>
+          <button class="auth-tab" data-tab="signup" onclick="switchAuthTab('signup')" data-i18n="signUp">Ro'yxatdan
+            o'tish</button>
         </div>
         <form class="auth-form active" id="signinForm" onsubmit="handleSignIn(event)">
           <div class="field">
-            <label class="field-label">Email</label>
+            <label class="field-label" data-i18n="email">Email</label>
             <div class="field-wrap">
               <i class="fas fa-envelope field-icon"></i>
               <input type="email" placeholder="ism@example.com" required id="signinEmail">
             </div>
           </div>
           <div class="field">
-            <label class="field-label">Parol</label>
+            <label class="field-label" data-i18n="password">Parol</label>
             <div class="field-wrap">
               <i class="fas fa-lock field-icon"></i>
               <input type="password" placeholder="••••••••" required id="signinPassword">
@@ -64,11 +69,12 @@
             </div>
           </div>
           <div class="auth-extras">
-            <label class="checkbox"><input type="checkbox"><span>Eslab qolish</span></label>
-            <a href="#" class="link">Parolni unutdingizmi?</a>
+            <label class="checkbox"><input type="checkbox"><span data-i18n="remember">Eslab qolish</span></label>
+            <a href="#" class="link" data-i18n="forgotPass">Parolni unutdingizmi?</a>
           </div>
-          <button type="submit" class="btn-primary full"><span>Kirish</span><i class="fas fa-arrow-right"></i></button>
-          <div class="divider"><span>yoki</span></div>
+          <button type="submit" class="btn-primary full"><span data-i18n="signIn">Kirish</span><i
+              class="fas fa-arrow-right"></i></button>
+          <div class="divider"><span data-i18n="or">yoki</span></div>
           <div class="social-row">
             <button type="button" class="social-btn" onclick="socialAuth('Google')"><i
                 class="fab fa-google"></i></button>
@@ -79,52 +85,40 @@
         </form>
         <form class="auth-form" id="signupForm" onsubmit="handleSignUp(event)">
           <div class="field">
-            <label class="field-label">To'liq ism</label>
-            <div class="field-wrap">
-              <i class="fas fa-user field-icon"></i>
-              <input type="text" placeholder="Ism Familiya" required id="signupName">
-            </div>
+            <label class="field-label" data-i18n="fullName">To'liq ism</label>
+            <div class="field-wrap"><i class="fas fa-user field-icon"></i><input type="text" placeholder="Ism Familiya"
+                required id="signupName"></div>
           </div>
           <div class="field">
-            <label class="field-label">Email</label>
-            <div class="field-wrap">
-              <i class="fas fa-envelope field-icon"></i>
-              <input type="email" placeholder="ism@example.com" required id="signupEmail">
-            </div>
+            <label class="field-label" data-i18n="email">Email</label>
+            <div class="field-wrap"><i class="fas fa-envelope field-icon"></i><input type="email"
+                placeholder="ism@example.com" required id="signupEmail"></div>
           </div>
           <div class="field">
-            <label class="field-label">Telefon</label>
-            <div class="field-wrap">
-              <i class="fas fa-phone field-icon"></i>
-              <input type="tel" placeholder="+998 90 123 45 67" required id="signupPhone">
-            </div>
+            <label class="field-label" data-i18n="phone">Telefon</label>
+            <div class="field-wrap"><i class="fas fa-phone field-icon"></i><input type="tel"
+                placeholder="+998 90 123 45 67" required id="signupPhone"></div>
           </div>
           <div class="field">
-            <label class="field-label">Parol</label>
-            <div class="field-wrap">
-              <i class="fas fa-lock field-icon"></i>
-              <input type="password" placeholder="Min 8 belgi" required id="signupPassword" minlength="8"
-                oninput="checkStrength(this.value)">
-              <button type="button" class="field-action" onclick="togglePass('signupPassword',this)"><i
-                  class="fas fa-eye"></i></button>
-            </div>
+            <label class="field-label" data-i18n="password">Parol</label>
+            <div class="field-wrap"><i class="fas fa-lock field-icon"></i><input type="password"
+                placeholder="Min 8 belgi" required id="signupPassword" minlength="8"
+                oninput="checkStrength(this.value)"><button type="button" class="field-action"
+                onclick="togglePass('signupPassword',this)"><i class="fas fa-eye"></i></button></div>
           </div>
           <div class="strength-meter">
             <div class="strength-track">
               <div class="strength-fill" id="strengthFill"></div>
-            </div>
-            <span class="strength-text" id="strengthText"></span>
+            </div><span class="strength-text" id="strengthText"></span>
           </div>
           <div class="field">
-            <label class="field-label">Tasdiqlash</label>
-            <div class="field-wrap">
-              <i class="fas fa-lock field-icon"></i>
-              <input type="password" placeholder="Parolni qayta kiriting" required id="signupConfirm">
-            </div>
+            <label class="field-label" data-i18n="confirmPass">Tasdiqlash</label>
+            <div class="field-wrap"><i class="fas fa-lock field-icon"></i><input type="password"
+                placeholder="Parolni qayta kiriting" required id="signupConfirm"></div>
           </div>
-          <label class="checkbox terms"><input type="checkbox" required><span><a href="#">Foydalanish shartlari</a>ga
-              roziman</span></label>
-          <button type="submit" class="btn-primary full accent"><span>Ro'yxatdan o'tish</span><i
+          <label class="checkbox terms"><input type="checkbox" required><span><a href="#" data-i18n="terms">Foydalanish
+                shartlari</a>ga roziman</span></label>
+          <button type="submit" class="btn-primary full accent"><span data-i18n="signUp">Ro'yxatdan o'tish</span><i
               class="fas fa-rocket"></i></button>
         </form>
       </div>
@@ -141,10 +135,17 @@
           <div class="header-top-inner">
             <div class="top-info">
               <span><i class="fas fa-phone"></i> +998 90 123 45 67</span>
-              <span><i class="fas fa-location-dot"></i> Toshkent, O'zbekiston</span>
+              <span><i class="fas fa-location-dot"></i> <span data-i18n="city">Toshkent</span></span>
             </div>
             <div class="top-actions">
-              <button class="top-btn"><i class="fas fa-globe"></i> O'zbekcha</button>
+              <div class="live-clock" id="liveClock"><i class="fas fa-clock"></i> <span>00:00:00</span></div>
+              <div class="live-weather" id="liveWeather"><i class="fas fa-cloud"></i> <span>--°C</span></div>
+              <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="uz">🇿 O'zbekcha</option>
+                <option value="ru">🇺 Русский</option>
+                <option value="en">🇬 English</option>
+              </select>
+              <button class="top-btn" id="themeToggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
             </div>
           </div>
         </div>
@@ -159,17 +160,18 @@
             <div class="search-wrap">
               <div class="search-box">
                 <i class="fas fa-magnifying-glass search-icon"></i>
-                <input type="text" placeholder="Mahsulot qidirish..." id="searchInput" oninput="handleSearch()">
-                <button class="search-btn" onclick="handleSearch()">Qidirish</button>
+                <input type="text" data-i18n-placeholder="searchPlaceholder" placeholder="Mahsulot qidirish..."
+                  id="searchInput" oninput="handleSearch()">
+                <button class="search-btn" data-i18n="search" onclick="handleSearch()">Qidirish</button>
               </div>
               <div class="search-dropdown" id="searchDropdown"></div>
             </div>
             <div class="header-actions">
-              <button class="icon-btn" onclick="showPage('wishlist')" data-tooltip="Sevimlilar">
+              <button class="icon-btn" onclick="showPage('wishlist')">
                 <i class="far fa-heart"></i>
                 <span class="count" id="wishCount">0</span>
               </button>
-              <button class="icon-btn" onclick="showPage('cart')" data-tooltip="Savat">
+              <button class="icon-btn" onclick="showPage('cart')">
                 <i class="fas fa-bag-shopping"></i>
                 <span class="count" id="cartCount">0</span>
               </button>
@@ -187,12 +189,16 @@
                       <div class="user-menu-email" id="userMenuEmail">email@uz</div>
                     </div>
                   </div>
-                  <a href="#" onclick="showPage('profile');return false;"><i class="fas fa-user"></i> Profil</a>
-                  <a href="#" onclick="showPage('orders');return false;"><i class="fas fa-box"></i> Buyurtmalar</a>
-                  <a href="#" onclick="showPage('wishlist');return false;"><i class="fas fa-heart"></i> Sevimlilar</a>
-                  <a href="#" onclick="showPage('games');return false;"><i class="fas fa-gamepad"></i> O'yinlar</a>
+                  <a href="#" onclick="showPage('profile');return false;"><i class="fas fa-user"></i> <span
+                      data-i18n="profile">Profil</span></a>
+                  <a href="#" onclick="showPage('orders');return false;"><i class="fas fa-box"></i> <span
+                      data-i18n="orders">Buyurtmalar</span></a>
+                  <a href="#" onclick="showPage('wishlist');return false;"><i class="fas fa-heart"></i> <span
+                      data-i18n="wishlist">Sevimlilar</span></a>
+                  <a href="#" onclick="showPage('games');return false;"><i class="fas fa-gamepad"></i> <span
+                      data-i18n="games">O'yinlar</span></a>
                   <a href="#" onclick="logout();return false;" class="danger"><i class="fas fa-right-from-bracket"></i>
-                    Chiqish</a>
+                    <span data-i18n="logout">Chiqish</span></a>
                 </div>
               </div>
             </div>
@@ -203,25 +209,25 @@
         <div class="container">
           <div class="nav-inner">
             <button class="nav-link active" onclick="filterCat('all',this);showPage('products')"><i
-                class="fas fa-grid-2"></i> Barchasi</button>
+                class="fas fa-grid-2"></i> <span data-i18n="all">Barchasi</span></button>
             <button class="nav-link" onclick="filterCat('phones',this);showPage('products')"><i
-                class="fas fa-mobile-screen"></i> Telefonlar</button>
+                class="fas fa-mobile-screen"></i> <span data-i18n="phones">Telefonlar</span></button>
             <button class="nav-link" onclick="filterCat('laptops',this);showPage('products')"><i
-                class="fas fa-laptop"></i> Noutbuklar</button>
+                class="fas fa-laptop"></i> <span data-i18n="laptops">Noutbuklar</span></button>
             <button class="nav-link" onclick="filterCat('tablets',this);showPage('products')"><i
-                class="fas fa-tablet-screen-button"></i> Planshetlar</button>
+                class="fas fa-tablet-screen-button"></i> <span data-i18n="tablets">Planshetlar</span></button>
             <button class="nav-link" onclick="filterCat('audio',this);showPage('products')"><i
-                class="fas fa-headphones"></i> Audio</button>
+                class="fas fa-headphones"></i> <span data-i18n="audio">Audio</span></button>
             <button class="nav-link" onclick="filterCat('gaming',this);showPage('products')"><i
-                class="fas fa-gamepad"></i> Gaming</button>
+                class="fas fa-gamepad"></i> <span data-i18n="gaming">Gaming</span></button>
             <button class="nav-link" onclick="filterCat('tvs',this);showPage('products')"><i class="fas fa-tv"></i>
               TV</button>
             <button class="nav-link" onclick="filterCat('appliances',this);showPage('products')"><i
-                class="fas fa-blender"></i> Maishiy</button>
+                class="fas fa-blender"></i> <span data-i18n="appliances">Maishiy</span></button>
             <button class="nav-link" onclick="filterCat('smart',this);showPage('products')"><i
-                class="fas fa-house-signal"></i> Smart Home</button>
+                class="fas fa-house-signal"></i> <span data-i18n="smartHome">Smart Home</span></button>
             <button class="nav-link" onclick="filterCat('drones',this);showPage('products')"><i
-                class="fas fa-helicopter"></i> Dronlar</button>
+                class="fas fa-helicopter"></i> <span data-i18n="drones">Dronlar</span></button>
           </div>
         </div>
       </nav>
@@ -238,29 +244,32 @@
         <div class="container">
           <div class="hero-inner">
             <div class="hero-content">
-              <div class="hero-badge"><span class="badge-dot"></span> Yangi kolleksiya 2026</div>
-              <h1 class="hero-title">Kelajak <span class="gradient-text">texnologiyasi</span> bugun</h1>
-              <p class="hero-desc">5000+ premium mahsulot, bepul yetkazib berish, 2 yil rasmiy kafolat. Eng yaxshi
-                narxlarda.</p>
+              <div class="hero-badge"><span class="badge-dot"></span> <span data-i18n="newCollection">Yangi kolleksiya
+                  2026</span></div>
+              <h1 class="hero-title"><span data-i18n="heroLine1">Kelajak</span> <span class="gradient-text"
+                  data-i18n="heroLine2">texnologiyasi</span> <span data-i18n="heroLine3">bugun</span></h1>
+              <p class="hero-desc" data-i18n="heroDesc">5000+ premium mahsulot, bepul yetkazib berish, 2 yil rasmiy
+                kafolat.</p>
               <div class="hero-cta">
-                <button class="btn-primary" onclick="showPage('products')"><i class="fas fa-bag-shopping"></i> Xarid
-                  qilish</button>
-                <button class="btn-ghost" onclick="showPage('games')"><i class="fas fa-gamepad"></i> O'yinlar</button>
+                <button class="btn-primary" onclick="showPage('products')"><i class="fas fa-bag-shopping"></i> <span
+                    data-i18n="shopNow">Xarid qilish</span></button>
+                <button class="btn-ghost" onclick="showPage('games')"><i class="fas fa-gamepad"></i> <span
+                    data-i18n="games">O'yinlar</span></button>
               </div>
               <div class="hero-stats">
                 <div class="hero-stat">
                   <div class="stat-value" data-count="5000">0</div>
-                  <div class="stat-label">Mahsulot</div>
+                  <div class="stat-label" data-i18n="products">Mahsulot</div>
                 </div>
                 <div class="hero-stat-divider"></div>
                 <div class="hero-stat">
                   <div class="stat-value" data-count="50000">0</div>
-                  <div class="stat-label">Mijozlar</div>
+                  <div class="stat-label" data-i18n="customers">Mijozlar</div>
                 </div>
                 <div class="hero-stat-divider"></div>
                 <div class="hero-stat">
                   <div class="stat-value" data-count="99">0</div>
-                  <div class="stat-label">Mamnunlik %</div>
+                  <div class="stat-label" data-i18n="satisfaction">Mamnunlik %</div>
                 </div>
               </div>
             </div>
@@ -283,9 +292,9 @@
         <div class="container">
           <div class="section-head">
             <div>
-              <div class="section-tag">Kategoriyalar</div>
-              <h2 class="section-title">Nima qidiryapsiz?</h2>
-              <p class="section-sub">O'zingizga kerakli mahsulotni toping</p>
+              <div class="section-tag" data-i18n="categories">Kategoriyalar</div>
+              <h2 class="section-title" data-i18n="whatLooking">Nima qidiryapsiz?</h2>
+              <p class="section-sub" data-i18n="findProduct">O'zingizga kerakli mahsulotni toping</p>
             </div>
           </div>
           <div class="cat-grid" id="catGrid"></div>
@@ -298,29 +307,29 @@
             <div class="feat-card">
               <div class="feat-icon"><i class="fas fa-truck-fast"></i></div>
               <div>
-                <h4>Bepul yetkazish</h4>
-                <p>500K so'mdan yuqori</p>
+                <h4 data-i18n="freeShipping">Bepul yetkazish</h4>
+                <p data-i18n="freeShipDesc">500K so'mdan yuqori</p>
               </div>
             </div>
             <div class="feat-card">
               <div class="feat-icon"><i class="fas fa-shield-halved"></i></div>
               <div>
-                <h4>2 yil kafolat</h4>
-                <p>Rasmiy kafolat</p>
+                <h4 data-i18n="warranty">2 yil kafolat</h4>
+                <p data-i18n="warrantyDesc">Rasmiy kafolat</p>
               </div>
             </div>
             <div class="feat-card">
               <div class="feat-icon"><i class="fas fa-rotate-left"></i></div>
               <div>
-                <h4>14 kun qaytarish</h4>
-                <p>Mamnun bo'lmasangiz</p>
+                <h4 data-i18n="return">14 kun qaytarish</h4>
+                <p data-i18n="returnDesc">Mamnun bo'lmasangiz</p>
               </div>
             </div>
             <div class="feat-card">
               <div class="feat-icon"><i class="fas fa-headset"></i></div>
               <div>
-                <h4>24/7 qo'llab-quvvatlash</h4>
-                <p>Har doim aloqada</p>
+                <h4 data-i18n="support">24/7 qo'llab-quvvatlash</h4>
+                <p data-i18n="supportDesc">Har doim aloqada</p>
               </div>
             </div>
           </div>
@@ -331,11 +340,11 @@
         <div class="container">
           <div class="section-head">
             <div>
-              <div class="section-tag">Ommabop</div>
-              <h2 class="section-title">Eng ko'p sotilganlar</h2>
-              <p class="section-sub">Mijozlarimiz tanlovi</p>
+              <div class="section-tag" data-i18n="popular">Ommabop</div>
+              <h2 class="section-title" data-i18n="bestSellers">Eng ko'p sotilganlar</h2>
+              <p class="section-sub" data-i18n="customerChoice">Mijozlarimiz tanlovi</p>
             </div>
-            <button class="btn-ghost small" onclick="showPage('products')">Barchasini ko'rish <i
+            <button class="btn-ghost small" onclick="showPage('products')" data-i18n="viewAll">Barchasini ko'rish <i
                 class="fas fa-arrow-right"></i></button>
           </div>
           <div class="prod-grid" id="homeProdGrid"></div>
@@ -346,25 +355,25 @@
         <div class="container">
           <div class="promo-inner">
             <div class="promo-content">
-              <div class="promo-tag">Chegarma</div>
-              <h2 class="promo-title">iPhone 16 Pro ga 20% chegirma</h2>
-              <p class="promo-desc">Faqat shu hafta davomida. Shoshiling!</p>
+              <div class="promo-tag" data-i18n="discount">Chegarma</div>
+              <h2 class="promo-title" data-i18n="promoTitle">iPhone 16 Pro ga 20% chegirma</h2>
+              <p class="promo-desc" data-i18n="promoDesc">Faqat shu hafta davomida. Shoshiling!</p>
               <div class="countdown">
                 <div class="cd-item">
                   <div class="cd-num" id="cdHours">23</div>
-                  <div class="cd-lbl">Soat</div>
+                  <div class="cd-lbl" data-i18n="hours">Soat</div>
                 </div>
                 <div class="cd-item">
                   <div class="cd-num" id="cdMins">59</div>
-                  <div class="cd-lbl">Daqiqa</div>
+                  <div class="cd-lbl" data-i18n="minutes">Daqiqa</div>
                 </div>
                 <div class="cd-item">
                   <div class="cd-num" id="cdSecs">59</div>
-                  <div class="cd-lbl">Soniya</div>
+                  <div class="cd-lbl" data-i18n="seconds">Soniya</div>
                 </div>
               </div>
               <button class="btn-primary" onclick="showPage('products')" style="background:#fff;color:#6366f1"><i
-                  class="fas fa-bag-shopping"></i> Hozir xarid qilish</button>
+                  class="fas fa-bag-shopping"></i> <span data-i18n="shopNow">Hozir xarid qilish</span></button>
             </div>
           </div>
         </div>
@@ -374,8 +383,8 @@
         <div class="container">
           <div class="section-head">
             <div>
-              <div class="section-tag accent">🔥 Aksiyalar</div>
-              <h2 class="section-title">Maxsus takliflar</h2>
+              <div class="section-tag accent">🔥 <span data-i18n="offers">Aksiyalar</span></div>
+              <h2 class="section-title" data-i18n="specialOffers">Maxsus takliflar</h2>
             </div>
           </div>
           <div class="offers-grid" id="offersGrid"></div>
@@ -386,11 +395,13 @@
         <div class="container">
           <div class="newsletter-inner">
             <div class="newsletter-content">
-              <h2>Yangiliklardan xabardor bo'ling</h2>
-              <p>Chegrimalar va yangi mahsulotlar haqida birinchi bo'lib biling</p>
-              <form class="newsletter-form" onsubmit="event.preventDefault();showToast('Obuna bo\'ldingiz!','success')">
-                <input type="email" placeholder="Email manzilingiz" required>
-                <button type="submit"><i class="fas fa-paper-plane"></i> Obuna bo'lish</button>
+              <h2 data-i18n="newsletterTitle">Yangiliklardan xabardor bo'ling</h2>
+              <p data-i18n="newsletterDesc">Chegrimalar va yangi mahsulotlar haqida birinchi bo'lib biling</p>
+              <form class="newsletter-form"
+                onsubmit="event.preventDefault();showToast(translations[currentLang].subscribed,'success')">
+                <input type="email" data-i18n-placeholder="emailPlaceholder" placeholder="Email manzilingiz" required>
+                <button type="submit"><i class="fas fa-paper-plane"></i> <span data-i18n="subscribe">Obuna
+                    bo'lish</span></button>
               </form>
             </div>
           </div>
@@ -403,25 +414,25 @@
       <section class="section products-page">
         <div class="container">
           <div class="breadcrumbs">
-            <a href="#" onclick="showPage('home');return false;">Bosh sahifa</a>
+            <a href="#" onclick="showPage('home');return false;" data-i18n="home">Bosh sahifa</a>
             <i class="fas fa-chevron-right"></i>
-            <span>Mahsulotlar</span>
+            <span data-i18n="products">Mahsulotlar</span>
           </div>
           <div class="section-head">
             <div>
-              <h1 class="section-title">Barcha mahsulotlar</h1>
+              <h1 class="section-title" data-i18n="allProducts">Barcha mahsulotlar</h1>
               <p class="section-sub" id="prodCountText"></p>
             </div>
             <div class="filter-group">
-              <button class="filter-btn active" onclick="sortProd('popular',this)">Ommabop</button>
-              <button class="filter-btn" onclick="sortProd('new',this)">Yangi</button>
-              <button class="filter-btn" onclick="sortProd('cheap',this)">Arzon</button>
-              <button class="filter-btn" onclick="sortProd('expensive',this)">Qimmat</button>
+              <button class="filter-btn active" onclick="sortProd('popular',this)" data-i18n="popular">Ommabop</button>
+              <button class="filter-btn" onclick="sortProd('new',this)" data-i18n="new">Yangi</button>
+              <button class="filter-btn" onclick="sortProd('cheap',this)" data-i18n="cheap">Arzon</button>
+              <button class="filter-btn" onclick="sortProd('expensive',this)" data-i18n="expensive">Qimmat</button>
             </div>
           </div>
           <div class="prod-grid" id="prodGrid"></div>
           <div class="load-more-wrap"><button class="btn-ghost" id="loadMoreBtn" onclick="loadMore()"><i
-                class="fas fa-plus"></i> Ko'proq yuklash</button></div>
+                class="fas fa-plus"></i> <span data-i18n="loadMore">Ko'proq yuklash</span></button></div>
         </div>
       </section>
     </div>
@@ -474,73 +485,75 @@
         <div class="container">
           <div class="section-head">
             <div>
-              <div class="section-tag accent">🎮 O'yinlar</div>
+              <div class="section-tag accent">🎮 <span data-i18n="games">O'yinlar</span></div>
               <h1 class="section-title">TechZone Gaming Zone</h1>
-              <p class="section-sub">Dam oling va sovrin qozoning</p>
+              <p class="section-sub" data-i18n="gameDesc">Dam oling va sovrin qozoning</p>
             </div>
           </div>
           <div class="game-tabs">
-            <button class="game-tab active" onclick="switchGame('snake',this)"><i class="fas fa-snake"></i> Ilon
-              o'yini</button>
-            <button class="game-tab" onclick="switchGame('memory',this)"><i class="fas fa-brain"></i> Xotira</button>
-            <button class="game-tab" onclick="switchGame('quiz',this)"><i class="fas fa-question-circle"></i>
-              Viktorina</button>
-            <button class="game-tab" onclick="switchGame('ttt',this)"><i class="fas fa-xmark"></i> X va O</button>
+            <button class="game-tab active" onclick="switchGame('snake',this)"><i class="fas fa-snake"></i> <span
+                data-i18n="snakeGame">Ilon</span></button>
+            <button class="game-tab" onclick="switchGame('memory',this)"><i class="fas fa-brain"></i> <span
+                data-i18n="memoryGame">Xotira</span></button>
+            <button class="game-tab" onclick="switchGame('quiz',this)"><i class="fas fa-question-circle"></i> <span
+                data-i18n="quizGame">Viktorina</span></button>
+            <button class="game-tab" onclick="switchGame('ttt',this)"><i class="fas fa-xmark"></i> X & O</button>
           </div>
           <div class="game-container" id="game-snake">
             <div class="game-stats">
               <div class="game-stat">
-                <div class="game-stat-label">Ball</div>
+                <div class="game-stat-label" data-i18n="score">Ball</div>
                 <div class="game-stat-value" id="sScore">0</div>
               </div>
               <div class="game-stat">
-                <div class="game-stat-label">Rekord</div>
+                <div class="game-stat-label" data-i18n="record">Rekord</div>
                 <div class="game-stat-value" id="sHighScore">0</div>
               </div>
               <div class="game-stat">
-                <div class="game-stat-label">Daraja</div>
+                <div class="game-stat-label" data-i18n="level">Daraja</div>
                 <div class="game-stat-value" id="sLevel">1</div>
               </div>
             </div>
             <div class="game-canvas-wrap"><canvas id="sCanvas" width="800" height="400"></canvas></div>
             <div class="game-controls">
-              <button class="btn-primary" onclick="startSnake()"><i class="fas fa-play"></i> Boshlash</button>
-              <button class="btn-ghost" onclick="resetSnake()"><i class="fas fa-rotate-right"></i> Qayta</button>
+              <button class="btn-primary" onclick="startSnake()"><i class="fas fa-play"></i> <span
+                  data-i18n="start">Boshlash</span></button>
+              <button class="btn-ghost" onclick="resetSnake()"><i class="fas fa-rotate-right"></i> <span
+                  data-i18n="restart">Qayta</span></button>
             </div>
-            <div class="game-hint">⌨️ Yo'naltirish tugmalari yoki W/A/S/D</div>
+            <div class="game-hint">⌨️ WASD / <span data-i18n="arrowKeys">Yo'naltirish tugmalari</span></div>
           </div>
           <div class="game-container" id="game-memory" style="display:none">
             <div class="game-stats">
               <div class="game-stat">
-                <div class="game-stat-label">Yurishlar</div>
+                <div class="game-stat-label" data-i18n="moves">Yurishlar</div>
                 <div class="game-stat-value" id="mMoves">0</div>
               </div>
               <div class="game-stat">
-                <div class="game-stat-label">Juftlik</div>
+                <div class="game-stat-label" data-i18n="pairs">Juftlik</div>
                 <div class="game-stat-value" id="mPairs">0/8</div>
               </div>
               <div class="game-stat">
-                <div class="game-stat-label">Vaqt</div>
+                <div class="game-stat-label" data-i18n="time">Vaqt</div>
                 <div class="game-stat-value" id="mTime">0s</div>
               </div>
             </div>
             <div class="memory-grid" id="memoryGrid"></div>
             <div class="game-controls"><button class="btn-primary" onclick="initMemory()"><i
-                  class="fas fa-rotate-right"></i> Yangi o'yin</button></div>
-            <div class="game-hint">🧠 Bir xil emojilarni toping</div>
+                  class="fas fa-rotate-right"></i> <span data-i18n="newGame">Yangi o'yin</span></button></div>
           </div>
           <div class="game-container" id="game-quiz" style="display:none">
             <div class="game-stats">
               <div class="game-stat">
-                <div class="game-stat-label">To'g'ri</div>
+                <div class="game-stat-label" data-i18n="correct">To'g'ri</div>
                 <div class="game-stat-value" id="qCorrect">0</div>
               </div>
               <div class="game-stat">
-                <div class="game-stat-label">Noto'g'ri</div>
+                <div class="game-stat-label" data-i18n="wrong">Noto'g'ri</div>
                 <div class="game-stat-value" id="qWrong">0</div>
               </div>
               <div class="game-stat">
-                <div class="game-stat-label">Savol</div>
+                <div class="game-stat-label" data-i18n="question">Savol</div>
                 <div class="game-stat-value" id="qNumber">1/10</div>
               </div>
             </div>
@@ -549,8 +562,7 @@
               <div class="quiz-options" id="quizOptions"></div>
             </div>
             <div class="game-controls"><button class="btn-primary" onclick="initQuiz()"><i
-                  class="fas fa-rotate-right"></i> Qayta</button></div>
-            <div class="game-hint">📚 Texnika haqida 10 ta savol</div>
+                  class="fas fa-rotate-right"></i> <span data-i18n="restart">Qayta</span></button></div>
           </div>
           <div class="game-container" id="game-ttt" style="display:none">
             <div class="game-stats">
@@ -559,7 +571,7 @@
                 <div class="game-stat-value" id="tttPlayer">0</div>
               </div>
               <div class="game-stat">
-                <div class="game-stat-label">Durrang</div>
+                <div class="game-stat-label" data-i18n="draw">Durrang</div>
                 <div class="game-stat-value" id="tttDraw">0</div>
               </div>
               <div class="game-stat">
@@ -567,11 +579,10 @@
                 <div class="game-stat-value" id="tttAI">0</div>
               </div>
             </div>
-            <div class="ttt-status" id="tttStatus">Sizning navbatingiz (X)</div>
+            <div class="ttt-status" id="tttStatus"><span data-i18n="yourTurn">Sizning navbatingiz (X)</span></div>
             <div class="ttt-grid" id="tttGrid"></div>
             <div class="game-controls"><button class="btn-primary" onclick="initTTT()"><i
-                  class="fas fa-rotate-right"></i> Qayta</button></div>
-            <div class="game-hint">❌ Aqlli AI ga qarshi o'ynang</div>
+                  class="fas fa-rotate-right"></i> <span data-i18n="restart">Qayta</span></button></div>
           </div>
         </div>
       </section>
@@ -586,45 +597,45 @@
               <div class="logo-mark small"><i class="fas fa-bolt"></i></div>
               <div class="logo-text">Tech<span>Zone</span></div>
             </div>
-            <p>O'zbekistondagi eng yirik premium texnika do'koni. 2020-yildan beri xizmatdamiz.</p>
+            <p data-i18n="footerDesc">O'zbekistondagi eng yirik premium texnika do'koni. 2020-yildan beri xizmatdamiz.
+            </p>
             <div class="footer-social">
               <a href="#"><i class="fab fa-telegram-plane"></i></a>
               <a href="#"><i class="fab fa-instagram"></i></a>
               <a href="#"><i class="fab fa-youtube"></i></a>
               <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
           </div>
           <div class="footer-col">
-            <h4>Sahifalar</h4>
+            <h4 data-i18n="pages">Sahifalar</h4>
             <ul>
-              <li><a href="#" onclick="showPage('home');return false;">Bosh sahifa</a></li>
-              <li><a href="#" onclick="showPage('products');return false;">Mahsulotlar</a></li>
-              <li><a href="#" onclick="showPage('cart');return false;">Savat</a></li>
-              <li><a href="#" onclick="showPage('games');return false;">O'yinlar</a></li>
+              <li><a href="#" onclick="showPage('home');return false;" data-i18n="home">Bosh sahifa</a></li>
+              <li><a href="#" onclick="showPage('products');return false;" data-i18n="products">Mahsulotlar</a></li>
+              <li><a href="#" onclick="showPage('cart');return false;" data-i18n="cart">Savat</a></li>
+              <li><a href="#" onclick="showPage('games');return false;" data-i18n="games">O'yinlar</a></li>
             </ul>
           </div>
           <div class="footer-col">
-            <h4>Kompaniya</h4>
+            <h4 data-i18n="company">Kompaniya</h4>
             <ul>
-              <li><a href="#">Biz haqimizda</a></li>
-              <li><a href="#">Kontaktlar</a></li>
-              <li><a href="#">Vakansiyalar</a></li>
-              <li><a href="#">Blog</a></li>
+              <li><a href="#" data-i18n="about">Biz haqimizda</a></li>
+              <li><a href="#" data-i18n="contacts">Kontaktlar</a></li>
+              <li><a href="#" data-i18n="vacancies">Vakansiyalar</a></li>
+              <li><a href="#" data-i18n="blog">Blog</a></li>
             </ul>
           </div>
           <div class="footer-col">
-            <h4>Aloqa</h4>
+            <h4 data-i18n="contact">Aloqa</h4>
             <ul class="contact-list">
               <li><i class="fas fa-phone"></i> +998 90 123 45 67</li>
               <li><i class="fas fa-envelope"></i> info@techzone.uz</li>
-              <li><i class="fas fa-location-dot"></i> Toshkent, Amir Temur 108</li>
+              <li><i class="fas fa-location-dot"></i> <span data-i18n="address">Toshkent, Amir Temur 108</span></li>
               <li><i class="fas fa-clock"></i> 09:00 - 22:00</li>
             </ul>
           </div>
         </div>
         <div class="footer-bottom">
-          <div>&copy; 2026 TechZone. Barcha huquqlar himoyalangan.</div>
+          <div>&copy; 2026 TechZone. <span data-i18n="rightsReserved">Barcha huquqlar himoyalangan.</span></div>
           <div class="payment-methods">
             <i class="fab fa-cc-visa"></i>
             <i class="fab fa-cc-mastercard"></i>
@@ -637,32 +648,31 @@
 
     <!-- AI WIDGET -->
     <div class="ai-widget" id="aiWidget">
-      <button class="ai-toggle" onclick="toggleAI()" id="aiToggle"><i class="fas fa-robot"></i></button>
+      <button class="ai-toggle" onclick="toggleAI()"><i class="fas fa-robot"></i></button>
       <div class="ai-panel" id="aiPanel">
         <div class="ai-header">
           <div class="ai-header-info">
             <div class="ai-avatar"><i class="fas fa-robot"></i></div>
             <div>
               <div class="ai-title">TechAI</div>
-              <div class="ai-status"><span class="status-dot"></span> Online</div>
+              <div class="ai-status"><span class="status-dot"></span> <span data-i18n="online">Online</span></div>
             </div>
           </div>
           <button onclick="toggleAI()"><i class="fas fa-xmark"></i></button>
         </div>
         <div class="ai-messages" id="aiMessages">
           <div class="ai-msg bot">
-            <p>Salom! 👋 Men TechZone AI yordamchisiman. Mahsulotlar, narxlar yoki buyurtmalar bo'yicha savollaringizga
-              javob beraman.</p>
+            <p data-i18n="aiGreeting">Salom! Men TechZone AI yordamchisiman.</p>
           </div>
         </div>
         <div class="ai-suggestions">
-          <button onclick="quickAI('iPhone haqida')">📱 iPhone</button>
-          <button onclick="quickAI('Noutbuk tavsiya qil')">💻 Noutbuk</button>
-          <button onclick="quickAI('Arzon variantlar')">💰 Arzon</button>
-          <button onclick="quickAI('Yetkazish shartlari')">🚚 Yetkazish</button>
+          <button onclick="quickAI('iPhone')">📱 iPhone</button>
+          <button onclick="quickAI('Laptop')">💻 Laptop</button>
+          <button onclick="quickAI('Cheap')">💰 <span data-i18n="cheap">Arzon</span></button>
         </div>
         <div class="ai-input-wrap">
-          <input type="text" id="aiInput" placeholder="Savolingizni yozing..." onkeypress="handleAIKey(event)">
+          <input type="text" id="aiInput" data-i18n-placeholder="aiPlaceholder" placeholder="Savolingizni yozing..."
+            onkeypress="handleAIKey(event)">
           <button onclick="sendAI()"><i class="fas fa-paper-plane"></i></button>
         </div>
       </div>
